@@ -1,0 +1,61 @@
+{
+  "success": true,
+  "error": null,
+  "response": [
+    {
+      "id": "2ac0f0296cf81497a20c826d36f50305",
+      "loc": {
+        "long": -94.964992878,
+        "lat": 29.3940757428
+      },
+      "details": {
+        "type": "BH.S",
+        "name": "STATEMENT",
+        "loc": "TXZ238",
+        "emergency": false,
+        "color": "40E0D0",
+        "cat": "beach",
+        "body": "...HIGH RIP CURRENT RISK TODAY...\n\n.ELEVATED SURF AND A HIGH RISK OF RIP CURRENTS WILL CONTINUE",
+        "bodyFull": "WHUS44 KHGX 290914\nCFWHGX\n\nCOASTAL HAZARD MESSAGE\nNATIONAL WEATHER SERVICE HOUSTON/GALVESTON"
+      },
+      "timestamps": {
+        "issued": 1522314840,
+        "issuedISO": "2018-03-29T04:14:00-05:00",
+        "begins": 1522314840,
+        "beginsISO": "2018-03-29T04:14:00-05:00",
+        "expires": 1522357200,
+        "expiresISO": "2018-03-29T16:00:00-05:00",
+        "added": 1522318202,
+        "addedISO": "2018-03-29T05:10:02-05:00"
+      },
+      "poly": "",
+      "geoPoly": null,
+      "includes": {
+        "counties": [
+
+        ],
+        "fips": [
+          "48039",
+          "48071"
+        ],
+        "wxzones": [
+          "TXZ214",
+          "TXZ236"
+        ],
+        "zipcodes": [
+          77404,
+          77414
+        ]
+      },
+      "place": {
+        "name": "galveston",
+        "state": "tx",
+        "country": "us"
+      },
+      "profile": {
+        "tz": "America/Chicago"
+      },
+      "active": true
+    }
+  ]
+}

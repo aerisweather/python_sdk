@@ -2,8 +2,7 @@
 /venv
 /.pytest_cache
 /aerisweather.egg-info
-/tests/keys.py
+
 /dist
 /AerisWeatherPythonDemo/.idea
 /AerisWeatherPythonDemo/venv
-/AerisWeatherPythonDemo/keys.py

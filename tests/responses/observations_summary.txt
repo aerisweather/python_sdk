@@ -1,0 +1,155 @@
+{
+  "success": true,
+  "error": null,
+  "response": [
+    {
+      "id": "KLSE",
+      "loc": {
+        "long": -91.25,
+        "lat": 43.883333333333
+      },
+      "place": {
+        "name": "la crosse",
+        "state": "wi",
+        "country": "us"
+      },
+      "periods": [
+        {
+          "summary": {
+            "timestamp": 1523250000,
+            "dateTimeISO": "2018-04-09T00:00:00-05:00",
+            "ymd": 20180409,
+            "range": {
+              "maxTimestamp": 1523299980,
+              "maxDateTimeISO": "2018-04-09T13:53:00-05:00",
+              "minTimestamp": 1523253180,
+              "minDateTimeISO": "2018-04-09T00:53:00-05:00",
+              "count": 23
+            },
+            "temp": {
+              "maxC": 5,
+              "maxF": 41,
+              "minC": -3,
+              "minF": 26,
+              "avgC": -0.6,
+              "avgF": 30.9,
+              "count": 23
+            },
+            "dewpt": {
+              "maxC": -3,
+              "maxF": 27,
+              "minC": -9,
+              "minF": 15,
+              "avgC": -4.5,
+              "avgF": 24,
+              "count": 23
+            },
+            "rh": {
+              "max": 93,
+              "min": 38,
+              "avg": 78,
+              "count": 23
+            },
+            "pressure": {
+              "maxMB": 1024,
+              "maxIN": 30.24,
+              "minMB": 1020,
+              "minIN": 30.12,
+              "avgMB": 1021.4,
+              "avgIN": 30.16,
+              "count": 23
+            },
+            "visibility": {
+              "maxKM": 16,
+              "maxMI": 10,
+              "minKM": 3,
+              "minMI": 2,
+              "count": 23,
+              "avgKM": 11,
+              "avgMI": 6.8
+            },
+            "wind": {
+              "maxKTS": 9,
+              "maxKPH": 17,
+              "maxMPH": 10,
+              "gustKTS": 15,
+              "gustKPH": 28,
+              "gustMPH": 17,
+              "count": 23,
+              "minKTS": 0,
+              "minKPH": 0,
+              "minMPH": 0,
+              "avgKTS": 2,
+              "avgKPH": 3.7,
+              "avgMPH": 2.3
+            },
+            "precip": {
+              "totalMM": 0.25,
+              "totalIN": 0.01,
+              "count": 12,
+              "trace": true,
+              "traceCount": 9,
+              "QC": "G",
+              "method": "sum",
+              "QCcode": 10
+            },
+            "weather": {
+              "coded": [
+                "::H",
+                ":L:S",
+                "::BR"
+              ],
+              "count": 3,
+              "phrase": "Mostly Cloudy with Haze",
+              "primary": "Haze",
+              "primaryCoded": "::H",
+              "icon": "cloudy.png"
+            },
+            "sky": {
+              "max": 100,
+              "min": 44,
+              "avg": 90,
+              "count": 23,
+              "coded": [
+                "OV",
+                "SC",
+                "BK"
+              ]
+            },
+            "solrad": {
+              "maxWM2": null,
+              "minWM2": null,
+              "avgWM2": null,
+              "totalWM2": null,
+              "method": null,
+              "count": 0
+            },
+            "QC": {
+              "max": 10,
+              "min": 10,
+              "types": [
+                "O"
+              ],
+              "count": 23
+            },
+            "spressure": {
+              "maxMB": 999,
+              "maxIN": 29.5,
+              "minMB": 995,
+              "minIN": 29.38,
+              "avgMB": 996.6,
+              "avgIN": 29.43,
+              "count": 23
+            }
+          }
+        }
+      ],
+      "profile": {
+        "tz": "America/Chicago",
+        "elevM": 199,
+        "elevFT": 653,
+        "hasPrecip": true
+      }
+    }
+  ]
+}

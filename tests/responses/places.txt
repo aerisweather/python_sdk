@@ -1,0 +1,42 @@
+{
+  "success": true,
+  "error": null,
+  "response": {
+    "loc": {
+      "lat": 43.80136,
+      "long": -91.23958
+    },
+    "place": {
+      "name": "La Crosse",
+      "state": "WI",
+      "stateFull": "Wisconsin",
+      "country": "US",
+      "countryFull": "United States",
+      "region": "usnc",
+      "regionFull": "North Central",
+      "continent": "na",
+      "continentFull": "North America"
+    },
+    "profile": {
+      "elevM": 204,
+      "elevFT": 669,
+      "pop": 52306,
+      "tz": "America/Chicago",
+      "tzname": "CDT",
+      "tzoffset": -18000,
+      "isDST": true,
+      "wxzone": [
+        "WIZ041"
+      ],
+      "firezone": [
+        "WIZ041"
+      ],
+      "fips": [
+        "55063"
+      ],
+      "countyid": [
+        "WIC063"
+      ]
+    }
+  }
+}
