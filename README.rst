@@ -4,7 +4,7 @@
         https://www.gnu.org/licenses/gpl.txt
 
 AerisWeatherPythonSDK
-=====================
+---------------------
 
 The AerisWeather Python SDK allows a developer to quickly and easily add
 weather content and functionality to their Python applications.
@@ -16,11 +16,23 @@ reducing the amount of code and development needed on the developer end.
 
 The AerisWeather Python SDK is built using Python v3.6.
 
+**How to get it:**
 
-Requirements
-============
+ - Download or link to the aerisweather package via The Python Package Index at `pypi.org/project/aerisweather <https://pypi.org/project/aerisweather/>`_
 
-To use the AerisWeather Python SDK you must have a valid AerisWeather API
-account. You can get one for free by signing up at the AerisWeather
-website here https://www.aerisweather.com/signup/pricing/
+ - Get the code at the AerisWeather Python SDK project on `GitHub <https://github.com/aerisweather/python_sdk>`_
+
+ - Visit the SDK's home at `AerisWeather <https://www.aerisweather.com/toolkits/>`_.
+
+
+**Requirements**
+
+- An active AerisWeather API account (don't have one? `sign up here <https://www.aerisweather.com/signup/pricing/>`_)
+
+- Python v3.6 or Higher
+
+- aenum v2.1.0 or Higher
+
+
+Note: To use the included Jupyter Notebook, you will also need to install the Jupyter kernel
 
