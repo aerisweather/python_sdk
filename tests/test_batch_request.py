@@ -31,13 +31,13 @@ class TestBatchRequests(unittest.TestCase):
 
             endpoint = Endpoint(endpoint_type=EndpointType.OBSERVATIONS,
                                 location=None,
-                                action=RequestAction.OBSERVATIONS.CLOSEST,
-                                filter_=[RequestFilter.OBSERVATIONS.MESONET],
+                                action=None,
+                                filter_=None,
                                 sort=None,
-                                params={ParameterType.OBSERVATIONS.P: "54601"})
+                                params={ParameterType.OBSERVATIONS.LIMIT: "3"})
 
             endpoint2 = Endpoint(endpoint_type=EndpointType.FORECASTS,
-                                 params={ParameterType.FORECASTS.LIMIT: "1"})
+                                 params={ParameterType.FORECASTS.LIMIT: "3"})
 
             endpoint3 = Endpoint(endpoint_type=EndpointType.OBSERVATIONS_SUMMARY)
 
@@ -46,71 +46,79 @@ class TestBatchRequests(unittest.TestCase):
             response_list = awx.batch_request(endpoints=endpoints,
                                               global_location=RequestLocation(postal_code="54660"))
 
-            # Observations
-            obs = response_list[0]
-            assert type(obs) is ObservationsResponse
-            assert obs.id is not None
+            for resp in response_list:
 
-            loc = obs.loc
-            assert loc is not None
-            assert type(loc) is AerisLocation
-            assert obs.loc.lat > 43
+                if type(resp) is ObservationsResponse:
 
-            place = obs.place
-            assert place is not None
-            # assert place.name == "la crosse"
-            assert place.state == "wi"
+                    # Observations
+                    obs = resp
+                    assert type(obs) is ObservationsResponse
+                    assert obs.id is not None
 
-            profile = obs.profile
-            assert profile is not None
-            assert profile.elevFT > 600
+                    loc = obs.loc
+                    assert loc is not None
+                    assert type(loc) is AerisLocation
+                    assert obs.loc.lat > 43
 
-            relative_to = obs.relativeTo
-            assert relative_to.long < -91
+                    place = obs.place
+                    assert place is not None
+                    # assert place.name == "la crosse"
+                    assert place.state == "wi"
 
-            assert obs.obTimestamp.__class__ is int
+                    profile = obs.profile
+                    assert profile is not None
+                    assert profile.elevFT > 600
 
-            # Forecasts
-            forecast = response_list[1]
-            assert type(forecast) is ForecastsResponse
+                    relative_to = obs.relativeTo
+                    assert relative_to.long < -80
 
-            loc = forecast.loc
-            assert loc is not None
-            assert type(loc) is AerisLocation
-            assert forecast.loc.lat > 43
+                    assert obs.obTimestamp.__class__ is int
 
-            assert forecast.interval is not None
+                elif type(resp) is ForecastsResponse:
 
-            period = forecast.periods[0]
-            assert type(period) is ForecastPeriod
-            assert period.weather is not None
-            assert period.validTime is not None
+                    # Forecasts
+                    forecast = resp
+                    assert type(forecast) is ForecastsResponse
 
-            # ObservationsSummary
-            obs_sum = response_list[2]
-            assert type(obs_sum) is ObservationsSummaryResponse
-            assert obs_sum.id is not None
+                    loc = forecast.loc
+                    assert loc is not None
+                    assert type(loc) is AerisLocation
+                    assert forecast.loc.lat > 43
 
-            loc = obs_sum.loc
-            assert loc is not None
-            assert type(loc) is AerisLocation
-            assert obs_sum.loc.lat > 43
+                    assert forecast.interval is not None
 
-            place = obs_sum.place
-            assert place is not None
-            # assert place.name == "la crosse"
-            assert place.state == "wi"
+                    period = forecast.periods[0]
+                    assert type(period) is ForecastPeriod
+                    assert period.weather is not None
+                    assert period.validTime is not None
 
-            periods = obs_sum.periods
-            assert periods is not None
+                elif type(resp) is ObservationsSummaryResponse:
 
-            temp = periods[0].temp
-            assert type(temp) is ObservationsSummaryTemp
-            assert temp.avgF > -10
+                    # ObservationsSummary
+                    obs_sum = resp
+                    assert type(obs_sum) is ObservationsSummaryResponse
+                    assert obs_sum.id is not None
 
-            profile = obs_sum.profile
-            assert profile is not None
-            assert profile.elevFT > 600
+                    loc = obs_sum.loc
+                    assert loc is not None
+                    assert type(loc) is AerisLocation
+                    assert obs_sum.loc.lat > 43
+
+                    place = obs_sum.place
+                    assert place is not None
+                    # assert place.name == "la crosse"
+                    assert place.state == "wi"
+
+                    periods = obs_sum.periods
+                    assert periods is not None
+
+                    temp = periods[0].temp
+                    assert type(temp) is ObservationsSummaryTemp
+                    assert temp.avgF > -10
+
+                    profile = obs_sum.profile
+                    assert profile is not None
+                    assert profile.elevFT > 600
 
         except URLError as url_err:
             print("URL Error: " + url_err.reason)
