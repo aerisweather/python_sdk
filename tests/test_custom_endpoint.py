@@ -15,8 +15,8 @@ from aerisweather.utils.AerisError import AerisError
 from tests.keys import client_id, client_secret, app_id
 
 
-class TestGenericRequests(unittest.TestCase):
-    """ Defines tests modules for generic or unknown endpoints and their attributes """
+class TestCustomEndpoint(unittest.TestCase):
+    """ Defines tests modules for custom or unknown endpoints and their attributes """
 
     def test_api_response(self):
         """ Test against a live response from the API """
@@ -118,5 +118,5 @@ class TestGenericRequests(unittest.TestCase):
             raise ex
 
 
-suite = unittest.TestLoader().loadTestsFromTestCase(TestGenericRequests)
+suite = unittest.TestLoader().loadTestsFromTestCase(TestCustomEndpoint)
 unittest.TextTestRunner(verbosity=2).run(suite)
