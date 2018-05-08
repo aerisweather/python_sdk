@@ -20,8 +20,17 @@ from aerisweather.utils.AerisNetwork import AerisNetwork
 class AerisWeather:
     """ Defines the main object for the aerisweather python library. """
 
-    def __init__(self, client_id: str, client_secret: str, app_id: str=""):
-        """ Constructor"""
+    def __init__(self,
+                 client_id: str,
+                 client_secret: str,
+                 app_id: str=""):
+        """ Constructor
+
+            Params:
+                - client_id: AerisWeather API account client id
+                - client_secret: AerisWeather API account client secret
+                - app_id: Optional - Namespace or application id of the application using this library
+        """
 
         self.app_id = app_id
         self.client_id = client_id
@@ -36,12 +45,16 @@ class AerisWeather:
         self.query = None
 
     def request(self, endpoint):
-        """
-        Makes the request to the Aeris API and returns the appropriate response array. Always returns a List of
-        response objects.
+        """ Makes the request to the Aeris API and returns the appropriate response array.
+
+        Builds the API request URL, handles the response json, and raises an AerisError if the API returns an error.
+
+        Params:
+            - endpoint: An Endpoint object containing the EndpointType and any other optional parameters needed for
+                for the API request.
 
         Returns:
-            - a specific response object type, based on the request data
+            - a list of specific response objects, who's type is based on the request data
             - an empty list if there is no data
             - an AerisError object if there was an error condition reported by the api response
             - a URLError if there was an issue with sending the request
@@ -84,7 +97,23 @@ class AerisWeather:
             sort: RequestSort = None,
             params: Dict[ParameterType, str] = None,
             query: Dict[RequestQuery, str]=None) -> str:
-        """ Generate the appropriate request url """
+        """ Generates the appropriate request url for a standard single API request.
+
+        Generally called internally from the request method. Builds and returns a full API request URL based on the
+            attributes passed in.
+
+        Params:
+            - endpoint_type: EndpointType - determines which Aeris API endpoint will be called
+            - location: Optional - RequestLocation - the location for which the request is processed
+            - action: Optional - RequestAction - the API request action option
+            - filter_: Optional - [RequestFilter] - a list of API request filters
+            - sort: Optional - RequestSort - the API request sort option
+            - params: Optional - Dict[ParameterType, str] - a list of API request parameters
+            - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
+
+        Returns:
+            - url string
+        """
 
         url = self.url_host
 
@@ -122,10 +151,21 @@ class AerisWeather:
         return url
 
     @staticmethod
-    def response(endpoint_type: EndpointType, response_json):
-        """
-        Takes a single response portion of the json returned from the Aeris API.
-        Returns the appropriate Response object.
+    def response(endpoint_type: EndpointType,
+                 response_json):
+        """ Determines the appropriate response object based on EndpointType and returns the completed response object.
+
+        Given the endpoint type and the response json from the Aeris API, the method will return a fullfilled
+        response object.
+
+            Params:
+                - endpoint_type: EndpointType
+                - response_json - a single response portion of the json returned from the Aeris API
+                    such as:
+                        json_obj["response"]
+
+            Returns:
+                 - a completed/fullfilled response object
         """
 
         if endpoint_type == EndpointType.ALERTS:
@@ -143,7 +183,14 @@ class AerisWeather:
 
     @staticmethod
     def query_str(query_dict):
-        """ Takes a RequestQuery object and returns a proper Aeris API url query parameter """
+        """ Takes a RequestQuery object and returns a proper Aeris API url query
+
+            Params:
+                - query_dict: A dictionary containing a single RequestQuery and its value
+
+            Returns:
+                - str: a correctly formatted query attribute ready to be inserted into an API request url
+        """
 
         out_query = ""
 
@@ -163,8 +210,31 @@ class AerisWeather:
                       global_params: Dict[ParameterType, str] = None,
                       global_query: Dict[RequestQuery, str] = None):
         """
-        Makes the batch request to the Aeris API and returns the appropriate response array. Always returns a List of
-        response objects.
+        Makes the batch request to the Aeris API and returns the appropriate response array.
+
+        If successful, the batch_request method will return a list of response objects. The list will contain the
+            responses in the order they are requested. If a request results in multiple responses, those responses
+            will be listed before continuing to the next request's response.
+
+        Params:
+            - endpoints: List[Endpoint] - a list of Endpoint objects, one for each request in the batch request
+            - global_location: RequestLocation - a RequestLocation object that will be applied to each request, unless
+                the request has a local RequestLocation
+            - global_filter_: [RequestFilter] - a list of RequestFilters that will be applied to each request, unless
+                the request has a local RequestFilter
+            - global_sort: RequestSort  - a RequestSort object that will be applied to each request, unless
+                the request has a local RequestSort
+            - global_params: Dict[ParameterType, str] - a dictionary of parameters that will be applied to each
+                request, unless the request has a local parameter dict
+            - global_query: Dict[RequestQuery, str] - a dictionary of queries that will be applied to each
+                request, unless the request has a local query dict
+
+        Returns:
+            - a list of specific response objects, who's type is based on the request data, in the order of the requests
+            - an empty list if there is no data
+            - an AerisError object if there was an error condition reported by the api response
+            - a URLError if there was an issue with sending the request
+            - a generic Exception for all other issues
         """
 
         url = self.batch_url(endpoints=endpoints,
@@ -233,6 +303,22 @@ class AerisWeather:
                 /places/54660,
                 /advisories%3Flimit=1%26radius=10mi,
                 /observations%3Fp=54601
+
+        Params:
+            - endpoints: List[Endpoint] - a list of Endpoint objects, one for each request in the batch request
+            - global_location: RequestLocation - a RequestLocation object that will be applied to each request, unless
+                the request has a local RequestLocation
+            - global_filter_: [RequestFilter] - a list of RequestFilters that will be applied to each request, unless
+                the request has a local RequestFilter
+            - global_sort: RequestSort  - a RequestSort object that will be applied to each request, unless
+                the request has a local RequestSort
+            - global_params: Dict[ParameterType, str] - a dictionary of parameters that will be applied to each
+                request, unless the request has a local parameter dict
+            - global_query: Dict[RequestQuery, str] - a dictionary of queries that will be applied to each
+                request, unless the request has a local query dict
+
+        Returns:
+            - url string for the batch_request
         """
 
         url = self.url_host + "batch?client_id=" + self.client_id + "&client_secret=" + self.client_secret
@@ -334,7 +420,20 @@ class AerisWeather:
                sort: RequestSort = None,
                params: Dict[ParameterType, str] = None,
                query: Dict[RequestQuery, str] = None):
-        """ Returns a list of AlertsResponse objects, or an empty list if there is no data """
+        """ Performs an API request to get alerts data for a specified location.
+
+            Params:
+                - location: Optional - RequestLocation - the location for which the request is processed
+                - action: Optional - RequestAction - the API request action option
+                - filter_: Optional - [RequestFilter] - a list of API request filters
+                - sort: Optional - RequestSort - the API request sort option
+                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
+                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
+
+            Returns:
+                - a list of AlertsResponse objects if successful
+                - an empty list if there is no data
+        """
 
         endpoint = Endpoint(endpoint_type=EndpointType.ALERTS,
                             location=location,
@@ -353,7 +452,20 @@ class AerisWeather:
                   sort: RequestSort = None,
                   params: Dict[ParameterType, str] = None,
                   query: Dict[RequestQuery, str] = None):
-        """ Returns a list of ForecastsResponse objects, or an empty list if there is no data """
+        """ Performs an API request to get forecast data for a specified location.
+
+            Params:
+                - location: Optional - RequestLocation - the location for which the request is processed
+                - action: Optional - RequestAction - the API request action option
+                - filter_: Optional - [RequestFilter] - a list of API request filters
+                - sort: Optional - RequestSort - the API request sort option
+                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
+                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
+
+            Returns:
+                - a list of ForecastsResponse objects if successful
+                - an empty list if there is no data
+        """
 
         endpoint = Endpoint(endpoint_type=EndpointType.FORECASTS,
                             location=location,
@@ -372,7 +484,20 @@ class AerisWeather:
                      sort: RequestSort = None,
                      params: Dict[ParameterType, str] = None,
                      query: Dict[RequestQuery, str] = None):
-        """ Returns a list of ObservationsResponse objects, or an empty list if there is no data """
+        """ Performs an API request to get observation data for a specified location.
+
+            Params:
+                - location: Optional - RequestLocation - the location for which the request is processed
+                - action: Optional - RequestAction - the API request action option
+                - filter_: Optional - [RequestFilter] - a list of API request filters
+                - sort: Optional - RequestSort - the API request sort option
+                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
+                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
+
+            Returns:
+                - a list of ObservationsResponse objects if successful
+                - an empty list if there is no data
+        """
 
         endpoint = Endpoint(endpoint_type=EndpointType.OBSERVATIONS,
                             location=location,
@@ -391,7 +516,20 @@ class AerisWeather:
                              sort: RequestSort = None,
                              params: Dict[ParameterType, str] = None,
                              query: Dict[RequestQuery, str] = None):
-        """ Returns a list of ObservationsSummaryResponse objects, or an empty list if there is no data """
+        """ Performs an API request to get observations summary data for a specified location.
+
+            Params:
+                - location: Optional - RequestLocation - the location for which the request is processed
+                - action: Optional - RequestAction - the API request action option
+                - filter_: Optional - [RequestFilter] - a list of API request filters
+                - sort: Optional - RequestSort - the API request sort option
+                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
+                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
+
+            Returns:
+                - a list of ObservationsSummaryResponse objects if successful
+                - an empty list if there is no data
+        """
 
         endpoint = Endpoint(endpoint_type=EndpointType.OBSERVATIONS_SUMMARY,
                             location=location,
@@ -410,7 +548,20 @@ class AerisWeather:
                sort: RequestSort = None,
                params: Dict[ParameterType, str] = None,
                query: Dict[RequestQuery, str] = None):
-        """ Returns a list of PlacesResponse objects, or an empty list if there is no data """
+        """ Performs an API request to get places data for a specified location.
+
+            Params:
+                - location: Optional - RequestLocation - the location for which the request is processed
+                - action: Optional - RequestAction - the API request action option
+                - filter_: Optional - [RequestFilter] - a list of API request filters
+                - sort: Optional - RequestSort - the API request sort option
+                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
+                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
+
+            Returns:
+                - a list of PlacesResponse objects if successful
+                - an empty list if there is no data
+        """
 
         endpoint = Endpoint(endpoint_type=EndpointType.PLACES,
                             location=location,
@@ -429,7 +580,39 @@ class AerisWeather:
                         sort: RequestSort = None,
                         params: Dict[ParameterType, str] = None,
                         query: Dict[RequestQuery, str] = None):
-        """ Returns a list of CustomResponse objects, or an empty list if there is no data """
+        """ Performs an API request to get custom endpoint data for a specified location.
+
+            When calling custom_endpoint, in addition to setting the EndpointType of the Endpoint object to CUSTOM,
+                the EndpointType.custom value must be set to the string value of the endpoint you are requesting. See
+                the examples section to see hwo this is done.
+
+            Params:
+                - location: Optional - RequestLocation - the location for which the request is processed
+                - action: Optional - RequestAction - the API request action option
+                - filter_: Optional - [RequestFilter] - a list of API request filters
+                - sort: Optional - RequestSort - the API request sort option
+                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
+                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
+
+            Returns:
+                - a list of CustomResponse objects if successful
+                - an empty list if there is no data
+
+            Examples:
+                # You can also use the custom endpoint type to request data from a known valid endpoint, for cases
+                # where new API data fields have not yet been added to an endpoint's response class.
+                EndpointType.custom = "forecasts"
+                f_list = awx.request(endpoint=Endpoint(endpoint_type=EndpointType.CUSTOM,
+                                                       location=RequestLocation(postal_code="54660")))
+                forecast = f_list[0]
+                period = forecast.periods[0]  # type: ForecastPeriod
+
+                # Valid endpoint, not in our Endpoint Enum - run this to test a beta or pre-release endpoint
+                EndpointType.custom = "stormreports"
+                endpt = Endpoint(EndpointType.CUSTOM, location=RequestLocation(postal_code="54660"))
+                resp_list = awx.request(endpt)
+                response = resp_list[0]
+        """
 
         endpoint = Endpoint(endpoint_type=EndpointType.CUSTOM,
                             location=location,

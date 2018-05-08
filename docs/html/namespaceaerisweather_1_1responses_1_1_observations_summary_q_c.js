@@ -1,0 +1,4 @@
+var namespaceaerisweather_1_1responses_1_1_observations_summary_q_c =
+[
+    [ "ObservationsSummaryQC", "classaerisweather_1_1responses_1_1_observations_summary_q_c_1_1_observations_summary_q_c.html", "classaerisweather_1_1responses_1_1_observations_summary_q_c_1_1_observations_summary_q_c" ]
+];

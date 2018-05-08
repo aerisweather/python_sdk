@@ -5,7 +5,12 @@ from aenum import Enum, skip
 
 
 class RequestSort(Enum):
-    """ Defines the available parameter types for Aeris API requests. """
+    """ Defines the available sort options for each Aeris API endpoint's requests.
+
+        For details on the use of each sort value, see the Sorting secton of the corresponding endpoint, such
+            as the Observations endpoint's sorts found here:
+            https://www.aerisweather.com/support/docs/api/reference/endpoints/observations/#sorting.
+    """
 
     @skip
     class ALERTS (Enum):

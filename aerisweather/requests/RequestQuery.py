@@ -5,7 +5,12 @@ from aenum import Enum, skip
 
 
 class RequestQuery(Enum):
-    """ Defines the available query options for Aeris API requests. """
+    """ Defines the available query options for each Aeris API endpoint's requests.
+
+        For details on the use of each query value, see the Queries secton of the corresponding endpoint, such
+            as the Observations endpoint's queries found here:
+            https://www.aerisweather.com/support/docs/api/reference/endpoints/observations/#queries.
+    """
 
     @skip
     class ALERTS(Enum):

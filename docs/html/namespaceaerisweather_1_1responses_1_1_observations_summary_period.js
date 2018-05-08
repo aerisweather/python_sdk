@@ -1,0 +1,4 @@
+var namespaceaerisweather_1_1responses_1_1_observations_summary_period =
+[
+    [ "ObservationsSummaryPeriod", "classaerisweather_1_1responses_1_1_observations_summary_period_1_1_observations_summary_period.html", "classaerisweather_1_1responses_1_1_observations_summary_period_1_1_observations_summary_period" ]
+];

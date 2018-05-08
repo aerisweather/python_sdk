@@ -34,17 +34,22 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ]
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", "functions_vars" ]
       ] ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-".html",
-"classaerisweather_1_1responses_1_1_alert_timestamps_1_1_alert_timestamps.html#a08b1612f571e6ec6e22c81d7898997ab",
-"classaerisweather_1_1responses_1_1_observations_summary_q_c_1_1_observations_summary_q_c.html#ab07c17e24235827e721c7a06f936be1c"
+"____init_____8py.html",
+"classaerisweather_1_1responses_1_1_alert_timestamps_1_1_alert_timestamps.html",
+"classaerisweather_1_1responses_1_1_observations_summary_q_c_1_1_observations_summary_q_c.html#a494a7feb6f2e2ad5168aa6728a319d0d",
+"functions_x.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

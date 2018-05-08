@@ -2,6 +2,7 @@ var searchData=
 [
   ['geopoly',['geoPoly',['../classaerisweather_1_1responses_1_1_alerts_response_1_1_alerts_response.html#a8e8a0e9aad5f06f6123f0fb68c3a5fba',1,'aerisweather::responses::AlertsResponse::AlertsResponse']]],
   ['get_5fdatetime_5ffrom_5faeris_5fiso',['get_datetime_from_aeris_iso',['../classaerisweather_1_1utils_1_1_aeris_date_time_1_1_aeris_date_time.html#a8f7bc65dba162e9be88a071578163cbe',1,'aerisweather::utils::AerisDateTime::AerisDateTime']]],
+  ['get_5fjson',['get_json',['../classaerisweather_1_1utils_1_1_aeris_network_1_1_aeris_network.html#ae6d94baa87951076cf099854020f2dc6',1,'aerisweather::utils::AerisNetwork::AerisNetwork']]],
   ['getactionft',['getActionFT',['../classaerisweather_1_1responses_1_1_rivers_categories_1_1_rivers_categories.html#a7323f40570d5f68bf18dca340e43c50f',1,'aerisweather::responses::RiversCategories::RiversCategories']]],
   ['getactionm',['getActionM',['../classaerisweather_1_1responses_1_1_rivers_categories_1_1_rivers_categories.html#ab9fa45d02fcba187d906d2f8ed9c0b6e',1,'aerisweather::responses::RiversCategories::RiversCategories']]],
   ['getfloodft',['getFloodFT',['../classaerisweather_1_1responses_1_1_rivers_categories_1_1_rivers_categories.html#a25cae298fc098d0fee1b325748da43a2',1,'aerisweather::responses::RiversCategories::RiversCategories']]],

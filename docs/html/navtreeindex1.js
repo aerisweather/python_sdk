@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"classaerisweather_1_1responses_1_1_alert_timestamps_1_1_alert_timestamps.html":[2,0,0,2,7,0],
+"classaerisweather_1_1responses_1_1_alert_timestamps_1_1_alert_timestamps.html#a014354fc5cd00820114a6edc3e2d692e":[2,0,0,2,7,0,7],
 "classaerisweather_1_1responses_1_1_alert_timestamps_1_1_alert_timestamps.html#a08b1612f571e6ec6e22c81d7898997ab":[2,0,0,2,7,0,2],
 "classaerisweather_1_1responses_1_1_alert_timestamps_1_1_alert_timestamps.html#a0c1818584739a514f1ae14b47346e1b2":[2,0,0,2,7,0,1],
 "classaerisweather_1_1responses_1_1_alert_timestamps_1_1_alert_timestamps.html#a15db09e7d441f30f61637a620fcf54de":[2,0,0,2,7,0,9],
@@ -247,7 +249,5 @@ var NAVTREEINDEX1 =
 "classaerisweather_1_1responses_1_1_observations_summary_pressure_1_1_observations_summary_pressure.html#afac890a7dcd0fc0cc9312d5396a65ee1":[2,0,0,2,16,0,7],
 "classaerisweather_1_1responses_1_1_observations_summary_q_c_1_1_observations_summary_q_c.html":[2,0,0,2,17,0],
 "classaerisweather_1_1responses_1_1_observations_summary_q_c_1_1_observations_summary_q_c.html#a01a9e9a8d76547330d2672e99f127490":[2,0,0,2,17,0,5],
-"classaerisweather_1_1responses_1_1_observations_summary_q_c_1_1_observations_summary_q_c.html#a270b8cb183b747eb0f8a87f4820963d1":[2,0,0,2,17,0,4],
-"classaerisweather_1_1responses_1_1_observations_summary_q_c_1_1_observations_summary_q_c.html#a494a7feb6f2e2ad5168aa6728a319d0d":[2,0,0,2,17,0,0],
-"classaerisweather_1_1responses_1_1_observations_summary_q_c_1_1_observations_summary_q_c.html#aa6277af42a711cf4a16f97147d601fc9":[2,0,0,2,17,0,1]
+"classaerisweather_1_1responses_1_1_observations_summary_q_c_1_1_observations_summary_q_c.html#a270b8cb183b747eb0f8a87f4820963d1":[2,0,0,2,17,0,4]
 };

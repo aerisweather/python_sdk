@@ -5,7 +5,12 @@ from aenum import Enum, skip
 
 
 class ParameterType(Enum):
-    """ Defines the available parameter types for Aeris API requests. """
+    """ Defines the available parameter types for each Aeris API endpoint's requests.
+
+        For details on the use of each parameter value, see the Parameters secton of the corresponding endpoint, such
+            as the Forecasts endpoint's parameters found here:
+            https://www.aerisweather.com/support/docs/api/reference/endpoints/forecasts/#params.
+    """
 
     @skip
     class ALERTS(Enum):

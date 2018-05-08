@@ -5,7 +5,12 @@ from aenum import Enum, skip
 
 
 class RequestAction(Enum):
-    """ Defines the available parameter types for Aeris API requests. """
+    """ Defines the available actions for each Aeris API endpoint's requests.
+
+        For details on the use of each action value, see the Actions secton of the corresponding endpoint, such
+            as the Forecasts endpoint's actions found here:
+            https://www.aerisweather.com/support/docs/api/reference/endpoints/forecasts/#actions.
+    """
 
     @skip
     class ALERTS(Enum):

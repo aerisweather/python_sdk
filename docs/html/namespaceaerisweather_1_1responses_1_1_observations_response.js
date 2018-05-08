@@ -1,0 +1,4 @@
+var namespaceaerisweather_1_1responses_1_1_observations_response =
+[
+    [ "ObservationsResponse", "classaerisweather_1_1responses_1_1_observations_response_1_1_observations_response.html", "classaerisweather_1_1responses_1_1_observations_response_1_1_observations_response" ]
+];

@@ -1,0 +1,4 @@
+var namespaceaerisweather_1_1responses_1_1_observations_summary_relative_humidity =
+[
+    [ "ObservationsSummaryRelativeHumidity", "classaerisweather_1_1responses_1_1_observations_summary_relative_humidity_1_1_observations_summary_relative_humidity.html", "classaerisweather_1_1responses_1_1_observations_summary_relative_humidity_1_1_observations_summary_relative_humidity" ]
+];

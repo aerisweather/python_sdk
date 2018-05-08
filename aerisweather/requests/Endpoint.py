@@ -11,7 +11,19 @@ from aerisweather.requests.RequestSort import RequestSort
 
 
 class EndpointType(Enum):
-    """ Defines the available endpoints for Aeris API requests. """
+    """ Defines the available endpoints for Aeris API requests.
+
+        When requesting data from an unimplemented endpoint, use the CUSTOM type and set the name of the endpoint
+            using the "custom" property.
+
+        Examples:
+            # ObservationSummary
+            endpoint = Endpoint(endpoint_type=EndpointType.OBSERVATIONS_SUMMARY)
+
+            # Custom Endpoint
+            EndpointType.custom = "stormreports"
+            endpt = Endpoint(EndpointType.CUSTOM, location=RequestLocation(postal_code="54660"))
+    """
 
     ALERTS = "advisories"
     CONVECTIVE_OUTLOOK = "convective/outlook"
@@ -21,7 +33,6 @@ class EndpointType(Enum):
     PLACES = "places"
     CUSTOM = "custom"
 
-    # def __init__(self):
     __custom_endpoint_type_name = ""
 
     @property
@@ -46,7 +57,21 @@ class Endpoint:
                  sort: RequestSort = None,
                  params: Dict[ParameterType, str] = None,
                  query: Dict[RequestQuery, str] = None):
-        """ Constructor"""
+        """ Constructor
+
+            The Endpoint class can be instantiated with no parameters if configuration is handled later. EndpointTypes
+                that have been implemented are defined in the EndpointType enum. Undefined EndpointTypes can be
+                requested using the Custom EndpointType.
+
+            Params:
+            - endpoint_type: Optional - EndpointType - determines which Aeris API endpoint will be called
+            - location: Optional - RequestLocation - the location for which the request is processed
+            - action: Optional - RequestAction - the API request action option
+            - filter_: Optional - [RequestFilter] - a list of API request filters
+            - sort: Optional - RequestSort - the API request sort option
+            - params: Optional - Dict[ParameterType, str] - a list of API request parameters
+            - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
+        """
 
         self.endpoint_type = endpoint_type
         self.location = location

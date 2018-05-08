@@ -1,0 +1,4 @@
+var namespaceaerisweather_1_1responses_1_1_rivers_low_water_records =
+[
+    [ "RiversLowWaterRecords", "classaerisweather_1_1responses_1_1_rivers_low_water_records_1_1_rivers_low_water_records.html", "classaerisweather_1_1responses_1_1_rivers_low_water_records_1_1_rivers_low_water_records" ]
+];

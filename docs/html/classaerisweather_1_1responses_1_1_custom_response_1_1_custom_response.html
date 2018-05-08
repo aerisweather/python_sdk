@@ -94,37 +94,25 @@ $(document).ready(function(){initNavTree('classaerisweather_1_1responses_1_1_cus
 <div class="title">aerisweather.responses.CustomResponse.CustomResponse Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Defines an object to handle a response from a custom or unknown endpoint.  
+ <a href="classaerisweather_1_1responses_1_1_custom_response_1_1_custom_response.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7b3785007c9c3d72c07bbcca466e6929"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaerisweather_1_1responses_1_1_custom_response_1_1_custom_response.html#a7b3785007c9c3d72c07bbcca466e6929">__init__</a> (self, json_data=None)</td></tr>
+<tr class="memdesc:a7b3785007c9c3d72c07bbcca466e6929"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a7b3785007c9c3d72c07bbcca466e6929">More...</a><br /></td></tr>
 <tr class="separator:a7b3785007c9c3d72c07bbcca466e6929"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3965cb435c7a1a5e39f1887ee940bf9d"><td class="memItemLeft" align="right" valign="top"><a id="a3965cb435c7a1a5e39f1887ee940bf9d"></a>
-def&#160;</td><td class="memItemRight" valign="bottom"><b>parse_dict</b></td></tr>
+<tr class="memitem:a3965cb435c7a1a5e39f1887ee940bf9d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaerisweather_1_1responses_1_1_custom_response_1_1_custom_response.html#a3965cb435c7a1a5e39f1887ee940bf9d">parse_dict</a></td></tr>
 <tr class="separator:a3965cb435c7a1a5e39f1887ee940bf9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32a7fa0c096a411c87794a074007fcce"><td class="memItemLeft" align="right" valign="top"><a id="a32a7fa0c096a411c87794a074007fcce"></a>
-def&#160;</td><td class="memItemRight" valign="bottom"><b>make_object</b></td></tr>
+<tr class="memitem:a32a7fa0c096a411c87794a074007fcce"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaerisweather_1_1responses_1_1_custom_response_1_1_custom_response.html#a32a7fa0c096a411c87794a074007fcce">make_object</a></td></tr>
 <tr class="separator:a32a7fa0c096a411c87794a074007fcce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><pre class="fragment">Defines an object to handle a response from a custom or unknown endpoint. This response class is intended
-    to provide support handling newer endpoints that may not yet be included in the production release of
-    the library.
-
-    Since this object will built on the fly, aut-completion tools like Intellisense won't be able to help
-    out with the class members, but all dot notation is still applicable in the code. However, if you use
-    typing to specify the various object types while declaring them, the code following the type definition
-     will be recognized. Example:
-            EndpointType.custom = "rivers/gauges"
-            rg_list = awx.request(endpoint=Endpoint(endpoint_type=EndpointType.CUSTOM,
-                                                    location=RequestLocation(postal_code="57101")))
-            rg = rg_list[0]
-            assert type(rg) is CustomResponse
-            profile = rg.profile  # type: AerisProfileRiversGauges
-            crests = profile.crests  # type: RiversCrests
-            recent = crests.recent  # type: [RiversCrestsRecent]
-            assert recent[0].heightFT is not None
-</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<div class="textblock"><p>Defines an object to handle a response from a custom or unknown endpoint. </p>
+<p>This response class is intended to provide support handling newer endpoints that may not yet be included in the production release of the library.</p>
+<p>Since this object will built on the fly, aut-completion tools like Intellisense won't be able to help out with the class members, but all dot notation is still applicable in the code. However, if you use typing to specify the various object types while declaring them, the code following the type definition will be recognized. Example: EndpointType.custom = "rivers/gauges" rg_list = awx.request(endpoint=Endpoint(endpoint_type=EndpointType.CUSTOM, location=RequestLocation(postal_code="57101"))) rg = rg_list[0] assert type(rg) is <a class="el" href="classaerisweather_1_1responses_1_1_custom_response_1_1_custom_response.html" title="Defines an object to handle a response from a custom or unknown endpoint. ">CustomResponse</a> profile = rg.profile # type: AerisProfileRiversGauges crests = profile.crests # type: <a class="el" href="namespaceaerisweather_1_1responses_1_1_rivers_crests.html">RiversCrests</a> recent = crests.recent # type: [<a class="el" href="namespaceaerisweather_1_1responses_1_1_rivers_crests_recent.html">RiversCrestsRecent</a>] assert recent[0].heightFT is not None </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7b3785007c9c3d72c07bbcca466e6929"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7b3785007c9c3d72c07bbcca466e6929">&#9670;&nbsp;</a></span>__init__()</h2>
 
@@ -150,18 +138,77 @@ def&#160;</td><td class="memItemRight" valign="bottom"><b>make_object</b></td></
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Constructor </pre> 
+
+<p>Constructor. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a32a7fa0c096a411c87794a074007fcce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32a7fa0c096a411c87794a074007fcce">&#9670;&nbsp;</a></span>make_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def aerisweather.responses.CustomResponse.CustomResponse.make_object </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3965cb435c7a1a5e39f1887ee940bf9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3965cb435c7a1a5e39f1887ee940bf9d">&#9670;&nbsp;</a></span>parse_dict()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def aerisweather.responses.CustomResponse.CustomResponse.parse_dict </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>parent_obj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Projects/Python/AerisWeatherPythonSDK/aerisweather/responses/CustomResponse.py</li>
+<li>C:/Projects/Python/AerisWeatherPythonSDK/aerisweather/responses/<a class="el" href="_custom_response_8py.html">CustomResponse.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceaerisweather.html">aerisweather</a></li><li class="navelem"><b>responses</b></li><li class="navelem"><b>CustomResponse</b></li><li class="navelem"><a class="el" href="classaerisweather_1_1responses_1_1_custom_response_1_1_custom_response.html">CustomResponse</a></li>
+    <li class="navelem"><a class="el" href="namespaceaerisweather.html">aerisweather</a></li><li class="navelem"><a class="el" href="namespaceaerisweather_1_1responses.html">responses</a></li><li class="navelem"><a class="el" href="namespaceaerisweather_1_1responses_1_1_custom_response.html">CustomResponse</a></li><li class="navelem"><a class="el" href="classaerisweather_1_1responses_1_1_custom_response_1_1_custom_response.html">CustomResponse</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>

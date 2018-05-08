@@ -98,47 +98,56 @@ $(document).ready(function(){initNavTree('classaerisweather_1_1responses_1_1_ale
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5cc80e945bc2cfb4669feafd75292ab5"><td class="memItemLeft" align="right" valign="top"><a id="a5cc80e945bc2cfb4669feafd75292ab5"></a>
-def&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b> (self, alert)</td></tr>
+<tr class="memitem:a5cc80e945bc2cfb4669feafd75292ab5"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaerisweather_1_1responses_1_1_alert_includes_1_1_alert_includes.html#a5cc80e945bc2cfb4669feafd75292ab5">__init__</a> (self, alert)</td></tr>
 <tr class="separator:a5cc80e945bc2cfb4669feafd75292ab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b9b9f91c3a81260f718e4f0b678777e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaerisweather_1_1responses_1_1_alert_includes_1_1_alert_includes.html#a1b9b9f91c3a81260f718e4f0b678777e">counties</a> (self)</td></tr>
+<tr class="memdesc:a1b9b9f91c3a81260f718e4f0b678777e"><td class="mdescLeft">&#160;</td><td class="mdescRight">If a US alert will be a list of US counties in the XXC### format, where XX is the state abbreviation and ### is the 3 digit county fips number.  <a href="#a1b9b9f91c3a81260f718e4f0b678777e">More...</a><br /></td></tr>
 <tr class="separator:a1b9b9f91c3a81260f718e4f0b678777e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae93c33df4a8c185efe9db6c0dd4be589"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaerisweather_1_1responses_1_1_alert_includes_1_1_alert_includes.html#ae93c33df4a8c185efe9db6c0dd4be589">fips</a> (self)</td></tr>
+<tr class="memdesc:ae93c33df4a8c185efe9db6c0dd4be589"><td class="mdescLeft">&#160;</td><td class="mdescRight">If a US alert will be a list of US counties in the XX### format, where XX is the state two digit fips number and ### is the 3 digit county fips number.  <a href="#ae93c33df4a8c185efe9db6c0dd4be589">More...</a><br /></td></tr>
 <tr class="separator:ae93c33df4a8c185efe9db6c0dd4be589"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a1a907fc331fd61fd40f063558f2156"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaerisweather_1_1responses_1_1_alert_includes_1_1_alert_includes.html#a5a1a907fc331fd61fd40f063558f2156">wxzones</a> (self)</td></tr>
+<tr class="memdesc:a5a1a907fc331fd61fd40f063558f2156"><td class="mdescLeft">&#160;</td><td class="mdescRight">If a US alert will be a list of US public weather zones in the NOAA XXZ### format, where XX is the state abbreviation and ### is the 3 digit public zone id.  <a href="#a5a1a907fc331fd61fd40f063558f2156">More...</a><br /></td></tr>
 <tr class="separator:a5a1a907fc331fd61fd40f063558f2156"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b0ea83e2753f5eab0ef004967fd6ed3"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaerisweather_1_1responses_1_1_alert_includes_1_1_alert_includes.html#a7b0ea83e2753f5eab0ef004967fd6ed3">zipcodes</a> (self)</td></tr>
+<tr class="memdesc:a7b0ea83e2753f5eab0ef004967fd6ed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of US zip codes that are affected by the advisory.  <a href="#a7b0ea83e2753f5eab0ef004967fd6ed3">More...</a><br /></td></tr>
 <tr class="separator:a7b0ea83e2753f5eab0ef004967fd6ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a0ba529747c141cd1cac3b8f83b9df5d3"><td class="memItemLeft" align="right" valign="top"><a id="a0ba529747c141cd1cac3b8f83b9df5d3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>alert_data</b></td></tr>
+<tr class="memitem:a0ba529747c141cd1cac3b8f83b9df5d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classaerisweather_1_1responses_1_1_alert_includes_1_1_alert_includes.html#a0ba529747c141cd1cac3b8f83b9df5d3">alert_data</a></td></tr>
 <tr class="separator:a0ba529747c141cd1cac3b8f83b9df5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><pre class="fragment">Defines an object that stores an alert's county, fips zipcode and wxzone data returned within an Alerts/Advisories
-endpoint request.
-    ...
-       },
-          "includes": {
-                "counties": [
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a5cc80e945bc2cfb4669feafd75292ab5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5cc80e945bc2cfb4669feafd75292ab5">&#9670;&nbsp;</a></span>__init__()</h2>
 
-                ],
-                "fips": [
-                  "27003",
-                  "27009"
-                ],
-                "wxzones": [
-                  "MNZ041",
-                  "MNZ042"
-                ],
-                "zipcodes": [
-                  54001,
-                  54002
-                ]
-    ...
-</pre> </div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def aerisweather.responses.AlertIncludes.AlertIncludes.__init__ </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>alert</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1b9b9f91c3a81260f718e4f0b678777e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b9b9f91c3a81260f718e4f0b678777e">&#9670;&nbsp;</a></span>counties()</h2>
 
@@ -164,8 +173,10 @@ endpoint request.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">If a US alert will be a list of US counties in the XXC### format, where XX is the state abbreviation
-and ### is the 3 digit county fips number. If a Canadian alert will be null. </pre> 
+
+<p>If a US alert will be a list of US counties in the XXC### format, where XX is the state abbreviation and ### is the 3 digit county fips number. </p>
+<p>If a Canadian alert will be null. </p>
+
 </div>
 </div>
 <a id="ae93c33df4a8c185efe9db6c0dd4be589"></a>
@@ -193,8 +204,10 @@ and ### is the 3 digit county fips number. If a Canadian alert will be null. </p
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">If a US alert will be a list of US counties in the XX### format, where XX is the state two digit fips
-number and ### is the 3 digit county fips number. If a Canadian alert will be null. </pre> 
+
+<p>If a US alert will be a list of US counties in the XX### format, where XX is the state two digit fips number and ### is the 3 digit county fips number. </p>
+<p>If a Canadian alert will be null. </p>
+
 </div>
 </div>
 <a id="a5a1a907fc331fd61fd40f063558f2156"></a>
@@ -222,9 +235,10 @@ number and ### is the 3 digit county fips number. If a Canadian alert will be nu
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">If a US alert will be a list of US public weather zones in the NOAA XXZ### format, where XX is the
-state abbreviation and ### is the 3 digit public zone id. If a Canadian alert will be a list of Canadian
-location codes (CLCs) </pre> 
+
+<p>If a US alert will be a list of US public weather zones in the NOAA XXZ### format, where XX is the state abbreviation and ### is the 3 digit public zone id. </p>
+<p>If a Canadian alert will be a list of Canadian location codes (CLCs) </p>
+
 </div>
 </div>
 <a id="a7b0ea83e2753f5eab0ef004967fd6ed3"></a>
@@ -252,18 +266,35 @@ location codes (CLCs) </pre>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">List of US zip codes that are affected by the advisory. </pre> 
+
+<p>List of US zip codes that are affected by the advisory. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0ba529747c141cd1cac3b8f83b9df5d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ba529747c141cd1cac3b8f83b9df5d3">&#9670;&nbsp;</a></span>alert_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">aerisweather.responses.AlertIncludes.AlertIncludes.alert_data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Projects/Python/AerisWeatherPythonSDK/aerisweather/responses/AlertIncludes.py</li>
+<li>C:/Projects/Python/AerisWeatherPythonSDK/aerisweather/responses/<a class="el" href="_alert_includes_8py.html">AlertIncludes.py</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceaerisweather.html">aerisweather</a></li><li class="navelem"><b>responses</b></li><li class="navelem"><b>AlertIncludes</b></li><li class="navelem"><a class="el" href="classaerisweather_1_1responses_1_1_alert_includes_1_1_alert_includes.html">AlertIncludes</a></li>
+    <li class="navelem"><a class="el" href="namespaceaerisweather.html">aerisweather</a></li><li class="navelem"><a class="el" href="namespaceaerisweather_1_1responses.html">responses</a></li><li class="navelem"><a class="el" href="namespaceaerisweather_1_1responses_1_1_alert_includes.html">AlertIncludes</a></li><li class="navelem"><a class="el" href="classaerisweather_1_1responses_1_1_alert_includes_1_1_alert_includes.html">AlertIncludes</a></li>
     <li class="footer">Generated by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
