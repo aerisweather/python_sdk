@@ -23,8 +23,7 @@ for the JavaScript code in this file
 */
 var NAVTREE =
 [
-  [ "AerisWeatherPythonSDK", "index.html", [
-    [ "AerisWeather Python SDK", "index.html", null ],
+  [ "AerisWeather Python SDK", "index.html", [
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ]
     ] ],

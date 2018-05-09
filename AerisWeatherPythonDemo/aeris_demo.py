@@ -5,8 +5,7 @@ from aerisweather.requests.ParameterType import ParameterType
 from aerisweather.requests.RequestLocation import RequestLocation
 from aerisweather.requests.RequestAction import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter
-from AerisWeatherPythonDemo.keys import client_id, client_secret, app_id
-
+from keys import client_id, client_secret, app_id
 
 # Set the AerisWeather client id and secret.
 aeris = AerisWeather(client_id=client_id, client_secret=client_secret, app_id=app_id)
