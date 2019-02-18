@@ -11,7 +11,7 @@ setup(
 
     install_requires=['aenum>=2.1.0'],
 
-    url='https://aerisweather.com',
+    url='https://www.aerisweather.com/support/docs/toolkits/aeris-python-sdk/',
     license='MIT',
 
     author='sshie',
