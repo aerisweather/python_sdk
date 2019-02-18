@@ -18,7 +18,8 @@ class AerisNetwork:
             req = request.Request(url)
             try:
                 req.add_header('Referer', app_id)
-                req.add_header('User-Agent', "AerisPythonSDK/" + __version__ + "/Python/" + sys.version)
+                req.add_header('User-Agent',
+                               "AerisPythonSDK/" + __version__ + "/Python/" + sys.version.replace('\n', ''))
 
             except URLError:
                 # we don't need the extra headers, so let it pass if it fails here

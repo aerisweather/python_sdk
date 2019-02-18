@@ -32,8 +32,11 @@ class TestCustomEndpoint(unittest.TestCase):
             try:
                 resp_list = awx.request(endpt)
 
-                response = resp_list[0]
-                assert type(response) is CustomResponse
+                if len(resp_list) > 0:
+                    response = resp_list[0]
+                    assert type(response) is CustomResponse
+                else:
+                    print(EndpointType.custom + ": no data")
             except AerisError as ae_ex:
                 logging.basicConfig(level=logging.ERROR)
                 logger = logging.getLogger(' stormreports endpoint test ')
@@ -61,16 +64,21 @@ class TestCustomEndpoint(unittest.TestCase):
             rg_list = awx.request(endpoint=Endpoint(endpoint_type=EndpointType.CUSTOM,
                                                     location=RequestLocation(postal_code="57101")))
 
-            rg = rg_list[0]
-            assert type(rg) is CustomResponse
-            profile = rg.profile  # type: AerisProfileRiversGauges
-            crests = profile.crests  # type: RiversCrests
-            recent = crests.recent  # type: [RiversCrestsRecent]
-            assert len(recent) > 0
-            assert recent[0].heightFT is not None
+            if len(rg_list) > 0:
+                rg = rg_list[0]
+                assert type(rg) is CustomResponse
+                profile = rg.profile  # type: AerisProfileRiversGauges
+                crests = profile.crests  # type: RiversCrests
+                recent = crests.recent  # type: [RiversCrestsRecent]
+                assert len(recent) > 0
+                assert recent[0].heightFT is not None
+            else:
+                print(str(EndpointType.custom) + ": no data")
 
             # Unknown and invalid endpoint
             EndpointType.custom = "bogus/endpoint"
+            print(str(EndpointType.custom) + ": expecting invalid request")
+
             invalid_list = awx.request(endpoint=Endpoint(endpoint_type=EndpointType.CUSTOM,
                                                          location=RequestLocation(postal_code="57101")))
             # the results of this call will be a thrown AerisError exception.
