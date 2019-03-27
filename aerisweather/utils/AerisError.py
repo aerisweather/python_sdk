@@ -10,13 +10,10 @@ class AerisErrorLevel(Enum):
     ERROR = "error"
 
 
-class AerisError(OSError):
+class AerisError(Exception):
     """
-    AerisError is a sub-type of OSError, but it doesn't share any of the implementation. It sets self.args for
-    compatibility with other EnvironmentError subclasses, but args doesn't have the typical format with errno in
-    slot 0 and strerror in slot 1.
-
-
+    AerisError sets self.args for compatibility with other EnvironmentError subclasses, but args doesn't have the
+    typical format with errno in slot 0 and strerror in slot 1.
     """
     def __init__(self, code: str, description: str, error_level: str):
         self.args = code, description
