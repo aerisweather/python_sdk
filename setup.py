@@ -9,7 +9,7 @@ setup(
     version=__version__,
     packages=find_packages(exclude=['tests']),
 
-    install_requires=['aenum>=2.1.0'],
+    install_requires=['aenum>=2.1.0', 'requests'],
 
     url='https://www.aerisweather.com/support/docs/toolkits/aeris-python-sdk/',
     license='MIT',
@@ -17,7 +17,7 @@ setup(
     author='sshie',
     author_email='sshie@aerisweather.com',
 
-    description='The AerisWeather Python SDK allows a developer to quickly and easily add weather content and functionality to their Python applications.',
+    description='The AerisWeather Python SDK makes it easier to add weather content to your Python applications.',
     long_description=open('README.rst').read()
 )
 
