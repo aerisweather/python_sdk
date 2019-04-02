@@ -1,4 +1,0 @@
-var namespaceaerisweather_1_1responses_1_1_observations_summary_range =
-[
-    [ "ObservationsSummaryRange", "classaerisweather_1_1responses_1_1_observations_summary_range_1_1_observations_summary_range.html", "classaerisweather_1_1responses_1_1_observations_summary_range_1_1_observations_summary_range" ]
-];

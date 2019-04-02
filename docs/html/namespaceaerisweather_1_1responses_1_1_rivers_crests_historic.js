@@ -1,4 +1,0 @@
-var namespaceaerisweather_1_1responses_1_1_rivers_crests_historic =
-[
-    [ "RiversCrestsHistoric", "classaerisweather_1_1responses_1_1_rivers_crests_historic_1_1_rivers_crests_historic.html", "classaerisweather_1_1responses_1_1_rivers_crests_historic_1_1_rivers_crests_historic" ]
-];

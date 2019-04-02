@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['qc',['QC',['../classaerisweather_1_1responses_1_1_observations_data_1_1_observations_data.html#a3fb1349b97dba3cdf8750762f9331d9d',1,'aerisweather.responses.ObservationsData.ObservationsData.QC()'],['../classaerisweather_1_1responses_1_1_observations_summary_period_1_1_observations_summary_period.html#a467013eba2ae0136f6c69835bf444eff',1,'aerisweather.responses.ObservationsSummaryPeriod.ObservationsSummaryPeriod.QC()'],['../classaerisweather_1_1responses_1_1_observations_summary_precip_1_1_observations_summary_precip.html#aaa1e8017076d452806f61929a74f5c44',1,'aerisweather.responses.ObservationsSummaryPrecip.ObservationsSummaryPrecip.QC()']]],
-  ['qccode',['QCcode',['../classaerisweather_1_1responses_1_1_observations_data_1_1_observations_data.html#a65bbf86fe0d51de38a8e59f30693a2c5',1,'aerisweather.responses.ObservationsData.ObservationsData.QCcode()'],['../classaerisweather_1_1responses_1_1_observations_summary_precip_1_1_observations_summary_precip.html#a47cebd78604606ca0a3f5a2960595822',1,'aerisweather.responses.ObservationsSummaryPrecip.ObservationsSummaryPrecip.QCcode()']]],
-  ['query_5fstr',['query_str',['../classaerisweather_1_1aerisweather_1_1_aeris_weather.html#a324bc9320d492ced424cffaad653a98f',1,'aerisweather::aerisweather::AerisWeather']]]
-];
