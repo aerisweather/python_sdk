@@ -1,9 +1,0 @@
-var searchData=
-[
-  ['feelslikec',['feelslikeC',['../classaerisweather_1_1responses_1_1_forecast_period_1_1_forecast_period.html#a2b13956a13b0bd9c463e466ebf843f67',1,'aerisweather.responses.ForecastPeriod.ForecastPeriod.feelslikeC()'],['../classaerisweather_1_1responses_1_1_observations_data_1_1_observations_data.html#abf1e34e877258413334adda1eb7e34d6',1,'aerisweather.responses.ObservationsData.ObservationsData.feelslikeC()']]],
-  ['feelslikef',['feelslikeF',['../classaerisweather_1_1responses_1_1_forecast_period_1_1_forecast_period.html#a87eaf71092a14eeba17ee96fd1451e1c',1,'aerisweather.responses.ForecastPeriod.ForecastPeriod.feelslikeF()'],['../classaerisweather_1_1responses_1_1_observations_data_1_1_observations_data.html#a810380283936dc7f3cd61ad84e42e1ca',1,'aerisweather.responses.ObservationsData.ObservationsData.feelslikeF()']]],
-  ['fips',['fips',['../classaerisweather_1_1responses_1_1_aeris_profile_1_1_aeris_profile_places.html#a1beec113bbe51ec60584cf9371e4b6e3',1,'aerisweather.responses.AerisProfile.AerisProfilePlaces.fips()'],['../classaerisweather_1_1responses_1_1_alert_includes_1_1_alert_includes.html#ae93c33df4a8c185efe9db6c0dd4be589',1,'aerisweather.responses.AlertIncludes.AlertIncludes.fips()']]],
-  ['firezone',['firezone',['../classaerisweather_1_1responses_1_1_aeris_profile_1_1_aeris_profile_places.html#afcfbd85609690330a493c20cbda5cd5c',1,'aerisweather::responses::AerisProfile::AerisProfilePlaces']]],
-  ['flightrule',['flightRule',['../classaerisweather_1_1responses_1_1_observations_data_1_1_observations_data.html#a06b49aa1cede17c48704094b0d78585e',1,'aerisweather::responses::ObservationsData::ObservationsData']]],
-  ['forecasts',['forecasts',['../classaerisweather_1_1aerisweather_1_1_aeris_weather.html#aa1d3da6dd5905ea74256d8268c1dc3b6',1,'aerisweather::aerisweather::AerisWeather']]]
-];
