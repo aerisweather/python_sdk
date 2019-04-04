@@ -1,6 +1,5 @@
 
 import json
-import unittest
 from urllib.error import URLError
 
 from aerisweather.aerisweather import AerisWeather
@@ -30,7 +29,7 @@ from aerisweather.utils.AerisError import AerisError
 from tests.keys import client_id, client_secret, app_id
 
 
-class TestObservationsSummary(unittest.TestCase):
+class TestObservationsSummary:
     """ Defines tests modules for the Aeris API ObservationsSummary class """
 
     def test_static_data(self):
@@ -317,7 +316,3 @@ class TestObservationsSummary(unittest.TestCase):
         except Exception as ex:
             print(ex.args)
             raise ex
-
-
-suite = unittest.TestLoader().loadTestsFromTestCase(TestObservationsSummary)
-unittest.TextTestRunner(verbosity=2).run(suite)

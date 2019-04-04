@@ -1,12 +1,9 @@
 
-import unittest
 from urllib.error import URLError
 
 from aerisweather.aerisweather import AerisWeather
 from aerisweather.requests.Endpoint import Endpoint, EndpointType
 from aerisweather.requests.ParameterType import ParameterType
-from aerisweather.requests.RequestAction import RequestAction
-from aerisweather.requests.RequestFilter import RequestFilter
 from aerisweather.requests.RequestLocation import RequestLocation
 from aerisweather.responses.ForecastPeriod import ForecastPeriod
 from aerisweather.responses.ForecastsResponse import ForecastsResponse
@@ -18,7 +15,7 @@ from aerisweather.utils.AerisError import AerisError
 from tests.keys import client_id, client_secret, app_id
 
 
-class TestBatchRequests(unittest.TestCase):
+class TestBatchRequests:
     """ Defines tests modules for batch requests to the Aeris API """
 
     def test_api_batch_response(self):
@@ -131,7 +128,3 @@ class TestBatchRequests(unittest.TestCase):
         except Exception as ex:
             print(ex.args)
             raise ex
-
-
-suite = unittest.TestLoader().loadTestsFromTestCase(TestBatchRequests)
-unittest.TextTestRunner(verbosity=2).run(suite)

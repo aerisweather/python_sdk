@@ -1,5 +1,4 @@
 import logging
-import unittest
 from urllib.error import URLError
 
 from aerisweather.aerisweather import AerisWeather
@@ -8,14 +7,13 @@ from aerisweather.requests.RequestLocation import RequestLocation
 from aerisweather.responses.AerisProfile import AerisProfileRiversGauges
 from aerisweather.responses.CustomResponse import CustomResponse
 from aerisweather.responses.ForecastPeriod import ForecastPeriod
-from aerisweather.responses.ForecastsResponse import ForecastsResponse
 from aerisweather.responses.RiversCrests import RiversCrests
 from aerisweather.responses.RiversCrestsRecent import RiversCrestsRecent
 from aerisweather.utils.AerisError import AerisError
 from tests.keys import client_id, client_secret, app_id
 
 
-class TestCustomEndpoint(unittest.TestCase):
+class TestCustomEndpoint:
     """ Defines tests modules for custom or unknown endpoints and their attributes """
 
     def test_api_response(self):
@@ -124,7 +122,3 @@ class TestCustomEndpoint(unittest.TestCase):
         except Exception as ex:
             print(ex.args)
             raise ex
-
-
-suite = unittest.TestLoader().loadTestsFromTestCase(TestCustomEndpoint)
-unittest.TextTestRunner(verbosity=2).run(suite)

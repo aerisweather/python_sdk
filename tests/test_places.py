@@ -1,6 +1,5 @@
 
 import json
-import unittest
 from urllib.error import URLError
 
 from aerisweather.aerisweather import AerisWeather
@@ -16,7 +15,7 @@ from aerisweather.utils.AerisError import AerisError
 from tests.keys import client_id, client_secret, app_id
 
 
-class TestPlaces(unittest.TestCase):
+class TestPlaces:
     """ Defines tests modules for the Aeris API Places class """
 
     def test_static_data(self):
@@ -190,7 +189,3 @@ class TestPlaces(unittest.TestCase):
         except Exception as ex:
             print(ex.args)
             raise ex
-
-
-suite = unittest.TestLoader().loadTestsFromTestCase(TestPlaces)
-unittest.TextTestRunner(verbosity=2).run(suite)

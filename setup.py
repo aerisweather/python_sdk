@@ -9,7 +9,7 @@ setup(
     version=__version__,
     packages=find_packages(exclude=['tests']),
 
-    install_requires=['aenum>=2.1.0', 'requests'],
+    install_requires=['aenum>=2.1.0', 'requests', 'pytest'],
 
     url='https://www.aerisweather.com/support/docs/toolkits/aeris-python-sdk/',
     license='MIT',

@@ -1,3 +1,7 @@
+#   _
+#  /_|   _ __ . _ | /| /  _    _/_ /_   _ __
+# /  | (- /  / _) |/ |/ (- ( \ /  / / (- /
+#
 from typing import Dict, List
 
 from aerisweather.requests.Endpoint import Endpoint, EndpointType
