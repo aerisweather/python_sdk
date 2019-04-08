@@ -5,6 +5,7 @@ from aenum import Enum
 from aerisweather.requests.ParameterType import ParameterType
 from aerisweather.requests.RequestAction import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter
+from aerisweather.requests.RequestFormat import RequestFormat
 from aerisweather.requests.RequestLocation import RequestLocation
 from aerisweather.requests.RequestQuery import RequestQuery
 from aerisweather.requests.RequestSort import RequestSort
@@ -56,7 +57,8 @@ class Endpoint:
                  filter_: [RequestFilter] = None,
                  sort: RequestSort = None,
                  params: Dict[ParameterType, str] = None,
-                 query: Dict[RequestQuery, str] = None):
+                 query: Dict[RequestQuery, str] = None,
+                 format_: RequestFormat = None):
         """ Constructor
 
             The Endpoint class can be instantiated with no parameters if configuration is handled later. EndpointTypes
@@ -80,6 +82,7 @@ class Endpoint:
         self.sort = sort
         self.params = params
         self.query = query
+        self.format_ = format_
 
 
 

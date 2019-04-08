@@ -1,13 +1,20 @@
-#   _
-#  /_|   _ __ . _ | /| /  _    _/_ /_   _ __
-# /  | (- /  / _) |/ |/ (- ( \ /  / / (- /
+#      _
+#     /_|   _ __ . _ | /| /  _    _/_ /_   _ __
+#    /  | (- /  / _) |/ |/ (- ( \ /  / / (- /
 #
 from typing import Dict, List
 
+from aerisweather.endpoints.AlertsEndpoint import AlertsEndpoint
+from aerisweather.endpoints.CustomEndpoint import CustomEndpoint
+from aerisweather.endpoints.ForecastsEndpoint import ForecastsEndpoint
+from aerisweather.endpoints.ObservationsEndpoint import ObservationsEndpoint
+from aerisweather.endpoints.ObservationsSummaryEndpoint import ObservationsSummaryEndpoint
+from aerisweather.endpoints.PlacesEndpoint import PlacesEndpoint
 from aerisweather.requests.Endpoint import Endpoint, EndpointType
 from aerisweather.requests.ParameterType import ParameterType
 from aerisweather.requests.RequestAction import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter
+from aerisweather.requests.RequestFormat import RequestFormat
 from aerisweather.requests.RequestLocation import RequestLocation
 from aerisweather.requests.RequestQuery import RequestQuery
 from aerisweather.requests.RequestSort import RequestSort
@@ -21,7 +28,13 @@ from aerisweather.utils.AerisError import AerisError
 from aerisweather.utils.AerisNetwork import AerisNetwork
 
 
-class AerisWeather:
+class AerisWeather(AlertsEndpoint,
+                   ForecastsEndpoint,
+                   ObservationsEndpoint,
+                   ObservationsSummaryEndpoint,
+                   PlacesEndpoint,
+                   CustomEndpoint):
+
     """ Defines the main object for the aerisweather python library. """
 
     def __init__(self,
@@ -47,6 +60,7 @@ class AerisWeather:
         self.sort = None
         self.params = None
         self.query = None
+        self.format_ = None
 
     def request(self, endpoint):
         """ Makes the request to the Aeris API and returns the appropriate response array.
@@ -71,7 +85,8 @@ class AerisWeather:
                        filter_=endpoint.filter_,
                        sort=endpoint.sort,
                        params=endpoint.params,
-                       query=endpoint.query)
+                       query=endpoint.query,
+                       format_=endpoint.format_)
 
         network = AerisNetwork()
         json_obj = network.get_json(url, self.app_id)
@@ -100,7 +115,8 @@ class AerisWeather:
             filter_: [RequestFilter] = None,
             sort: RequestSort = None,
             params: Dict[ParameterType, str] = None,
-            query: Dict[RequestQuery, str]=None) -> str:
+            query: Dict[RequestQuery, str]=None,
+            format_: RequestFormat = None) -> str:
         """ Generates the appropriate request url for a standard single API request.
 
         Generally called internally from the request method. Builds and returns a full API request URL based on the
@@ -140,6 +156,9 @@ class AerisWeather:
 
         if sort is not None:
             url += "&sort=" + sort.value
+
+        if format_ is not None:
+            url += "&format=" + format_.value
 
         if filter_ is not None:
             if len(filter_) > 0:
@@ -416,214 +435,3 @@ class AerisWeather:
         while url.endswith(","):
             url = url[:-1]
         return url
-
-    def alerts(self,
-               location: RequestLocation = None,
-               action: RequestAction = None,
-               filter_: [RequestFilter] = None,
-               sort: RequestSort = None,
-               params: Dict[ParameterType, str] = None,
-               query: Dict[RequestQuery, str] = None):
-        """ Performs an API request to get alerts data for a specified location.
-
-            Params:
-                - location: Optional - RequestLocation - the location for which the request is processed
-                - action: Optional - RequestAction - the API request action option
-                - filter_: Optional - [RequestFilter] - a list of API request filters
-                - sort: Optional - RequestSort - the API request sort option
-                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
-                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
-
-            Returns:
-                - a list of AlertsResponse objects if successful
-                - an empty list if there is no data
-        """
-
-        endpoint = Endpoint(endpoint_type=EndpointType.ALERTS,
-                            location=location,
-                            action=action,
-                            filter_=filter_,
-                            sort=sort,
-                            params=params,
-                            query=query)
-
-        return self.request(endpoint=endpoint)
-
-    def forecasts(self,
-                  location: RequestLocation = None,
-                  action: RequestAction = None,
-                  filter_: [RequestFilter] = None,
-                  sort: RequestSort = None,
-                  params: Dict[ParameterType, str] = None,
-                  query: Dict[RequestQuery, str] = None):
-        """ Performs an API request to get forecast data for a specified location.
-
-            Params:
-                - location: Optional - RequestLocation - the location for which the request is processed
-                - action: Optional - RequestAction - the API request action option
-                - filter_: Optional - [RequestFilter] - a list of API request filters
-                - sort: Optional - RequestSort - the API request sort option
-                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
-                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
-
-            Returns:
-                - a list of ForecastsResponse objects if successful
-                - an empty list if there is no data
-        """
-
-        endpoint = Endpoint(endpoint_type=EndpointType.FORECASTS,
-                            location=location,
-                            action=action,
-                            filter_=filter_,
-                            sort=sort,
-                            params=params,
-                            query=query)
-
-        return self.request(endpoint=endpoint)
-
-    def observations(self,
-                     location: RequestLocation = None,
-                     action: RequestAction = None,
-                     filter_: [RequestFilter] = None,
-                     sort: RequestSort = None,
-                     params: Dict[ParameterType, str] = None,
-                     query: Dict[RequestQuery, str] = None):
-        """ Performs an API request to get observation data for a specified location.
-
-            Params:
-                - location: Optional - RequestLocation - the location for which the request is processed
-                - action: Optional - RequestAction - the API request action option
-                - filter_: Optional - [RequestFilter] - a list of API request filters
-                - sort: Optional - RequestSort - the API request sort option
-                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
-                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
-
-            Returns:
-                - a list of ObservationsResponse objects if successful
-                - an empty list if there is no data
-        """
-
-        endpoint = Endpoint(endpoint_type=EndpointType.OBSERVATIONS,
-                            location=location,
-                            action=action,
-                            filter_=filter_,
-                            sort=sort,
-                            params=params,
-                            query=query)
-
-        return self.request(endpoint=endpoint)
-
-    def observations_summary(self,
-                             location: RequestLocation = None,
-                             action: RequestAction = None,
-                             filter_: [RequestFilter] = None,
-                             sort: RequestSort = None,
-                             params: Dict[ParameterType, str] = None,
-                             query: Dict[RequestQuery, str] = None):
-        """ Performs an API request to get observations summary data for a specified location.
-
-            Params:
-                - location: Optional - RequestLocation - the location for which the request is processed
-                - action: Optional - RequestAction - the API request action option
-                - filter_: Optional - [RequestFilter] - a list of API request filters
-                - sort: Optional - RequestSort - the API request sort option
-                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
-                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
-
-            Returns:
-                - a list of ObservationsSummaryResponse objects if successful
-                - an empty list if there is no data
-        """
-
-        endpoint = Endpoint(endpoint_type=EndpointType.OBSERVATIONS_SUMMARY,
-                            location=location,
-                            action=action,
-                            filter_=filter_,
-                            sort=sort,
-                            params=params,
-                            query=query)
-
-        return self.request(endpoint=endpoint)
-
-    def places(self,
-               location: RequestLocation = None,
-               action: RequestAction = None,
-               filter_: [RequestFilter] = None,
-               sort: RequestSort = None,
-               params: Dict[ParameterType, str] = None,
-               query: Dict[RequestQuery, str] = None):
-        """ Performs an API request to get places data for a specified location.
-
-            Params:
-                - location: Optional - RequestLocation - the location for which the request is processed
-                - action: Optional - RequestAction - the API request action option
-                - filter_: Optional - [RequestFilter] - a list of API request filters
-                - sort: Optional - RequestSort - the API request sort option
-                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
-                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
-
-            Returns:
-                - a list of PlacesResponse objects if successful
-                - an empty list if there is no data
-        """
-
-        endpoint = Endpoint(endpoint_type=EndpointType.PLACES,
-                            location=location,
-                            action=action,
-                            filter_=filter_,
-                            sort=sort,
-                            params=params,
-                            query=query)
-
-        return self.request(endpoint=endpoint)
-
-    def custom_endpoint(self,
-                        location: RequestLocation = None,
-                        action: RequestAction = None,
-                        filter_: [RequestFilter] = None,
-                        sort: RequestSort = None,
-                        params: Dict[ParameterType, str] = None,
-                        query: Dict[RequestQuery, str] = None):
-        """ Performs an API request to get custom endpoint data for a specified location.
-
-            When calling custom_endpoint, in addition to setting the EndpointType of the Endpoint object to CUSTOM,
-                the EndpointType.custom value must be set to the string value of the endpoint you are requesting. See
-                the examples section to see hwo this is done.
-
-            Params:
-                - location: Optional - RequestLocation - the location for which the request is processed
-                - action: Optional - RequestAction - the API request action option
-                - filter_: Optional - [RequestFilter] - a list of API request filters
-                - sort: Optional - RequestSort - the API request sort option
-                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
-                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
-
-            Returns:
-                - a list of CustomResponse objects if successful
-                - an empty list if there is no data
-
-            Examples:
-                # You can also use the custom endpoint type to request data from a known valid endpoint, for cases
-                # where new API data fields have not yet been added to an endpoint's response class.
-                EndpointType.custom = "forecasts"
-                f_list = awx.request(endpoint=Endpoint(endpoint_type=EndpointType.CUSTOM,
-                                                       location=RequestLocation(postal_code="54660")))
-                forecast = f_list[0]
-                period = forecast.periods[0]  # type: ForecastPeriod
-
-                # Valid endpoint, not in our Endpoint Enum - run this to test a beta or pre-release endpoint
-                EndpointType.custom = "stormreports"
-                endpt = Endpoint(EndpointType.CUSTOM, location=RequestLocation(postal_code="54660"))
-                resp_list = awx.request(endpt)
-                response = resp_list[0]
-        """
-
-        endpoint = Endpoint(endpoint_type=EndpointType.CUSTOM,
-                            location=location,
-                            action=action,
-                            filter_=filter_,
-                            sort=sort,
-                            params=params,
-                            query=query)
-
-        return self.request(endpoint=endpoint)

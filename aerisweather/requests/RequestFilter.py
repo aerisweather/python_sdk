@@ -42,6 +42,7 @@ class RequestFilter(Enum):
         WIND = "wind"
         WINTER = "winter"
         USA = "usa"
+        GEO = "geo"
 
     @skip
     class CONVECTIVE_OUTLOOK(Enum):
@@ -72,6 +73,7 @@ class RequestFilter(Enum):
         XHAIL = "xhail,sighail"
         XTORN = "xtorn,sigtorn"
         XWIND = "xwind.sigwind"
+        GEO = "geo"
 
     @skip
     class FORECASTS(Enum):
@@ -79,6 +81,7 @@ class RequestFilter(Enum):
         DAY_NIGHT = "daynight"
         HR = "#hr"
         PRECISE = "precise"
+        GEO = "geo"
 
     @skip
     class OBSERVATIONS(Enum):
@@ -88,6 +91,7 @@ class RequestFilter(Enum):
         METAR = "metar"
         MESONET = "mesonet"
         PWS = "pws"
+        GEO = "geo"
 
     @skip
     class OBSERVATIONS_SUMMARY(Enum):
@@ -97,6 +101,7 @@ class RequestFilter(Enum):
         METAR = "metar"
         OFFICAL = "official"
         PWS = "pws"
+        GEO = "geo"
 
     @skip
     class PLACES(Enum):
@@ -125,3 +130,4 @@ class RequestFilter(Enum):
         TUNNEL = "tunnel"
         UNIVERSITY = "university"
         WORSHIP = "worship"
+        GEO = "geo"
