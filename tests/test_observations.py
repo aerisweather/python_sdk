@@ -2,6 +2,7 @@
 from .common_test_imports import *
 from aerisweather.responses.ObservationsData import ObservationsData
 from aerisweather.responses.ObservationsResponse import ObservationsResponse
+from aerisweather.responses.AerisProfile import AerisProfileObservations
 
 
 class TestObservations:

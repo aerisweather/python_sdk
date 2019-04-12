@@ -1,7 +1,7 @@
 
 from typing import Dict
 
-from aerisweather.requests.Endpoint import Endpoint, EndpointType
+from aerisweather.endpoints.Endpoint import Endpoint, EndpointType
 from aerisweather.requests.ParameterType import ParameterType
 from aerisweather.requests.RequestAction import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter

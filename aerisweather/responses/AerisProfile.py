@@ -347,3 +347,29 @@ class AerisProfileRiversGauges(AerisProfileRivers):
             crests.append(RiversCrests.RiversCrests(cr))
 
         return crests
+
+
+class AerisProfileAirQuality(AerisProfile):
+    """Defines an object for the Aeris API profile data returned in an Aeris API Air Quality responses."""
+
+    def __init__(self, json_data):
+        """ Constructor """
+
+        self.data = json_data
+        super().__init__(self.data)
+
+    @property
+    def sources(self):
+        """ Array of sources for the air quality information for this location """
+        sources = []
+
+        for src in self.data["sources"]:
+            sources.append(src)
+
+        return sources
+
+    @property
+    def stations(self):
+        """ Array of the observation station IDs used to provide the air quality observation. """
+
+        return self.data["stations"]

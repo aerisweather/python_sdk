@@ -2,7 +2,7 @@
 from urllib.error import URLError
 
 from aerisweather.aerisweather import AerisWeather
-from aerisweather.requests.Endpoint import Endpoint, EndpointType
+from aerisweather.endpoints.Endpoint import Endpoint, EndpointType
 from aerisweather.requests.ParameterType import ParameterType
 from aerisweather.requests.RequestLocation import RequestLocation
 from aerisweather.responses.ForecastPeriod import ForecastPeriod

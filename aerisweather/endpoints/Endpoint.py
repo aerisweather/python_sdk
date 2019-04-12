@@ -26,6 +26,7 @@ class EndpointType(Enum):
             endpt = Endpoint(EndpointType.CUSTOM, location=RequestLocation(postal_code="54660"))
     """
 
+    AIR_QUALITY = "airquality"
     ALERTS = "advisories"
     CONVECTIVE_OUTLOOK = "convective/outlook"
     FORECASTS = "forecasts"

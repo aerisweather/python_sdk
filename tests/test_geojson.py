@@ -1,5 +1,9 @@
-
+from aerisweather.responses.ForecastPeriod import ForecastPeriod
+from aerisweather.responses.ForecastsResponse import ForecastsResponse
+from aerisweather.responses.Geometry import Geometry
+from aerisweather.responses.ObservationsResponse import ObservationsResponse
 from .common_test_imports import *
+from aerisweather.responses.GeoJsonResponse import GeoJsonResponse
 
 
 class TestGeoJson:
@@ -123,7 +127,7 @@ class TestGeoJson:
         # finally:
         #     file.close()
 
-    def test_api_response(self):
+    def test_api_response_obs(self):
         """ Test against a live response from the API """
 
         try:
@@ -134,36 +138,48 @@ class TestGeoJson:
             endpoint = Endpoint(endpoint_type=EndpointType.OBSERVATIONS,
                                 location=None,
                                 action=RequestAction.OBSERVATIONS.CLOSEST,
-                                filter_=[RequestFilter.OBSERVATIONS.MESONET],
+                                filter_=None,
                                 sort=None,
-                                params={ParameterType.OBSERVATIONS.P: "54601"},
-                                query={RequestQuery.OBSERVATIONS.ID: "KLSE"})
+                                params={ParameterType.OBSERVATIONS.P: "54660",
+                                        ParameterType.OBSERVATIONS.LIMIT: "2",
+                                        ParameterType.OBSERVATIONS.RADIUS: "100miles"},
+                                query=None,
+                                format_=RequestFormat.GEOJSON)
 
-            obs_list = awx.request(endpoint=endpoint)
+            obs_geo_list = awx.request(endpoint=endpoint)
 
-            assert len(obs_list) > 0
+            assert len(obs_geo_list) > 0
 
-            for obs in obs_list:
-                assert obs.id is not None
+            for obsgeo in obs_geo_list:  # type: GeoJsonResponse
+                assert obsgeo.type == "Feature"
 
-                loc = obs.loc
-                assert loc is not None
-                assert type(loc) is AerisLocation
-                assert obs.loc.lat > 43
+                assert type(obsgeo.geometry) is Geometry
 
-                place = obs.place
-                assert place is not None
-                # assert place.name == "la crosse"
-                assert place.state == "wi"
+                if obsgeo.id == "KCMY":
+                    assert obsgeo.geometry.type == "Point"
+                    assert obsgeo.geometry.coordinates[0] == -90.733333333333
+                    assert obsgeo.geometry.coordinates[1] == 43.966666666667
 
-                profile = obs.profile
-                assert profile is not None
-                assert profile.elevFT > 600
+                    properties = obsgeo.properties
+                    assert type(properties) is ObservationsResponse
+                    assert properties.place.state == "wi"
 
-                relative_to = obs.relativeTo
-                assert relative_to.long < -91
+                    relative_to = properties.relativeTo
+                    assert type(relative_to) is AerisRelativeTo
+                    assert relative_to.bearing == 266
 
-                assert obs.obTimestamp.__class__ is int
+                elif obsgeo.id == "KVOK":
+                    assert obsgeo.geometry.type == "Point"
+                    assert obsgeo.geometry.coordinates[0] == -90.266666666667
+                    assert obsgeo.geometry.coordinates[1] == 43.916666666667
+
+                    properties = obsgeo.properties
+                    assert type(properties) is ObservationsResponse
+                    assert properties.place.state == "wi"
+
+                    relative_to = properties.relativeTo
+                    assert type(relative_to) is AerisRelativeTo
+                    assert relative_to.bearing == 110
 
         except URLError as url_err:
             print("URL Error: " + url_err.reason)
@@ -177,36 +193,45 @@ class TestGeoJson:
             print(ex.args)
             raise ex
 
-    def test_observations_method(self):
-        """ Test the AerisWeather.observations method """
+    def test_api_response_forecast(self):
+        """ Test against a live response from the API """
 
         try:
             awx = AerisWeather(app_id=app_id,
                                client_id=client_id,
                                client_secret=client_secret)
 
-            obs_list = awx.observations(location=None,
-                                        action=RequestAction.OBSERVATIONS.CLOSEST,
-                                        filter_=[RequestFilter.OBSERVATIONS.MESONET],
-                                        sort=None,
-                                        params={ParameterType.OBSERVATIONS.P: "54601"},
-                                        query={RequestQuery.OBSERVATIONS.ID: "KLSE"})
+            endpoint = Endpoint(endpoint_type=EndpointType.FORECASTS,
+                                location=None,
+                                action=RequestAction.FORECASTS.CLOSEST,
+                                filter_=None,
+                                sort=None,
+                                params={ParameterType.FORECASTS.P: "54660",
+                                        ParameterType.FORECASTS.LIMIT: "2"},
+                                query=None,
+                                format_=RequestFormat.GEOJSON)
 
-            for obs in obs_list:  # type: ObservationsResponse
-                assert obs.id is not None
+            fcast_geo_list = awx.request(endpoint=endpoint)
 
-                loc = obs.loc
-                assert loc is not None
-                assert type(loc) is AerisLocation
-                assert obs.loc.lat > 43
+            assert len(fcast_geo_list) > 0
 
-                place = obs.place
-                assert place is not None
-                assert place.state == "wi"
+            for fcastgeo in fcast_geo_list:  # type: GeoJsonResponse
+                assert fcastgeo.type == "Feature"
+                assert fcastgeo.endpoint_type == EndpointType.FORECASTS
+                assert type(fcastgeo.geometry) is Geometry
 
-                profile = obs.profile
-                assert profile is not None
-                assert profile.elevFT > 600
+                assert fcastgeo.geometry.type == "Point"
+                assert fcastgeo.geometry.coordinates[0] == -90.504
+                assert fcastgeo.geometry.coordinates[1] == 43.979
+
+                properties = fcastgeo.properties
+                assert type(properties) is ForecastsResponse
+                assert properties.interval == "day"
+
+                assert len(properties.periods) > 0
+                periods = properties.periods
+                assert type(periods[0]) == ForecastPeriod
+                assert periods[0].avgTempF is not None
 
         except URLError as url_err:
             print("URL Error: " + url_err.reason)
@@ -219,3 +244,43 @@ class TestGeoJson:
         except Exception as ex:
             print(ex.args)
             raise ex
+
+    # def test_api_response_aqi(self):
+    #     """ Test against a live response from the API """
+    #
+    #     try:
+    #         awx = AerisWeather(app_id=app_id,
+    #                            client_id=client_id,
+    #                            client_secret=client_secret)
+    #
+    #         endpoint = Endpoint(endpoint_type=EndpointType.AIR_QUALITY,
+    #                             location=None,
+    #                             action=RequestAction.AIR_QUALITY.CLOSEST,
+    #                             filter_=None,
+    #                             sort=None,
+    #                             params={ParameterType.AIR_QUALITY.P: "54660",
+    #                                     ParameterType.AIR_QUALITY.LIMIT: "2",
+    #                                     ParameterType.AIR_QUALITY.RADIUS: "100miles"},
+    #                             query=None,
+    #                             format_=RequestFormat.GEOJSON)
+    #
+    #         aqi_geo_list = awx.request(endpoint=endpoint)
+    #
+    #         assert len(aqi_geo_list) > 0
+    #
+    #         for aqigeo in aqi_geo_list:  # type: GeoJsonResponse
+    #             assert aqigeo.type == "Feature"
+    #             assert aqigeo.endpoint_type == EndpointType.AIR_QUALITY
+    #             assert type(aqigeo.geometry) is Geometry
+    #
+    #     except URLError as url_err:
+    #         print("URL Error: " + url_err.reason)
+    #         raise url_err
+    #
+    #     except AerisError as aeris_err:
+    #         print("AerisError: " + str(aeris_err))
+    #         raise aeris_err
+    #
+    #     except Exception as ex:
+    #         print(ex.args)
+    #         raise ex

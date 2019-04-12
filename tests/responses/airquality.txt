@@ -1,0 +1,94 @@
+{
+  "success": true,
+  "error": null,
+  "response": [
+    {
+      "id": null,
+      "loc": {
+        "lat": 43.97858,
+        "long": -90.50402
+      },
+      "place": {
+        "name": "tomah",
+        "state": "wi",
+        "country": "us"
+      },
+      "periods": [
+        {
+          "dateTimeISO": "2019-04-09T10:00:00-05:00",
+          "timestamp": 1554822000,
+          "aqi": 30,
+          "category": "good",
+          "color": "00E400",
+          "method": "airnow",
+          "dominant": "o3",
+          "pollutants": [
+            {
+              "type": "o3",
+              "name": "ozone",
+              "valuePPB": 33,
+              "valueUGM3": 68,
+              "aqi": 30,
+              "category": "good",
+              "color": "00E400"
+            },
+            {
+              "type": "pm2.5",
+              "name": "particle matter (<2.5µm)",
+              "valuePPB": null,
+              "valueUGM3": 6.3,
+              "aqi": 26,
+              "category": "good",
+              "color": "00E400"
+            },
+            {
+              "type": "pm10",
+              "name": "particle matter (<10µm)",
+              "valuePPB": null,
+              "valueUGM3": 9,
+              "aqi": 8,
+              "category": "good",
+              "color": "00E400"
+            },
+            {
+              "type": "co",
+              "name": "carbon monoxide",
+              "valuePPB": 121,
+              "valueUGM3": 139,
+              "aqi": 1,
+              "category": "good",
+              "color": "00E400"
+            },
+            {
+              "type": "no2",
+              "name": "nitrogen dioxide",
+              "valuePPB": 1,
+              "valueUGM3": 3.572,
+              "aqi": 1,
+              "category": "good",
+              "color": "00E400"
+            },
+            {
+              "type": "so2",
+              "name": "sulfur dioxide",
+              "valuePPB": 0,
+              "valueUGM3": 1.834,
+              "aqi": 0,
+              "category": "good",
+              "color": "00E400"
+            }
+          ]
+        }
+      ],
+      "profile": {
+        "tz": "America/Chicago",
+        "sources": [
+          {
+            "name": "CAMS"
+          }
+        ],
+        "stations": null
+      }
+    }
+  ]
+}

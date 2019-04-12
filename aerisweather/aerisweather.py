@@ -10,7 +10,7 @@ from aerisweather.endpoints.ForecastsEndpoint import ForecastsEndpoint
 from aerisweather.endpoints.ObservationsEndpoint import ObservationsEndpoint
 from aerisweather.endpoints.ObservationsSummaryEndpoint import ObservationsSummaryEndpoint
 from aerisweather.endpoints.PlacesEndpoint import PlacesEndpoint
-from aerisweather.requests.Endpoint import Endpoint, EndpointType
+from aerisweather.endpoints.Endpoint import Endpoint, EndpointType
 from aerisweather.requests.ParameterType import ParameterType
 from aerisweather.requests.RequestAction import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter
@@ -18,6 +18,7 @@ from aerisweather.requests.RequestFormat import RequestFormat
 from aerisweather.requests.RequestLocation import RequestLocation
 from aerisweather.requests.RequestQuery import RequestQuery
 from aerisweather.requests.RequestSort import RequestSort
+from aerisweather.responses.GeoJsonResponse import GeoJsonResponse
 from aerisweather.responses.AlertsResponse import AlertsResponse
 from aerisweather.responses.CustomResponse import CustomResponse
 from aerisweather.responses.ForecastsResponse import ForecastsResponse
@@ -26,6 +27,7 @@ from aerisweather.responses.ObservationsSummaryResponse import ObservationsSumma
 from aerisweather.responses.PlacesResponse import PlacesResponse
 from aerisweather.utils.AerisError import AerisError
 from aerisweather.utils.AerisNetwork import AerisNetwork
+from aerisweather.utils.AerisResponseType import RESPONSE_TYPE, AerisResponseType
 
 
 class AerisWeather(AlertsEndpoint,
@@ -93,18 +95,25 @@ class AerisWeather(AlertsEndpoint,
 
         responses = []
 
-        # Determine if we have a valid data response, or if there is an API error
-        response_error = AerisError.api_error(json_obj)
-        if response_error is None:
+        # Determine if we have a valid data response (json or geojson), or if there is an API error
+        response_type = AerisResponseType.get_response_type(json_obj)
+
+        if response_type is RESPONSE_TYPE.JSON:
             # determine if we have one response or an array
             if type(json_obj["response"]) is list:
                 for resp in json_obj["response"]:
-                    responses.append(self.response(endpoint.endpoint_type, resp))
+                    responses.append(self.response(response_type=RESPONSE_TYPE.JSON,
+                                                   endpoint_type=endpoint.endpoint_type,
+                                                   response_json=resp))
             else:
-                responses.append(self.response(endpoint.endpoint_type, json_obj["response"]))
+                responses.append(self.response(RESPONSE_TYPE.JSON, endpoint.endpoint_type, json_obj["response"]))
+
+        elif response_type is RESPONSE_TYPE.GEOJSON:
+            for resp in json_obj["features"]:
+                responses.append(self.response(RESPONSE_TYPE.GEOJSON, endpoint.endpoint_type, resp))
         else:
             # we have some kind of error or major warning from the API
-            raise response_error
+            raise AerisError.api_error(json_obj)
 
         return responses
 
@@ -174,35 +183,77 @@ class AerisWeather(AlertsEndpoint,
         return url
 
     @staticmethod
-    def response(endpoint_type: EndpointType,
-                 response_json):
-        """ Determines the appropriate response object based on EndpointType and returns the completed response object.
+    def response(response_type: RESPONSE_TYPE, endpoint_type: EndpointType, response_json):
 
-        Given the endpoint type and the response json from the Aeris API, the method will return a fullfilled
-        response object.
-
+        if response_type == RESPONSE_TYPE.JSON:
+            """ 
+            Determines the appropriate response object based on EndpointType and returns the completed response object.
+    
+            Given the endpoint type and the response json from the Aeris API, the method will return a fullfilled
+            response object.
+    
             Params:
                 - endpoint_type: EndpointType
                 - response_json - a single response portion of the json returned from the Aeris API
                     such as:
                         json_obj["response"]
-
+    
             Returns:
-                 - a completed/fullfilled response object
-        """
+                - a completed/fullfilled response object
+            """
+            if endpoint_type == EndpointType.ALERTS:
+                return AlertsResponse(response_json)
+            elif endpoint_type == EndpointType.FORECASTS:
+                return ForecastsResponse(response_json)
+            elif endpoint_type == EndpointType.OBSERVATIONS:
+                return ObservationsResponse(response_json)
+            elif endpoint_type == EndpointType.OBSERVATIONS_SUMMARY:
+                return ObservationsSummaryResponse(response_json)
+            elif endpoint_type == EndpointType.PLACES:
+                return PlacesResponse(response_json)
+            else:
+                return CustomResponse(response_json)
 
-        if endpoint_type == EndpointType.ALERTS:
-            return AlertsResponse(response_json)
-        elif endpoint_type == EndpointType.FORECASTS:
-            return ForecastsResponse(response_json)
-        elif endpoint_type == EndpointType.OBSERVATIONS:
-            return ObservationsResponse(response_json)
-        elif endpoint_type == EndpointType.OBSERVATIONS_SUMMARY:
-            return ObservationsSummaryResponse(response_json)
-        elif endpoint_type == EndpointType.PLACES:
-            return PlacesResponse(response_json)
-        else:
-            return CustomResponse(response_json)
+        elif response_type == RESPONSE_TYPE.GEOJSON:
+
+            """ Returns: a completed/fullfilled geojson response object """
+
+            return AerisWeather.geo_json_response(response_json, endpoint_type)
+
+    @staticmethod
+    def geo_json_response(geojson, endpoint_type):
+
+        """
+            Determines the appropriate response object based on EndpointType and returns the completed response object.
+
+            Given the endpoint type and the response json from the Aeris API, the method will return an array of
+            GeoJsonReponse objects. Each GeoJsonResponse object contains what is found in a geojson feature:
+                - a type ("Feature")
+                - an id
+                - a Geometry object - contains
+                    - type: point or polyline
+                    - coordinates
+                - a properties object (this is an a Response object, specific to the endpoint called)
+
+            Params:
+                - endpoint_type: EndpointType
+                - geojson - The features array of the geojson response.
+
+                              "features": [
+                                {
+                                  "type": "Feature",
+                                  "id": "KCMY",
+                                  ...
+                                      43.966666666667
+                                    ]
+                                  },
+                                  "properties": {
+                                    "id": "KCMY",
+                                    "loc": {
+                                      "long": -90.733333333333,
+                                      ...
+        """
+        return GeoJsonResponse(geo_json_data=geojson, endpoint_type=endpoint_type)
 
     @staticmethod
     def query_str(query_dict):
@@ -288,7 +339,7 @@ class AerisWeather(AlertsEndpoint,
                         response_error = AerisError.api_error(resp)
                         if response_error is None:
                             endpoint_type = endpoints[endpoint_counter].endpoint_type
-                            responses.append(self.response(endpoint_type, r))
+                            responses.append(self.response(RESPONSE_TYPE.JSON, endpoint_type, r))
                         else:
                             raise response_error
                 else:

@@ -1,0 +1,265 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -91.42,
+              44.01
+            ],
+            [
+              -91.2,
+              43.88
+            ],
+            [
+              -91.22,
+              43.57
+            ],
+            [
+              -91.27,
+              43.61
+            ],
+            [
+              -91.45,
+              43.99
+            ],
+            [
+              -91.42,
+              44.01
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "02660c46332b42ee47d2d3beb1ee043c",
+        "loc": {
+          "long": -91.1152379047,
+          "lat": 43.9065279033
+        },
+        "details": {
+          "type": "FL.W",
+          "name": "FLOOD WARNING",
+          "loc": "WIC063",
+          "emergency": false,
+          "color": "00FF00",
+          "cat": "flood",
+          "body": ".Minor to moderate flooding continues along the Mississippi River. \nWater levels are slowly falling over the next couple of days. \nAdditional rises are likely at many locations by the end of the \nweek and this weekend.\n\nRiver forecasts take into account both observed and forecast \nprecipitation.\n\n\nDo not drive cars into flooded areas. Remember, it only takes two \nfeet of water to float most automobiles, including sport utility \nvehicles. Turn Around, Don't Drown!\n\nAdditional river and weather information is available at...\nhttp://www.weather.gov/lacrosse .\n\n\nThe Flood Warning continues for\nThe Mississippi River at La Crosse.\n* until further notice...Or until the warning is cancelled.\n* At 10:15 AM Tuesday the stage was 13.3 feet.\n* Flood stage is 12.0 feet.\n* Moderate flooding is occurring and Moderate flooding is forecast.\n* Forecast...The river is expected to begin slowly rising Thursday \nevening and rise to near 13.9 feet early next week.\n* Impact...At 14.0 feet...Flooding begins to threaten homes in the \nShore Acres area. Water begins to impact homes and businesses along\nLa Fond Avenue and Bainbridge Street on French Island. Water begins\nto go over the road at Copeland Park with some water into the ball \nparks. Water is near the bottom of the Pettibone Beach shelter and \nwater is nearly over the road at Houska Park near the wastewater \ntreatment plant. Water also begins to spread into Riverside Park.",
+          "bodyFull": "WGUS83 KARX 091606\nFLSARX\n\n\nFlood Statement\nNational Weather Service La Crosse WI\n1106 AM CDT Tue Apr 9 2019\n\n.Minor to moderate flooding continues along the Mississippi River. \nWater levels are slowly falling over the next couple of days. \nAdditional rises are likely at many locations by the end of the \nweek and this weekend.\n\nRiver forecasts take into account both observed and forecast \nprecipitation.\n\nPRECAUTIONARY/PREPAREDNESS ACTIONS...\n\n\n\nDo not drive cars into flooded areas. Remember, it only takes two \nfeet of water to float most automobiles, including sport utility \nvehicles. Turn Around, Don't Drown!\n\nAdditional river and weather information is available at...\nhttp://www.weather.gov/lacrosse .\n\n&&\n\nMNC055-WIC063-123-100706-\n/O.CON.KARX.FL.W.0035.000000T0000Z-000000T0000Z/\n/LACW3.2.SM.190326T1237Z.190403T0030Z.000000T0000Z.NO/\n1106 AM CDT Tue Apr 9 2019\n\n\n\nThe Flood Warning continues for\nThe Mississippi River at La Crosse.\n* until further notice...Or until the warning is cancelled.\n* At 10:15 AM Tuesday the stage was 13.3 feet.\n* Flood stage is 12.0 feet.\n* Moderate flooding is occurring and Moderate flooding is forecast.\n* Forecast...The river is expected to begin slowly rising Thursday \nevening and rise to near 13.9 feet early next week.\n* Impact...At 14.0 feet...Flooding begins to threaten homes in the \nShore Acres area. Water begins to impact homes and businesses along\nLa Fond Avenue and Bainbridge Street on French Island. Water begins\nto go over the road at Copeland Park with some water into the ball \nparks. Water is near the bottom of the Pettibone Beach shelter and \nwater is nearly over the road at Houska Park near the wastewater \ntreatment plant. Water also begins to spread into Riverside Park.\n\n&&\n\nLAT...LON 4401 9142 4388 9120 4357 9122 4361 9127 4399 9145"
+        },
+        "timestamps": {
+          "issued": 1554825960,
+          "issuedISO": "2019-04-09T11:06:00-05:00",
+          "begins": 1554825960,
+          "beginsISO": "2019-04-09T11:06:00-05:00",
+          "expires": 1554879960,
+          "expiresISO": "2019-04-10T02:06:00-05:00",
+          "added": 1554825995,
+          "addedISO": "2019-04-09T11:06:35-05:00"
+        },
+        "poly": "-91.42,44.01,-91.2,43.88,-91.22,43.57,-91.27,43.61,-91.45,43.99",
+        "geoPoly": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -91.42,
+                44.01
+              ],
+              [
+                -91.2,
+                43.88
+              ],
+              [
+                -91.22,
+                43.57
+              ],
+              [
+                -91.27,
+                43.61
+              ],
+              [
+                -91.45,
+                43.99
+              ],
+              [
+                -91.42,
+                44.01
+              ]
+            ]
+          ]
+        },
+        "includes": {
+          "counties": [
+            "MNC055",
+            "WIC063",
+            "WIC123"
+          ],
+          "fips": [
+            "27055",
+            "55063",
+            "55123"
+          ],
+          "wxzones": [
+            "MNZ096",
+            "WIZ041",
+            "WIZ053"
+          ],
+          "zipcodes": [
+            "54601",
+            "54602",
+            "54603",
+            "54650",
+            "54658",
+            "55919",
+            "55925",
+            "55947"
+          ]
+        },
+        "place": {
+          "name": "la crosse",
+          "state": "wi",
+          "country": "us",
+          "county": "063"
+        },
+        "profile": {
+          "tz": "America/Chicago"
+        },
+        "active": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -91.42,
+              44.01
+            ],
+            [
+              -91.2,
+              43.88
+            ],
+            [
+              -91.22,
+              43.57
+            ],
+            [
+              -91.27,
+              43.61
+            ],
+            [
+              -91.45,
+              43.99
+            ],
+            [
+              -91.42,
+              44.01
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "id": "b20bd2505febf43ed022d2ad39d987af",
+        "loc": {
+          "long": -90.8343610174,
+          "lat": 43.5938645356
+        },
+        "details": {
+          "type": "FL.W",
+          "name": "FLOOD WARNING",
+          "loc": "WIC123",
+          "emergency": false,
+          "color": "00FF00",
+          "cat": "flood",
+          "body": ".Minor to moderate flooding continues along the Mississippi River. \nWater levels are slowly falling over the next couple of days. \nAdditional rises are likely at many locations by the end of the \nweek and this weekend.\n\nRiver forecasts take into account both observed and forecast \nprecipitation.\n\n\nDo not drive cars into flooded areas. Remember, it only takes two \nfeet of water to float most automobiles, including sport utility \nvehicles. Turn Around, Don't Drown!\n\nAdditional river and weather information is available at...\nhttp://www.weather.gov/lacrosse .\n\n\nThe Flood Warning continues for\nThe Mississippi River at La Crosse.\n* until further notice...Or until the warning is cancelled.\n* At 10:15 AM Tuesday the stage was 13.3 feet.\n* Flood stage is 12.0 feet.\n* Moderate flooding is occurring and Moderate flooding is forecast.\n* Forecast...The river is expected to begin slowly rising Thursday \nevening and rise to near 13.9 feet early next week.\n* Impact...At 14.0 feet...Flooding begins to threaten homes in the \nShore Acres area. Water begins to impact homes and businesses along\nLa Fond Avenue and Bainbridge Street on French Island. Water begins\nto go over the road at Copeland Park with some water into the ball \nparks. Water is near the bottom of the Pettibone Beach shelter and \nwater is nearly over the road at Houska Park near the wastewater \ntreatment plant. Water also begins to spread into Riverside Park.",
+          "bodyFull": "WGUS83 KARX 091606\nFLSARX\n\n\nFlood Statement\nNational Weather Service La Crosse WI\n1106 AM CDT Tue Apr 9 2019\n\n.Minor to moderate flooding continues along the Mississippi River. \nWater levels are slowly falling over the next couple of days. \nAdditional rises are likely at many locations by the end of the \nweek and this weekend.\n\nRiver forecasts take into account both observed and forecast \nprecipitation.\n\nPRECAUTIONARY/PREPAREDNESS ACTIONS...\n\n\n\nDo not drive cars into flooded areas. Remember, it only takes two \nfeet of water to float most automobiles, including sport utility \nvehicles. Turn Around, Don't Drown!\n\nAdditional river and weather information is available at...\nhttp://www.weather.gov/lacrosse .\n\n&&\n\nMNC055-WIC063-123-100706-\n/O.CON.KARX.FL.W.0035.000000T0000Z-000000T0000Z/\n/LACW3.2.SM.190326T1237Z.190403T0030Z.000000T0000Z.NO/\n1106 AM CDT Tue Apr 9 2019\n\n\n\nThe Flood Warning continues for\nThe Mississippi River at La Crosse.\n* until further notice...Or until the warning is cancelled.\n* At 10:15 AM Tuesday the stage was 13.3 feet.\n* Flood stage is 12.0 feet.\n* Moderate flooding is occurring and Moderate flooding is forecast.\n* Forecast...The river is expected to begin slowly rising Thursday \nevening and rise to near 13.9 feet early next week.\n* Impact...At 14.0 feet...Flooding begins to threaten homes in the \nShore Acres area. Water begins to impact homes and businesses along\nLa Fond Avenue and Bainbridge Street on French Island. Water begins\nto go over the road at Copeland Park with some water into the ball \nparks. Water is near the bottom of the Pettibone Beach shelter and \nwater is nearly over the road at Houska Park near the wastewater \ntreatment plant. Water also begins to spread into Riverside Park.\n\n&&\n\nLAT...LON 4401 9142 4388 9120 4357 9122 4361 9127 4399 9145"
+        },
+        "timestamps": {
+          "issued": 1554825960,
+          "issuedISO": "2019-04-09T11:06:00-05:00",
+          "begins": 1554825960,
+          "beginsISO": "2019-04-09T11:06:00-05:00",
+          "expires": 1554879960,
+          "expiresISO": "2019-04-10T02:06:00-05:00",
+          "added": 1554825995,
+          "addedISO": "2019-04-09T11:06:35-05:00"
+        },
+        "poly": "-91.42,44.01,-91.2,43.88,-91.22,43.57,-91.27,43.61,-91.45,43.99",
+        "geoPoly": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -91.42,
+                44.01
+              ],
+              [
+                -91.2,
+                43.88
+              ],
+              [
+                -91.22,
+                43.57
+              ],
+              [
+                -91.27,
+                43.61
+              ],
+              [
+                -91.45,
+                43.99
+              ],
+              [
+                -91.42,
+                44.01
+              ]
+            ]
+          ]
+        },
+        "includes": {
+          "counties": [
+            "MNC055",
+            "WIC063",
+            "WIC123"
+          ],
+          "fips": [
+            "27055",
+            "55063",
+            "55123"
+          ],
+          "wxzones": [
+            "MNZ096",
+            "WIZ041",
+            "WIZ053"
+          ],
+          "zipcodes": [
+            "54601",
+            "54602",
+            "54603",
+            "54650",
+            "54658",
+            "55919",
+            "55925",
+            "55947"
+          ]
+        },
+        "place": {
+          "name": "vernon",
+          "state": "wi",
+          "country": "us",
+          "county": "123"
+        },
+        "profile": {
+          "tz": "America/Chicago"
+        },
+        "active": true
+      }
+    }
+  ]
+}
