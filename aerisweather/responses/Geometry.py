@@ -16,5 +16,50 @@ class Geometry:
         return self.data["type"]
 
     @property
-    def coordinates(self)->[float]:
+    def coordinates(self):
+        """ Returns the coordinates data from a geojson response. Can be one or more sets or groups of coordinates
+         too, if there are multiple polygons.
+
+         Example 1, Single polygon:
+
+         "coordinates": [
+              [
+                -91.42,
+                44.01
+              ],
+              [
+                -91.2,
+                43.88
+              ],
+              [
+                -91.22,
+                43.57
+              ]
+        ]
+
+        Example 2, Multiple polygons:
+
+            "coordinates": [
+            [
+                [
+                    -91.42,
+                    44.01
+                ],
+                [
+                    -91.2,
+                    43.88
+                ]
+            ],
+            [
+                [
+                    -91.22,
+                    43.57
+                ],
+                [
+                    -91.27,
+                    43.61
+                ]
+            ]
+        ]
+        """
         return self.data["coordinates"]

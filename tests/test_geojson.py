@@ -1,3 +1,6 @@
+from aerisweather.responses.AlertDetails import AlertDetails
+from aerisweather.responses.AlertIncludes import AlertIncludes
+from aerisweather.responses.AlertsResponse import AlertsResponse
 from aerisweather.responses.ForecastPeriod import ForecastPeriod
 from aerisweather.responses.ForecastsResponse import ForecastsResponse
 from aerisweather.responses.Geometry import Geometry
@@ -12,120 +15,84 @@ class TestGeoJson:
     def test_static_geojson(self):
         """ Test against a known source of data """
 
-        file = open("./responses/observations.txt", "r")
+        file = open("./responses/geojson_alerts.txt", "r")
 
-        # try:
-        #     json_obj = json.loads(file.read())
-        #
-        #     obs = ObservationsResponse(json_obj["response"])
-        #
-        #     assert obs.id == "KLSE"
-        #
-        #     assert type(obs.loc) is AerisLocation
-        #     assert type(obs.loc.long) is float
-        #     assert obs.loc.lat == 43.883333333333
-        #     assert obs.loc.long == -91.25
-        #
-        #     assert type(obs.place) is AerisPlace
-        #     place = obs.place
-        #     assert place.name == "la crosse"
-        #     assert place.state == "wi"
-        #     assert place.country == "us"
-        #
-        #     assert type(obs.profile) is AerisProfileObservations
-        #     profile = obs.profile
-        #     assert profile.tz == "America/Chicago"
-        #     assert profile.elevM == 199
-        #     assert profile.elevFT == 653
-        #
-        #     assert obs.obTimestamp == 1520869980
-        #     assert obs.obDateTime == "2018-03-12T10:53:00-05:00"
-        #
-        #     assert type(obs.ob) is ObservationsData
-        #     ob = obs.ob
-        #     assert ob.timestamp == 1520869980
-        #     assert ob.dateTimeISO == "2018-03-12T10:53:00-05:00"
-        #     assert ob.tempC == 1.1
-        #     assert ob.tempF == 34
-        #     assert ob.dewpointC == -5
-        #     assert ob.dewpointF == 23
-        #     assert ob.humidity == 64
-        #     assert ob.pressureMB == 1024
-        #     assert ob.pressureIN == 30.24
-        #     assert ob.spressureMB == 999
-        #     assert ob.spressureIN == 29.5
-        #     assert ob.altimeterMB == 1023
-        #     assert ob.altimeterIN == 30.21
-        #     assert ob.windKTS == 10
-        #     assert ob.windKPH == 19
-        #     assert ob.windMPH == 12
-        #     assert ob.windSpeedKTS == 10
-        #     assert ob.windSpeedKPH == 19
-        #     assert ob.windSpeedMPH == 12
-        #     assert ob.windDirDEG == 320
-        #     assert ob.windDir == "NW"
-        #     assert ob.windGustKTS is None
-        #     assert ob.windGustKPH is None
-        #     assert ob.windGustMPH is None
-        #     assert ob.flightRule == "LIFR"
-        #     assert ob.visibilityKM == 16.09344
-        #     assert ob.visibilityMI == 10
-        #     assert ob.weather == "Sunny"
-        #     assert ob.weatherShort == "Sunny"
-        #     assert ob.weatherCoded == "::CL"
-        #     assert ob.weatherPrimary == "Sunny"
-        #     assert ob.weatherPrimaryCoded == "::CL"
-        #     assert ob.cloudsCoded == "CL"
-        #     assert ob.icon == "sunny.png"
-        #     assert ob.heatindexC == 1
-        #     assert ob.heatindexF == 34
-        #     assert ob.windchillC == -4
-        #     assert ob.windchillF == 25
-        #     assert ob.feelslikeC == -4
-        #     assert ob.feelslikeF == 25
-        #     assert ob.isDay is True
-        #     assert ob.sunrise == 1520857243
-        #     assert ob.sunriseISO == "2018-03-12T07:20:43-05:00"
-        #     assert ob.sunset == 1520899695
-        #     assert ob.sunsetISO == "2018-03-12T19:08:15-05:00"
-        #     assert ob.snowDepthCM is None
-        #     assert ob.snowDepthIN is None
-        #     assert ob.precipMM == 0
-        #     assert ob.precipIN == 0
-        #     assert ob.solradWM2 == 510
-        #     assert ob.solradMethod == "estimated"
-        #     assert ob.ceilingFT is None
-        #     assert ob.ceilingM is None
-        #     assert ob.light == 80
-        #     assert ob.QC == "O"
-        #     assert ob.QCcode == 10
-        #     assert ob.sky == 0
-        #
-        #     assert obs.raw == "KLSE 121553Z 32010KT 10SM CLR 01/M05 A3022 RMK AO2 SLP242 T00111050"
-        #
-        #     assert type(obs.relativeTo) is AerisRelativeTo
-        #     rel = obs.relativeTo
-        #     assert rel.lat == 43.80136
-        #     assert rel.long == -91.23958
-        #     assert rel.bearing == 355
-        #     assert rel.bearingENG == "N"
-        #     assert rel.distanceKM == 9.153
-        #     assert rel.distanceMI == 5.687
-        #
-        # except URLError as url_err:
-        #     print("URL Error: " + url_err.reason)
-        #     raise url_err
-        #
-        # except AerisError as aeris_err:
-        #     print("AerisError: " + aeris_err.__str__())
-        #     raise aeris_err
-        #
-        # except Exception as ex:
-        #     print(ex.args)
-        #     raise ex
-        #
-        # finally:
-        #     file.close()
+        try:
+            geojson_obj = json.loads(file.read())
+
+            geojson = GeoJsonResponse(geojson_obj["features"][0], EndpointType.ALERTS)
+
+            assert geojson.type == "Feature"
+            assert geojson.id is None
+
+            geometry = geojson.geometry
+            assert type(geometry) is Geometry
+            assert geometry.type == "Polygon"
+            assert len(geometry.coordinates[0]) == 6
+            assert geometry.coordinates[0][0][0] == -91.42
+            assert geometry.coordinates[0][0][1] == 44.01
+
+            properties = geojson.properties
+            assert type(properties) is AlertsResponse
+            assert properties.id == "02660c46332b42ee47d2d3beb1ee043c"
+            location = properties.loc
+            assert location.long == -91.1152379047
+            assert location.lat == 43.9065279033
+
+            details = properties.details
+            assert type(details) is AlertDetails
+            assert details.type == "FL.W"
+            assert details.name == "FLOOD WARNING"
+            assert details.loc == "WIC063"
+            assert details.emergency is False
+            assert details.color == "00FF00"
+            assert details.cat == "flood"
+
+            timestamps = properties.timestamps
+            assert timestamps.issued == 1554825960
+            assert timestamps.issuedISO == "2019-04-09T11:06:00-05:00"
+            assert timestamps.begins == 1554825960
+            assert timestamps.beginsISO == "2019-04-09T11:06:00-05:00"
+            assert timestamps.expires == 1554879960
+            assert timestamps.expiresISO == "2019-04-10T02:06:00-05:00"
+            assert timestamps.added == 1554825995
+            assert timestamps.addedISO == "2019-04-09T11:06:35-05:00"
+
+            assert properties.poly == "-91.42,44.01,-91.2,43.88,-91.22,43.57,-91.27,43.61,-91.45,43.99"
+            assert properties.geoPoly["type"] == "Polygon"
+            assert len(properties.geoPoly["coordinates"][0]) == 6
+
+            includes = properties.includes
+            assert type(includes) is AlertIncludes
+            assert includes.counties[0] == "MNC055"
+            assert includes.counties[1] == "WIC063"
+            assert includes.fips[2] == "55123"
+            assert includes.wxzones[1] == "WIZ041"
+            assert includes.zipcodes[5] == "55919"
+
+            place = properties.place
+            assert type(place) is AerisPlace
+            assert place.name == "la crosse"
+            assert place.state == "wi"
+
+            assert properties.profile.tz == "America/Chicago"
+
+            assert properties.active is True
+
+        except URLError as url_err:
+            print("URL Error: " + url_err.reason)
+            raise url_err
+
+        except AerisError as aeris_err:
+            print("AerisError: " + aeris_err.__str__())
+            raise aeris_err
+
+        except Exception as ex:
+            print(ex.args)
+            raise ex
+
+        finally:
+            file.close()
 
     def test_api_response_obs(self):
         """ Test against a live response from the API """

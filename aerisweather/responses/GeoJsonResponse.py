@@ -15,7 +15,21 @@ class GeoJsonResponse(Response):
     data = {}
 
     def __init__(self, geo_json_data, endpoint_type: EndpointType):
-        """Constructor"""
+        """
+        Constructor
+
+        Takes a geojson string that represents the features array of a geojson response from the AerisWeather API.
+
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [ ]
+                },
+                "properties": {
+                ...
+        """
 
         super().__init__(json_data=geo_json_data)
         self.data = geo_json_data
@@ -26,8 +40,11 @@ class GeoJsonResponse(Response):
         return self.data["type"]
 
     @property
-    def id(self) -> str:
-        return self.data["id"]
+    def id(self) -> None:
+        if "id" in self.data:
+            return self.data["id"]
+        else:
+            return None
 
     @property
     def geometry(self) -> Geometry:
