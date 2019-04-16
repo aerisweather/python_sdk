@@ -13,6 +13,14 @@ class RequestAction(Enum):
     """
 
     @skip
+    class AIR_QUALITY(Enum):
+        ID = "id"
+        CLOSEST = "closest"
+        SEARCH = "search"
+        WITHIN = "within"
+        ROUTE = "route"
+
+    @skip
     class ALERTS(Enum):
         ID = "id"
         CLOSEST = "closest"
@@ -31,6 +39,14 @@ class RequestAction(Enum):
         ID = "id"
         CLOSEST = "closest"
         ROUTE = "route"
+
+    @skip
+    class OBSERVATIONS(Enum):
+        CLOSEST = "closest"
+        ID = "id"
+        ROUTE = "route"
+        SEARCH = "search"
+        WITHIN = "within"
 
     @skip
     class OBSERVATIONS (Enum):

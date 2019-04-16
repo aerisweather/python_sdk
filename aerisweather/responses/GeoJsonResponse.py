@@ -1,4 +1,5 @@
 from aerisweather.endpoints.Endpoint import EndpointType
+from aerisweather.responses.AirQualityResponse import AirQualityResponse
 from aerisweather.responses.Response import Response
 from aerisweather.responses.AlertsResponse import AlertsResponse
 from aerisweather.responses.CustomResponse import CustomResponse
@@ -52,7 +53,9 @@ class GeoJsonResponse(Response):
 
     @property
     def properties(self):
-        if self.endpoint_type == EndpointType.ALERTS:
+        if self.endpoint_type == EndpointType.AIR_QUALITY:
+            return AirQualityResponse(self.data["properties"])
+        elif self.endpoint_type == EndpointType.ALERTS:
             return AlertsResponse(self.data["properties"])
         elif self.endpoint_type == EndpointType.FORECASTS:
             return ForecastsResponse(self.data["properties"])

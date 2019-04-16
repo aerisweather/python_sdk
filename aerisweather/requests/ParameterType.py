@@ -13,6 +13,23 @@ class ParameterType(Enum):
     """
 
     @skip
+    class AIR_QUALITY(Enum):
+        P = "p"
+        FILTER = "filter"
+        QUERY = "query"
+        LIMIT = "limit"
+        SKIP = "skip"
+        SORT = "sort"
+        FIELDS = "fields"
+        FORMAT = "format"
+        PLIMIT = "plimit"
+        PSKIP = "pskip"
+        PSORT = "psort"
+        RADIUS = "radius"
+        CALLBACK = "callback"
+        MINDIST = "mindist"
+
+    @skip
     class ALERTS(Enum):
         CALLBACK = "callback"
         FIELDS = "fields"

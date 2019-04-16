@@ -13,6 +13,21 @@ class RequestQuery(Enum):
     """
 
     @skip
+    class AIR_QUALITY(Enum):
+        PM2P5 = "pm2p5"
+        PM10 = "pm10"
+        NO2 = "no2"
+        CO = "co"
+        SO2 = "so2"
+        O3 = "o3"
+        DT = "dt"
+        ID = "id"
+        NAME = "name"
+        CITY = "city"
+        STATE = "state"
+        COUNTRY = "country"
+
+    @skip
     class ALERTS(Enum):
         ACTIVE = "active"
         ADDED = "added"

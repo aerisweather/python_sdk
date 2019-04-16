@@ -4,6 +4,7 @@
 #
 from typing import Dict, List
 
+from aerisweather.endpoints.AirQualityEndpoint import AirQualityEndpoint
 from aerisweather.endpoints.AlertsEndpoint import AlertsEndpoint
 from aerisweather.endpoints.CustomEndpoint import CustomEndpoint
 from aerisweather.endpoints.ForecastsEndpoint import ForecastsEndpoint
@@ -11,6 +12,7 @@ from aerisweather.endpoints.ObservationsEndpoint import ObservationsEndpoint
 from aerisweather.endpoints.ObservationsSummaryEndpoint import ObservationsSummaryEndpoint
 from aerisweather.endpoints.PlacesEndpoint import PlacesEndpoint
 from aerisweather.endpoints.Endpoint import Endpoint, EndpointType
+
 from aerisweather.requests.ParameterType import ParameterType
 from aerisweather.requests.RequestAction import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter
@@ -18,19 +20,23 @@ from aerisweather.requests.RequestFormat import RequestFormat
 from aerisweather.requests.RequestLocation import RequestLocation
 from aerisweather.requests.RequestQuery import RequestQuery
 from aerisweather.requests.RequestSort import RequestSort
-from aerisweather.responses.GeoJsonResponse import GeoJsonResponse
+
+from aerisweather.responses.AirQualityResponse import AirQualityResponse
 from aerisweather.responses.AlertsResponse import AlertsResponse
 from aerisweather.responses.CustomResponse import CustomResponse
 from aerisweather.responses.ForecastsResponse import ForecastsResponse
+from aerisweather.responses.GeoJsonResponse import GeoJsonResponse
 from aerisweather.responses.ObservationsResponse import ObservationsResponse
 from aerisweather.responses.ObservationsSummaryResponse import ObservationsSummaryResponse
 from aerisweather.responses.PlacesResponse import PlacesResponse
+
 from aerisweather.utils.AerisError import AerisError
 from aerisweather.utils.AerisNetwork import AerisNetwork
 from aerisweather.utils.AerisResponseType import RESPONSE_TYPE, AerisResponseType
 
 
-class AerisWeather(AlertsEndpoint,
+class AerisWeather(AirQualityEndpoint,
+                   AlertsEndpoint,
                    ForecastsEndpoint,
                    ObservationsEndpoint,
                    ObservationsSummaryEndpoint,
@@ -201,7 +207,9 @@ class AerisWeather(AlertsEndpoint,
             Returns:
                 - a completed/fullfilled response object
             """
-            if endpoint_type == EndpointType.ALERTS:
+            if endpoint_type == EndpointType.AIR_QUALITY:
+                return AirQualityResponse(response_json)
+            elif endpoint_type == EndpointType.ALERTS:
                 return AlertsResponse(response_json)
             elif endpoint_type == EndpointType.FORECASTS:
                 return ForecastsResponse(response_json)
