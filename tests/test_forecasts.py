@@ -1,18 +1,7 @@
-
-import json
-from urllib.error import URLError
-
-from aerisweather.aerisweather import AerisWeather
-from aerisweather.endpoints.Endpoint import EndpointType, Endpoint
-from aerisweather.requests.ParameterType import ParameterType
-from aerisweather.requests.RequestFilter import RequestFilter
-from aerisweather.requests.RequestLocation import RequestLocation
+from .common_test_imports import *
 from aerisweather.responses.ForecastPeriod import ForecastPeriod
 from aerisweather.responses.ForecastsResponse import ForecastsResponse
-from aerisweather.responses.AerisLocation import AerisLocation
 from aerisweather.responses.AerisProfile import AerisProfileForecasts
-from aerisweather.utils.AerisError import AerisError
-from tests.keys import client_id, client_secret, app_id
 
 
 class TestForecasts:

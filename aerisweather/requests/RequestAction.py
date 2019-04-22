@@ -1,7 +1,13 @@
 
 from collections import namedtuple
 
-request_action = namedtuple('REQUEST_ACTION', ['AIR_QUALITY', 'ALERTS'])
+request_action = namedtuple('REQUEST_ACTION', ['AIR_QUALITY',
+                                               'ALERTS',
+                                               'CONVECTIVE_OUTLOOK',
+                                               'FORECASTS',
+                                               'OBSERVATIONS',
+                                               'OBSERVATIONS_SUMMARY',
+                                               'PLACES'])
 
 aqi = namedtuple('AIR_QUALITY', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN', 'ROUTE'])
 AIR_QUALITY = aqi('id', 'closest', 'search', 'within', 'route')

@@ -1,5 +1,5 @@
 
-from .common_endpoint_imports import *
+from .CommonEndpointImports import *
 
 
 class AlertsEndpoint(object):
@@ -11,7 +11,7 @@ class AlertsEndpoint(object):
                filter_: [RequestFilter] = None,
                sort: RequestSort = None,
                params: Dict[ParameterType, str] = None,
-               query: Dict[RequestQuery, str] = None,
+               query: Dict[str, str] = None,
                format_: [RequestFormat] = None):
         """ Performs an API request to get alerts data for a specified location.
 

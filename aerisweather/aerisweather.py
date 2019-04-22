@@ -1,6 +1,8 @@
+#
 #      _
 #     /_|   _ __ . _ | /| /  _    _/_ /_   _ __
 #    /  | (- /  / _) |/ |/ (- ( \ /  / / (- /
+#
 #
 from typing import Dict, List
 
@@ -129,7 +131,7 @@ class AerisWeather(AirQualityEndpoint,
             action: RequestAction = None,
             filter_: [RequestFilter] = None,
             sort: RequestSort = None,
-            params: Dict[ParameterType, str] = None,
+            params: Dict[str, str] = None,
             query: Dict[RequestQuery, str]=None,
             format_: RequestFormat = None) -> str:
         """ Generates the appropriate request url for a standard single API request.
@@ -167,7 +169,7 @@ class AerisWeather(AirQualityEndpoint,
 
         if params is not None:
             for param, value in params.items():
-                url += "&" + param.value + "=" + value
+                url += "&" + param + "=" + value
 
         if sort is not None:
             url += "&sort=" + sort.value
@@ -417,7 +419,7 @@ class AerisWeather(AirQualityEndpoint,
 
         if global_params is not None:
             for param, value in global_params.items():
-                url += "&" + param.value + "=" + value
+                url += "&" + param + "=" + value
 
         if global_sort is not None:
             url += "&sort=" + global_sort.value
@@ -460,7 +462,7 @@ class AerisWeather(AirQualityEndpoint,
                     else:
                         url += "%3F"
 
-                    url += param.value + "=" + value + ","
+                    url += param + "=" + value + ","
 
                     has_param = True
 

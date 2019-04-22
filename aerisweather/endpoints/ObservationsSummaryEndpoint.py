@@ -1,5 +1,5 @@
 
-from .common_endpoint_imports import *
+from .CommonEndpointImports import *
 
 
 class ObservationsSummaryEndpoint(object):

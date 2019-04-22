@@ -1,5 +1,5 @@
 
-from .common_endpoint_imports import *
+from .CommonEndpointImports import *
 
 
 class AirQualityEndpoint(object):
@@ -10,8 +10,8 @@ class AirQualityEndpoint(object):
                     action: RequestAction = None,
                     filter_: [RequestFilter] = None,
                     sort: RequestSort = None,
-                    params: Dict[ParameterType, str] = None,
-                    query: Dict[RequestQuery, str] = None,
+                    params: Dict[str, str] = None,
+                    query: Dict[str, str] = None,
                     format_: [RequestFormat] = None):
         """ Performs an API request to get air quality data for a specified location.
 
