@@ -14,7 +14,7 @@ from aerisweather.endpoints.PlacesEndpoint import PlacesEndpoint
 from aerisweather.endpoints.Endpoint import Endpoint, EndpointType
 
 from aerisweather.requests.ParameterType import ParameterType
-from aerisweather.requests.RequestAction import RequestAction
+from aerisweather.requests import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter
 from aerisweather.requests.RequestFormat import RequestFormat
 from aerisweather.requests.RequestLocation import RequestLocation
@@ -158,7 +158,7 @@ class AerisWeather(AirQualityEndpoint,
             url += endpoint_type.value + "/"
 
         if action is not None:
-            url += action.value + "/"
+            url += action + "/"
         else:
             url += location.location_str()
 

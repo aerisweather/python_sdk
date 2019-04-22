@@ -3,7 +3,7 @@ from typing import Dict
 
 from aerisweather.endpoints.Endpoint import Endpoint, EndpointType
 from aerisweather.requests.ParameterType import ParameterType
-from aerisweather.requests.RequestAction import RequestAction
+from aerisweather.requests import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter
 from aerisweather.requests.RequestFormat import RequestFormat
 from aerisweather.requests.RequestLocation import RequestLocation

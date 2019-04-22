@@ -5,7 +5,7 @@ from urllib.error import URLError
 from aerisweather.aerisweather import AerisWeather
 from aerisweather.endpoints.Endpoint import Endpoint, EndpointType
 from aerisweather.requests.ParameterType import ParameterType
-from aerisweather.requests.RequestAction import RequestAction
+from aerisweather.requests import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter
 from aerisweather.responses.AerisLocation import AerisLocation
 from aerisweather.responses.AerisPlace import AerisPlace

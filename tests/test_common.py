@@ -4,6 +4,7 @@ from aerisweather.utils.AerisDateTime import AerisDateTime
 import pytest
 
 
+
 class TestCommon:
     """ Defines tests modules for common classes throughout the SDK """
 

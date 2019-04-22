@@ -6,7 +6,7 @@ from aerisweather.aerisweather import AerisWeather
 from aerisweather.requests.RequestFormat import RequestFormat
 from aerisweather.endpoints.Endpoint import Endpoint, EndpointType
 from aerisweather.requests.ParameterType import ParameterType
-from aerisweather.requests.RequestAction import RequestAction
+from aerisweather.requests import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter
 from aerisweather.requests.RequestLocation import RequestLocation
 from aerisweather.requests.RequestQuery import RequestQuery
@@ -16,6 +16,8 @@ from aerisweather.responses.AerisPlace import AerisPlace
 from aerisweather.responses.AerisRelativeTo import AerisRelativeTo
 from aerisweather.utils.AerisError import AerisError
 from tests.keys import client_id, client_secret, app_id
+from pytest import approx
+import pytest
 
 common_imports = [
     Dict,

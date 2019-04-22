@@ -75,3 +75,47 @@ class TestAirQuality:
 
         finally:
             file.close()
+
+    def test_api_response(self):
+        """ Test the code against a live response from the API """
+
+        try:
+            awx = AerisWeather(app_id=app_id,
+                               client_id=client_id,
+                               client_secret=client_secret)
+
+            aqi_list = awx.air_quality(location=RequestLocation(postal_code="54601"),
+                                       action=RequestAction.AIR_QUALITY.CLOSEST,
+                                       filter_=None,
+                                       sort=None,
+                                       params={ParameterType.AIR_QUALITY.LIMIT: "2",
+                                               ParameterType.AIR_QUALITY.P: "54660"},
+                                       query=None)
+
+            for aqi in aqi_list:  # type: AirQualityResponse
+
+                assert type(aqi.loc) is AerisLocation
+                assert type(aqi.loc.long) is float
+                assert aqi.loc.lat == approx(43.801, rel=1e-2)
+                assert aqi.loc.long == approx(-91.5, rel=1e-2)
+
+                place = aqi.place
+                assert place.state == "wi"
+                assert place.country == "us"
+
+                periods = aqi.periods
+                assert len(periods) == 1
+                assert type(periods[0]) == AirQualityPeriod
+                assert type(aqi.profile) is AerisProfileAirQuality
+
+        except URLError as url_err:
+            print("URL Error: " + url_err.reason)
+            raise url_err
+
+        except AerisError as aeris_err:
+            print("AerisError: " + str(aeris_err))
+            raise aeris_err
+
+        except Exception as ex:
+            print(ex.args)
+            raise ex

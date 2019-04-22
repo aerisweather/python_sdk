@@ -1,71 +1,25 @@
-""" The @skip annotation allows us to create a nested enum structure, without including the child enums in the
- top level enum list. """
 
-from aenum import Enum, skip
+from collections import namedtuple
 
+request_action = namedtuple('REQUEST_ACTION', ['AIR_QUALITY', 'ALERTS'])
 
-class RequestAction(Enum):
-    """ Defines the available actions for each Aeris API endpoint's requests.
+aqi = namedtuple('AIR_QUALITY', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN', 'ROUTE'])
+AIR_QUALITY = aqi('id', 'closest', 'search', 'within', 'route')
 
-        For details on the use of each action value, see the Actions secton of the corresponding endpoint, such
-            as the Forecasts endpoint's actions found here:
-            https://www.aerisweather.com/support/docs/api/reference/endpoints/forecasts/#actions.
-    """
+alerts = namedtuple('ALERTS', ['ONE', 'TWO'])
+ALERTS = alerts('one', 'two')
 
-    @skip
-    class AIR_QUALITY(Enum):
-        ID = "id"
-        CLOSEST = "closest"
-        SEARCH = "search"
-        WITHIN = "within"
-        ROUTE = "route"
+conv = namedtuple('CONVECTIVE_OUTLOOK', ['AFFECTS', 'CONTAINS', 'ID', 'SEARCH'])
+CONVECTIVE_OUTLOOK = conv('affects', 'contains', 'id', 'search')
 
-    @skip
-    class ALERTS(Enum):
-        ID = "id"
-        CLOSEST = "closest"
-        SEARCH = "search"
-        WITHIN = "within"
+forecasts = namedtuple('FORECASTS', ['ID', 'CLOSEST', 'ROUTE'])
+FORECASTS = forecasts('id', 'closest', 'route')
 
-    @skip
-    class CONVECTIVE_OUTLOOK(Enum):
-        AFFECTS = "affects"
-        CONTAINS = "contains"
-        ID = "id"
-        SEARCH = "search"
+observations = namedtuple('OBSERVATIONS', ['CLOSEST', 'ID', 'ROUTE', 'SEARCH', 'WITHIN'])
+OBSERVATIONS = observations('closest', 'id', 'route', 'search', 'within')
 
-    @skip
-    class FORECASTS(Enum):
-        ID = "id"
-        CLOSEST = "closest"
-        ROUTE = "route"
+observations_summary = namedtuple('OBSERVATIONS_SUMMARY', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN'])
+OBSERVATIONS_SUMMARY = observations_summary('id', 'closest', 'search', 'within')
 
-    @skip
-    class OBSERVATIONS(Enum):
-        CLOSEST = "closest"
-        ID = "id"
-        ROUTE = "route"
-        SEARCH = "search"
-        WITHIN = "within"
-
-    @skip
-    class OBSERVATIONS (Enum):
-        CLOSEST = "closest"
-        ID = "id"
-        ROUTE = "route"
-        SEARCH = "search"
-        WITHIN = "within"
-
-    @skip
-    class OBSERVATIONS_SUMMARY(Enum):
-        ID = "id"
-        CLOSEST = "closest"
-        SEARCH = "search"
-        WITHIN = "within"
-
-    @skip
-    class PLACES(Enum):
-        ID = "id"
-        CLOSEST = "closest"
-        SEARCH = "search"
-        WITHIN = "within"
+places = namedtuple('PLACES', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN'])
+PLACES = places('id', 'closest', 'search', 'within')
