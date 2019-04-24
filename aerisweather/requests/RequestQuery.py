@@ -1,105 +1,40 @@
-""" The @skip annotation allows us to create a nested enum structure, without including the child enums in the
- top level enum list. """
+""" Defines the available query options for each Aeris API endpoint's requests.
 
-from aenum import Enum, skip
+    For details on the use of each query value, see the Queries secton of the corresponding endpoint, such
+    as the Observations endpoint's queries found here:
+    https://www.aerisweather.com/support/docs/api/reference/endpoints/observations/#queries.
+"""
+from collections import namedtuple
 
 
-class RequestQuery(Enum):
-    """ Defines the available query options for each Aeris API endpoint's requests.
+class RequestQuery:
 
-        For details on the use of each query value, see the Queries secton of the corresponding endpoint, such
-            as the Observations endpoint's queries found here:
-            https://www.aerisweather.com/support/docs/api/reference/endpoints/observations/#queries.
-    """
+    request_query = namedtuple('REQUEST_QUERY', ['AIR_QUALITY', 'ALERTS', 'OBSERVATIONS', 'OBSERVATIONS_SUMMARY',
+                                                 'PLACES'])
 
-    @skip
-    class AIR_QUALITY(Enum):
-        PM2P5 = "pm2p5"
-        PM10 = "pm10"
-        NO2 = "no2"
-        CO = "co"
-        SO2 = "so2"
-        O3 = "o3"
-        DT = "dt"
-        ID = "id"
-        NAME = "name"
-        CITY = "city"
-        STATE = "state"
-        COUNTRY = "country"
+    aqi = namedtuple('AIR_QUALITY', ['PM2P5', 'PM10', 'NO2', 'CO', 'SO2', 'O3', 'DT', 'ID', 'NAME', 'CITY',
+                                     'STATE', 'COUNTRY'])
+    AIR_QUALITY = aqi('pm2p5', 'pm10', 'no2', 'co', 'so2', 'o3', 'dt', 'id', 'name', 'city', 'state', 'country')
 
-    @skip
-    class ALERTS(Enum):
-        ACTIVE = "active"
-        ADDED = "added"
-        BEGINS = "begins"
-        COUNTRY = "country"
-        EMERGENCY = "emergency"
-        EXPIRES = "expires"
-        ID = "id"
-        ISSUED = "issued"
-        LOC = "loc"
-        NAME = "name"
-        SIG = "sig"
-        SIGP = "sigp"
-        STATE = "state"
-        TYPE = "type"
+    alrt = namedtuple('ALERTS', ['ACTIVE', 'ADDED', 'BEGINS', 'COUNTRY', 'EMERGENCY', 'EXPIRES', 'ID', 'ISSUED',
+                                 'LOC', 'NAME', 'SIG', 'SIGP', 'STATE', 'TYPE'])
+    ALERTS = alrt('active', 'added', 'begins', 'country', 'emergency', 'expires', 'id', 'issued', 'loc', 'name',
+                  'sig', 'sigp', 'state', 'type')
 
-    # Forecast Endpoint has no defined query items
-    # class FORECASTS (Enum):
+    obs = namedtuple('OBSERVATIONS', ['COUNTRY', 'DEWPT', 'ELEV', 'HAS_PRECIP', 'ID', 'GUST', 'NAME', 'PRECIP',
+                                      'PRESSURE', 'QC', 'QC_CODE', 'RH', 'STATE', 'TEMP', 'WIND', 'WIND_DIR'])
+    OBSERVATIONS = obs('country', 'dewpt', 'elev', 'hasprecip', 'id', 'gust', 'name', 'precip', 'pressure', 'qc',
+                       'qccode', 'rh', 'state', 'temp', 'wind', 'winddir')
 
-    @skip
-    class OBSERVATIONS (Enum):
-        COUNTRY = "country"
-        DEWPT = "dewpt"
-        ELEV = "elev"
-        HAS_PRECIP = "hasprecip"
-        ID = "id"
-        GUST = "gust"
-        NAME = "name"
-        PRECIP = "precip"
-        PRESSURE = "pressure"
-        QC = "qc"
-        QC_CODE = "qccode"
-        RH = "rh"
-        STATE = "state"
-        TEMP = "temp"
-        WIND = "wind"
-        WIND_DIR = "winddir"
+    obs_sum = namedtuple('OBSERVATIONS_SUMMARY', ['AVG_DEWPT', 'AVG_PRES', 'AVG_RH', 'AVG_VIS', 'AVGT', 'COUNT',
+                                                  'COUNTRY', 'DATE', 'ELEV', 'GUST', 'HAS_PRECIP', 'ID',
+                                                  'MAX_DEWPT', 'MAX_PRES', 'MAX_RH', 'MAX_VIS', 'MAXT', 'MIN_DEWPT',
+                                                  'MIN_PRES', 'MIN_RH', 'MIN_VIS', 'MINT', 'NAME', 'PRECIP',
+                                                  'PRECIPC', 'STATE', 'WIND'])
+    OBSERVATIONS_SUMMARY = obs_sum('avgdewpt', 'avgp', 'avgrh', 'avgv', 'avgt', 'count', 'country', 'dt', 'elev',
+                                   'gust', 'hasprecip', 'id', 'maxdewpt', 'maxp', 'maxrh', 'maxv', 'maxt', 'mindewpt',
+                                   'minp', 'minrh', 'minv', 'mint', 'name', 'precip', 'precipc', 'state', 'wind')
 
-    @skip
-    class OBSERVATIONS_SUMMARY(Enum):
-        AVG_DEWPT = "avgdewpt"
-        AVG_PRES = "avgp"
-        AVG_RH = "avgrh"
-        AVG_VIS = "avgv"
-        AVGT = "avgt"
-        COUNT = "count"
-        COUNTRY = "country"
-        DATE = "dt"
-        ELEV = "elev"
-        GUST = "gust"
-        HAS_PRECIP = "hasprecip"
-        ID = "id"
-        MAX_DEWPT = "maxdewpt"
-        MAX_PRES = "maxp"
-        MAX_RH = "maxrh"
-        MAX_VIS = "maxv"
-        MAXT = "maxt"
-        MIN_DEWPT = "mindewpt"
-        MIN_PRES = "minp"
-        MIN_RH = "minrh"
-        MIN_VIS = "minv"
-        MINT = "mint"
-        NAME = "name"
-        PRECIP = "precip"
-        PRECIPC = "precipc"
-        STATE = "state"
-        WIND = "wind"
+    pl = namedtuple('PLACES', ['ALT_NAME', 'COUNTRY', 'NAME', 'POP', 'STATE'])
+    PLACES = pl('altname', 'country', 'name', 'pop', 'state')
 
-    @skip
-    class PLACES(Enum):
-        ALT_NAME = "altname"
-        COUNTRY = "country"
-        NAME = "name"
-        POP = "pop"
-        STATE = "state"

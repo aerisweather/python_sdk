@@ -176,7 +176,7 @@ class AerisWeather(AirQualityEndpoint,
             url += "&sort=" + sort.value
 
         if format_ is not None:
-            url += "&format=" + format_.value
+            url += "&format=" + format_
 
         if filter_ is not None:
             if len(filter_) > 0:
@@ -281,7 +281,7 @@ class AerisWeather(AirQualityEndpoint,
 
         if query_dict is not None:
             for q, value in query_dict.items():
-                out_query += "&" + q.value + "=" + value
+                out_query += "&" + q + "=" + value
         else:
             out_query = None
 
