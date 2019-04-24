@@ -10,7 +10,7 @@ class ForecastsEndpoint(object):
                   action: RequestAction = None,
                   filter_: [RequestFilter] = None,
                   sort: RequestSort = None,
-                  params: Dict[str, str] = None,
+                  params: Dict[ParameterType, str] = None,
                   query: Dict[RequestQuery, str] = None,
                   format_: RequestFormat = None):
         """ Performs an API request to get forecast data for a specified location.

@@ -11,7 +11,7 @@ class AlertsEndpoint(object):
                filter_: [RequestFilter] = None,
                sort: RequestSort = None,
                params: Dict[ParameterType, str] = None,
-               query: Dict[str, str] = None,
+               query: Dict[RequestQuery, str] = None,
                format_: [RequestFormat] = None):
         """ Performs an API request to get alerts data for a specified location.
 

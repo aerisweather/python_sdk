@@ -3,7 +3,8 @@ import json
 from urllib.error import URLError
 
 from aerisweather.aerisweather import AerisWeather
-from aerisweather.endpoints.Endpoint import Endpoint, EndpointType
+from aerisweather.endpoints.Endpoint import Endpoint
+from aerisweather.endpoints.EndpointType import EndpointType
 from aerisweather.requests.RequestFilter import RequestFilter
 from aerisweather.requests.RequestLocation import RequestLocation
 from aerisweather.responses.AerisPlace import AerisPlace

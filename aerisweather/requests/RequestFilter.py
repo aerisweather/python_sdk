@@ -1,144 +1,60 @@
-""" The @skip annotation allows us to create a nested enum structure, without including the child enums in the
- top level enum list. """
-
-from aenum import Enum, skip
-
-
-class RequestFilter(Enum):
-    """ Defines the available filters for each Aeris API endpoint's requests.
+""" Defines the available filters for each Aeris API endpoint's requests.
 
         For details on the use of each filter value, see the Filters secton of the corresponding endpoint, such
             as the Forecasts endpoint's filters found here:
             https://www.aerisweather.com/support/docs/api/reference/endpoints/forecasts/#filters.
     """
+from collections import namedtuple
 
-    @skip
-    class AIR_QUALITY(Enum):
-        PM2P5 = "pm2p5"
-        PM10 = "pm10"
-        NO2 = "no2"
-        CO = "co"
-        SO2 = "so2"
-        O3 = "o3"
-        CHINA = "china"
-        INDIA = "india"
 
-    @skip
-    class ALERTS(Enum):
-        ADVISORY = "advisory"
-        ALL = "all"
-        ALL_COUNTRIES = "allcountries"
-        BEACH = "beach"
-        CANADA = "canada"
-        COUNTY = "county"
-        DISTINCT = "distinct"
-        EMERGENCY = "emergency"
-        FIRE = "fire"
-        FLOOD = "flood"
-        FORECAST = "forecast"
-        HAS_SMALL_POLY = "hassmallpoly"
-        MARINE = "marine"
-        NON_MARINE = "nonmarine"
-        NON_PRECIP = "nonprecip"
-        NOW = "now"
-        OUTLOOK = "outlook"
-        STATEMENT = "statement"
-        SEVERE = "severe"
-        SYNOPSIS = "synopsis"
-        TORNADO = "tornado"
-        TROPICAL = "tropical"
-        TSUNAMI = "tsunami"
-        WARNING = "warning"
-        WATCH = "watch"
-        WIND = "wind"
-        WINTER = "winter"
-        USA = "usa"
-        GEO = "geo"
+class RequestFilter:
 
-    @skip
-    class CONVECTIVE_OUTLOOK(Enum):
-        ALL = "all"
-        ALLHAIL = "allhail"
-        ALLTORN = "alltorn"
-        ALLWIND = "allwind"
-        CAT = "cat"
-        CONHAZO = "conhazo"
-        DAY1 = "day1"
-        DAY2 = "day2"
-        DAY3 = "day3"
-        DAY4 = "day4"
-        DAY5 = "day5"
-        DAY6 = "day6"
-        DAY7 = "day7"
-        DAY8 = "day8"
-        ENHANCED = "enhanced"
-        GENERAL = "general"
-        HAIL = "hail"
-        HIGH = "high"
-        MARGINAL = "marginal"
-        MODERATE = "moderate,mod"
-        PROB = "prob"
-        SLIGHT = "slight"
-        TORN = "torn"
-        WIND = "wind"
-        XHAIL = "xhail,sighail"
-        XTORN = "xtorn,sigtorn"
-        XWIND = "xwind.sigwind"
-        GEO = "geo"
+    request_filter = namedtuple('REQUEST_FILTER', ['AIR_QUALITY', 'ALERTS', 'CONVECTIVE_OUTLOOK', 'FORECASTS',
+                                                   'OBSERVATIONS', 'OBSERVATIONS_SUMMARY', 'PLACES'])
 
-    @skip
-    class FORECASTS(Enum):
-        DAY = "day"
-        DAY_NIGHT = "daynight"
-        HR = "#hr"
-        PRECISE = "precise"
-        GEO = "geo"
+    # AIR QUALITY
+    aqi = namedtuple('AIR_QUALITY', ['PM2P5', 'PM10', 'NO2', 'CO', 'SO2', 'O3', 'CHINA', 'INDIA'])
+    AIR_QUALITY = aqi('pm2p5', 'pm10', 'no2', 'co', 'so2', 'o3', 'china', 'india')
 
-    @skip
-    class OBSERVATIONS(Enum):
-        ALL_STATIONS = "allstations"
-        ALLOW_NO_SKY = "allownosky"
-        HAS_PRECIP = "hasprecip"
-        METAR = "metar"
-        MESONET = "mesonet"
-        PWS = "pws"
-        GEO = "geo"
+    # ALERTS
+    alts = namedtuple('ALERTS', ['ADVISORY', 'ALL', 'ALL_COUNTRIES', 'BEACH', 'CANADA', 'COUNTY', 'DISTINCT',
+                                 'EMERGENCY', 'FIRE', 'FLOOD', 'FORECAST', 'HAS_SMALL_POLY', 'MARINE',
+                                 'NON_MARINE', 'NON_PRECIP', 'NOW', 'OUTLOOK', 'STATEMENT', 'SEVERE',
+                                 'SYNOPSIS', 'TORNADO', 'TROPICAL', 'TSUNAMI', 'WARNING', 'WATCH', 'WIND',
+                                 'WINTER', 'USA', 'GEO'])
+    ALERTS = alts('advisory', 'all', 'allcountries', 'beach', 'canada', 'county', 'distinct', 'emergency',
+                  'fire', 'flood', 'forecast', 'hassmallpoly', 'marine', 'nonmarine', 'nonprecip', 'now', 'outlook',
+                  'statement', 'severe', 'synopsis', 'tornado', 'tropical', 'tsunami', 'warning', 'watch', 'wind',
+                  'winter', 'usa', 'geo')
 
-    @skip
-    class OBSERVATIONS_SUMMARY(Enum):
-        ALL_STATIONS = "allstations"
-        HAS_PRECIP = "hasprecip"
-        MESONET = "mesonet"
-        METAR = "metar"
-        OFFICAL = "official"
-        PWS = "pws"
-        GEO = "geo"
+    # CONVECTIVE_OUTLOOK
+    conv = namedtuple('CONVECTIVE_OUTLOOK', ['ALL', 'ALLHAIL', 'ALLTORN', 'ALLWIND', 'CAT', 'CONHAZO', 'DAY1',
+                                             'DAY2', 'DAY3', 'DAY4', 'DAY5', 'DAY6', 'DAY7', 'DAY8', 'ENHANCED',
+                                             'GENERAL', 'HAIL', 'HIGH', 'MARGINAL', 'MODERATE', 'PROB',
+                                             'SLIGHT', 'TORN', 'WIND', 'XHAIL', 'XTORN', 'XWIND', 'GEO'])
+    CONVECTIVE_OUTLOOK = conv('all', 'allhail', 'alltorn', 'allwind', 'cat', 'conhazo', 'day1', 'day2', 'day3',
+                              'day4', 'day5', 'day6', 'day7', 'day8', 'enhanced', 'general', 'hail', 'high',
+                              'marginal', 'moderate', 'prob', 'slight', 'torn', 'wind', 'xhail,sighail',
+                              'xtorn,sigtorn', 'xwind,sigwind', 'geo')
 
-    @skip
-    class PLACES(Enum):
-        AIRPORT = "airport"
-        AMUSEMENT = "amusement"
-        BRIDGE = "bridge"
-        CAMP = "camp"
-        CHURCH = "church"
-        COUNTY = "county"
-        DIVISIONS = "divisions"
-        FEATURE = "feature"
-        FORT = "fort"
-        GOLF = "golf"
-        LAKE = "lake"
-        NEIGHBORHOOD = "neighborhood"
-        PARISH = "parish"
-        PARK = "park"
-        POINTS_OF_INTEREST = "poi"
-        PORT = "port"
-        POPULATED_PLACES = "ppl"
-        RESERVE = "reserve"
-        SCHOOL = "school"
-        STADIUM = "stadium"
-        TEMPLE = "temple"
-        TRAIL = "trail"
-        TUNNEL = "tunnel"
-        UNIVERSITY = "university"
-        WORSHIP = "worship"
-        GEO = "geo"
+    # FORECASTS
+    fcast = namedtuple('FORECASTS', ['DAY', 'DAY_NIGHT', 'HR', 'PRECISE', 'GEO'])
+    FORECASTS = fcast('day', 'daynight', '#hr', 'precise', 'geo')
+
+    # OBSERVATIONS
+    obs = namedtuple('OBSERVATIONS', ['ALL_STATIONS', 'ALLOW_NO_SKY', 'HAS_PRECIP', 'METAR', 'MESONET', 'PWS', 'GEO'])
+    OBSERVATIONS = obs('allstations', 'allownosky', 'hasprecip', 'metar', 'mesonet', 'pws', 'geo')
+
+    # OBSERVATIONS_SUMMARY
+    obs_summary = namedtuple('OBSERVATIONS_SUMMARY', ['ALL_STATIONS', 'HAS_PRECIP', 'MESONET', 'METAR', 'OFFICAL',
+                                                      'PWS', 'GEO'])
+    OBSERVATIONS_SUMMARY = obs_summary('allstations', 'hasprecip', 'mesonet', 'metar', 'official', 'pws', 'geo')
+
+    # PLACES
+    pl = namedtuple('PLACES', ['AIRPORT', 'AMUSEMENT', 'BRIDGE', 'CAMP', 'CHURCH', 'COUNTY', 'DIVISIONS',
+                               'FEATURE', 'FORT', 'GOLF', 'LAKE', 'NEIGHBORHOOD', 'PARISH', 'PARK',
+                               'POINTS_OF_INTEREST', 'PORT', 'POPULATED_PLACES', 'RESERVE', 'SCHOOL',
+                               'STADIUM', 'TEMPLE', 'TRAIL', 'TUNNEL', 'UNIVERSITY', 'WORSHIP', 'GEO'])
+    PLACES = pl("airport", "amusement", "bridge", "camp", "church", "county", "divisions", "feature", "fort", "golf",
+                "lake", "neighborhood", "parish", "park", "poi", "port", "ppl", "reserve", "school", "stadium",
+                "temple", "trail", "tunnel", "university", "worship", "geo")

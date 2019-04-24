@@ -13,10 +13,11 @@ from aerisweather.endpoints.ForecastsEndpoint import ForecastsEndpoint
 from aerisweather.endpoints.ObservationsEndpoint import ObservationsEndpoint
 from aerisweather.endpoints.ObservationsSummaryEndpoint import ObservationsSummaryEndpoint
 from aerisweather.endpoints.PlacesEndpoint import PlacesEndpoint
-from aerisweather.endpoints.Endpoint import Endpoint, EndpointType
+from aerisweather.endpoints.Endpoint import Endpoint
+from aerisweather.endpoints.EndpointType import EndpointType
 
 from aerisweather.requests.ParameterType import ParameterType
-from aerisweather.requests import RequestAction
+from aerisweather.requests.RequestAction import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter
 from aerisweather.requests.RequestFormat import RequestFormat
 from aerisweather.requests.RequestLocation import RequestLocation
@@ -181,7 +182,7 @@ class AerisWeather(AirQualityEndpoint,
             if len(filter_) > 0:
                 url += "&filter="
                 for filt in filter_:
-                    url += filt.value + ","
+                    url += filt + ","
 
         out_query = self.query_str(query)
 
@@ -415,7 +416,7 @@ class AerisWeather(AirQualityEndpoint,
             if len(global_filter_) > 0:
                 url += "&filter="
                 for filt in global_filter_:
-                    url += filt.value + ","
+                    url += filt + ","
 
         if global_params is not None:
             for param, value in global_params.items():
@@ -451,7 +452,7 @@ class AerisWeather(AirQualityEndpoint,
                     url += "%3Ffilter="
 
                 for filt in endpoint.filter_:
-                    url += filt.value + ","
+                    url += filt + ","
 
                 has_param = True
 

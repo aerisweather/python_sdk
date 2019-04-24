@@ -1,31 +1,39 @@
+""" Defines the available Request Actions for each Aeris API endpoint.
 
+    For details on the use of each action value, see the Actions section of the corresponding endpoint, such
+    as the Forecasts endpoint's actions found here:
+    https://www.aerisweather.com/support/docs/api/reference/endpoints/forecasts/#actions.
+"""
 from collections import namedtuple
 
-request_action = namedtuple('REQUEST_ACTION', ['AIR_QUALITY',
-                                               'ALERTS',
-                                               'CONVECTIVE_OUTLOOK',
-                                               'FORECASTS',
-                                               'OBSERVATIONS',
-                                               'OBSERVATIONS_SUMMARY',
-                                               'PLACES'])
 
-aqi = namedtuple('AIR_QUALITY', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN', 'ROUTE'])
-AIR_QUALITY = aqi('id', 'closest', 'search', 'within', 'route')
+class RequestAction:
 
-alerts = namedtuple('ALERTS', ['ONE', 'TWO'])
-ALERTS = alerts('one', 'two')
+    request_action = namedtuple('REQUEST_ACTION', ['AIR_QUALITY',
+                                                   'ALERTS',
+                                                   'CONVECTIVE_OUTLOOK',
+                                                   'FORECASTS',
+                                                   'OBSERVATIONS',
+                                                   'OBSERVATIONS_SUMMARY',
+                                                   'PLACES'])
 
-conv = namedtuple('CONVECTIVE_OUTLOOK', ['AFFECTS', 'CONTAINS', 'ID', 'SEARCH'])
-CONVECTIVE_OUTLOOK = conv('affects', 'contains', 'id', 'search')
+    aqi = namedtuple('AIR_QUALITY', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN', 'ROUTE'])
+    AIR_QUALITY = aqi('id', 'closest', 'search', 'within', 'route')
 
-forecasts = namedtuple('FORECASTS', ['ID', 'CLOSEST', 'ROUTE'])
-FORECASTS = forecasts('id', 'closest', 'route')
+    alts = namedtuple('ALERTS', ['ONE', 'TWO'])
+    ALERTS = alts('one', 'two')
 
-observations = namedtuple('OBSERVATIONS', ['CLOSEST', 'ID', 'ROUTE', 'SEARCH', 'WITHIN'])
-OBSERVATIONS = observations('closest', 'id', 'route', 'search', 'within')
+    conv = namedtuple('CONVECTIVE_OUTLOOK', ['AFFECTS', 'CONTAINS', 'ID', 'SEARCH'])
+    CONVECTIVE_OUTLOOK = conv('affects', 'contains', 'id', 'search')
 
-observations_summary = namedtuple('OBSERVATIONS_SUMMARY', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN'])
-OBSERVATIONS_SUMMARY = observations_summary('id', 'closest', 'search', 'within')
+    fcasts = namedtuple('FORECASTS', ['ID', 'CLOSEST', 'ROUTE'])
+    FORECASTS = fcasts('id', 'closest', 'route')
 
-places = namedtuple('PLACES', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN'])
-PLACES = places('id', 'closest', 'search', 'within')
+    obs = namedtuple('OBSERVATIONS', ['CLOSEST', 'ID', 'ROUTE', 'SEARCH', 'WITHIN'])
+    OBSERVATIONS = obs('closest', 'id', 'route', 'search', 'within')
+
+    obs_summary = namedtuple('OBSERVATIONS_SUMMARY', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN'])
+    OBSERVATIONS_SUMMARY = obs_summary('id', 'closest', 'search', 'within')
+
+    pl = namedtuple('PLACES', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN'])
+    PLACES = pl('id', 'closest', 'search', 'within')
