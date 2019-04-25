@@ -88,7 +88,7 @@ class TestCustomEndpoint:
 
         except AerisError as aeris_err:
             assert aeris_err.code == "invalid_request"
-            print("AerisError: " + "Level: " + aeris_err.level.value + " - " + str(aeris_err))
+            print("AerisError: " + "Level: " + aeris_err.level + " - " + str(aeris_err))
             # raise aeris_err
 
         except Exception as ex:

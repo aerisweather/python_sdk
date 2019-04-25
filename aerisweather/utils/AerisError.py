@@ -1,9 +1,8 @@
 
 import logging
-from aenum import Enum
 
 
-class AerisErrorLevel(Enum):
+class AerisErrorLevel:
     INFO = "info"
     WARNING = "warning"
     NO_DATA = "warn_no_data"
