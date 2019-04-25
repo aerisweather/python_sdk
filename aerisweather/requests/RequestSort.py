@@ -31,6 +31,10 @@ class RequestSort:
                                'marginal', 'moderate,mod', 'prob', 'slight', 'torn', 'wind', 'xhail,sighail',
                                'xtorn,sigtorn', 'xwind.sigwind')
 
+    # LIGHTNING
+    lght = namedtuple('LIGHTNING', ['TYPE', 'PEAKAMP', 'HEIGHT', 'NUMSENSORS'])
+    LIGHTNING = lght('type', 'peakamp', 'height', 'numsensors')
+
     # OBSERVATIONS
     obs = namedtuple('OBSERVATIONS', ['CLOSEST', 'ID', 'ROUTE', 'SEARCH', 'WITHIN'])
     OBSERVATIONS = obs('closest', 'id', 'route', 'search', 'within')

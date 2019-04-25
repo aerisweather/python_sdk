@@ -21,6 +21,9 @@ class RequestQuery:
     ALERTS = alrt('active', 'added', 'begins', 'country', 'emergency', 'expires', 'id', 'issued', 'loc', 'name',
                   'sig', 'sigp', 'state', 'type')
 
+    lght = namedtuple('LIGHTNING', ['TYPE', 'PEAKAMP', 'HEIGHT', 'NUMSENSORS'])
+    LIGHTNING = lght('type', 'peakamp', 'height', 'numsensors')
+
     obs = namedtuple('OBSERVATIONS', ['COUNTRY', 'DEWPT', 'ELEV', 'HAS_PRECIP', 'ID', 'GUST', 'NAME', 'PRECIP',
                                       'PRESSURE', 'QC', 'QC_CODE', 'RH', 'STATE', 'TEMP', 'WIND', 'WIND_DIR'])
     OBSERVATIONS = obs('country', 'dewpt', 'elev', 'hasprecip', 'id', 'gust', 'name', 'precip', 'pressure', 'qc',

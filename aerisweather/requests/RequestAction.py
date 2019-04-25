@@ -13,6 +13,7 @@ class RequestAction:
                                                    'ALERTS',
                                                    'CONVECTIVE_OUTLOOK',
                                                    'FORECASTS',
+                                                   'LIGHTNING',
                                                    'OBSERVATIONS',
                                                    'OBSERVATIONS_SUMMARY',
                                                    'PLACES'])
@@ -28,6 +29,9 @@ class RequestAction:
 
     fcasts = namedtuple('FORECASTS', ['ID', 'CLOSEST', 'ROUTE'])
     FORECASTS = fcasts('id', 'closest', 'route')
+
+    lght = namedtuple('LIGHTNING', ['ID', 'CLOSEST', 'ROUTE', 'SEARCH'])
+    LIGHTNING = lght('id', 'closest', 'route', 'search')
 
     obs = namedtuple('OBSERVATIONS', ['CLOSEST', 'ID', 'ROUTE', 'SEARCH', 'WITHIN'])
     OBSERVATIONS = obs('closest', 'id', 'route', 'search', 'within')

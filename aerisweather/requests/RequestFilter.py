@@ -41,6 +41,10 @@ class RequestFilter:
     fcast = namedtuple('FORECASTS', ['DAY', 'DAY_NIGHT', 'HR', 'PRECISE', 'GEO'])
     FORECASTS = fcast('day', 'daynight', '#hr', 'precise', 'geo')
 
+    # LIGHTNING
+    lght = namedtuple('LIGHTNING', ['CG', 'IC', 'ALL', 'NEGATIVE', 'POSITIVE'])
+    LIGHTNING = lght('cg', 'ic', 'all', 'negative', 'positive')
+
     # OBSERVATIONS
     obs = namedtuple('OBSERVATIONS', ['ALL_STATIONS', 'ALLOW_NO_SKY', 'HAS_PRECIP', 'METAR', 'MESONET', 'PWS', 'GEO'])
     OBSERVATIONS = obs('allstations', 'allownosky', 'hasprecip', 'metar', 'mesonet', 'pws', 'geo')

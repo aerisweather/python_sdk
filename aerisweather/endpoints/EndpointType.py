@@ -20,6 +20,7 @@ class EndpointType(Enum):
     ALERTS = "advisories"
     CONVECTIVE_OUTLOOK = "convective/outlook"
     FORECASTS = "forecasts"
+    LIGHTNING = "lightning"
     OBSERVATIONS = "observations"
     OBSERVATIONS_SUMMARY = "observations/summary"
     PLACES = "places"

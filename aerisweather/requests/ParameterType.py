@@ -10,7 +10,7 @@ from collections import namedtuple
 
 class ParameterType:
 
-    parameter_type = namedtuple('PARAMETER_TYPE', ['AIR_QUALITY', 'ALERTS', 'FORECASTS', 'OBSERVATIONS',
+    parameter_type = namedtuple('PARAMETER_TYPE', ['AIR_QUALITY', 'ALERTS', 'FORECASTS', 'LIGHTNING', 'OBSERVATIONS',
                                                    'OBSERVATIONS_SUMMARY', 'PLACES'])
     # AIR QUALITY
     aqi = namedtuple('AIR_QUALITY', ['P', 'FILTER', 'QUERY', 'LIMIT', 'SKIP', 'SORT', 'FIELDS', 'FORMAT',
@@ -27,6 +27,12 @@ class ParameterType:
     forecasts = namedtuple('FORECASTS', ['CALLBACK', 'FIELDS', 'FILTER', 'FROM', 'LIMIT', 'P', 'PLIMIT', 'PSKIP',
                                          'QUERY', 'SKIP', 'TO'])
     FORECASTS = forecasts('callback', 'fields', 'filter', 'from', 'limit', 'p', 'plimit', 'pskip', 'query', 'skip', 'to')
+
+    # LIGHTNING
+    lightn = namedtuple('LIGHTNING', ['CALLBACK', 'FIELDS', 'FILTER', 'FORMAT', 'FROM', 'LIMIT', 'P', 'PLIMIT', 'PSKIP',
+                                      'QUERY', 'RADIUS', 'SKIP', 'SORT', 'TO'])
+    LIGHTNING = lightn('callback', 'fields', 'filter', 'format', 'from', 'limit', 'p', 'plimit', 'pskip', 'query',
+                       'radius', 'skip', 'sort', 'to')
 
     # OBSERVATIONS
     observations = namedtuple('OBSERVATIONS', ['CALLBACK', 'FIELDS', 'FILTER', 'FROM', 'LIMIT', 'P', 'RADIUS',
