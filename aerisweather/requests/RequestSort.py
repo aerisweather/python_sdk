@@ -1,94 +1,42 @@
-""" The @skip annotation allows us to create a nested enum structure, without including the child enums in the
- top level enum list. """
+""" Defines the available sort options for each Aeris API endpoint's requests.
 
-from aenum import Enum, skip
+    For details on the use of each sort value, see the Sorting secton of the corresponding endpoint, such
+    as the Observations endpoint's sorts found here:
+        https://www.aerisweather.com/support/docs/api/reference/endpoints/observations/#sorting.
+"""
+from collections import namedtuple
 
 
-class RequestSort(Enum):
-    """ Defines the available sort options for each Aeris API endpoint's requests.
+class RequestSort:
 
-        For details on the use of each sort value, see the Sorting secton of the corresponding endpoint, such
-            as the Observations endpoint's sorts found here:
-            https://www.aerisweather.com/support/docs/api/reference/endpoints/observations/#sorting.
-    """
+    request_sort = namedtuple('REQUEST_SORT', ['AIR_QUALITY', 'ALERTS', 'OBSERVATIONS', 'PLACES'])
 
-    @skip
-    class AIR_QUALITY(Enum):
-        PM2P5 = "pm2p5"
-        PM10 = "pm10"
-        NO2 = "no2"
-        CO = "co"
-        SO2 = "so2"
-        O3 = "o3"
-        DT = "dt"
-        ID = "id"
-        NAME = "name"
-        CITY = "city"
-        STATE = "state"
-        COUNTRY = "country"
+    # AIR QUALITY
+    aqi = namedtuple('AIR_QUALITY', ['PM2P5', 'PM10', 'NO2', 'CO', 'SO2', 'O3', 'DT', 'ID', 'NAME', 'CITY',
+                                     'STATE', 'COUNTRY'])
+    AIR_QUALITY = aqi('pm2p5', 'pm10', 'no2', 'co', 'so2', 'o3', 'dt', 'id', 'name', 'city', 'state', 'country')
 
-    @skip
-    class ALERTS (Enum):
-        COUNTRY = "country"
-        DEWPT = "dewpt"
-        GUST = "gust"
-        ID = "id"
-        NAME = "name"
-        PRESSURE = "pressure"
-        RH = "rh"
-        STATE = "state"
-        TEMP = "temp"
-        WIND = "wind"
-        WIN_DIR = "winddir"
+    # ALERTS
+    alrt = namedtuple('ALERTS', ['COUNTRY', 'DEWPT', 'GUST', 'ID', 'NAME', 'PRESSURE', 'RH', 'STATE', 'TEMP',
+                                 'WIND', 'WIN_DIR'])
+    ALERTS = alrt('country', 'dewpt', 'gust', 'id', 'name', 'pressure', 'rh', 'state', 'temp', 'wind', 'winddir')
 
-    @skip
-    class CONVECTIVE_OUTLOOK (Enum):
-        ALL = "all"
-        ALLHAIL = "allhail"
-        ALLTORN = "alltorn"
-        ALLWIND = "allwind"
-        CAT = "cat"
-        CONHAZO = "conhazo"
-        DAY1 = "day1"
-        DAY2 = "day2"
-        DAY3 = "day3"
-        DAY4 = "day4"
-        DAY5 = "day5"
-        DAY6 = "day6"
-        DAY7 = "day7"
-        DAY8 = "day8"
-        ENHANCED = "enhanced"
-        GENERAL = "general"
-        HAIL = "hail"
-        HIGH = "high"
-        MARGINAL = "marginal"
-        MODERATE = "moderate,mod"
-        PROB = "prob"
-        SLIGHT = "slight"
-        TORN = "torn"
-        WIND = "wind"
-        XHAIL = "xhail,sighail"
-        XTORN = "xtorn,sigtorn"
-        XWIND = "xwind.sigwind"
+    # CONVECTIVE_OUTLOOK
+    convo = namedtuple('CONVECTIVE_OUTLOOK', ['ALL', 'ALLHAIL', 'ALLTORN', 'ALLWIND', 'CAT', 'CONHAZO', 'DAY1',
+                                              'DAY2', 'DAY3', 'DAY4', 'DAY5', 'DAY6', 'DAY7', 'DAY8', 'ENHANCED',
+                                              'GENERAL', 'HAIL', 'HIGH', 'MARGINAL', 'MODERATE', 'PROB', 'SLIGHT',
+                                              'TORN', 'WIND', 'XHAIL', 'XTORN', 'XWIND'])
+    CONVECTIVE_OUTLOOK = convo('all', 'allhail', 'alltorn', 'allwind', 'cat', 'conhazo', 'day1', 'day2', 'day3',
+                               'day4', 'day5', 'day6', 'day7', 'day8', 'enhanced', 'general', 'hail', 'high',
+                               'marginal', 'moderate,mod', 'prob', 'slight', 'torn', 'wind', 'xhail,sighail',
+                               'xtorn,sigtorn', 'xwind.sigwind')
 
-    # Forecast Endpoint has no defined query items
-    # class FORECASTS (Enum):
+    # OBSERVATIONS
+    obs = namedtuple('OBSERVATIONS', ['CLOSEST', 'ID', 'ROUTE', 'SEARCH', 'WITHIN'])
+    OBSERVATIONS = obs('closest', 'id', 'route', 'search', 'within')
 
-    @skip
-    class OBSERVATIONS(Enum):
-        CLOSEST = "closest"
-        ID = "id"
-        ROUTE = "route"
-        SEARCH = "search"
-        WITHIN = "within"
+    # PLACES
+    plc = namedtuple('PLACES', ['COUNTRY', 'HAS_ZIP', 'POP', 'NAME', 'STATE'])
+    PLACES = plc('country', 'haszip', 'pop', 'name', 'state')
 
-    # ObservationsSummary Endpoint has no defined query items
-    # class OBSERVATIONS_SUMMARY (Enum):
 
-    @skip
-    class PLACES(Enum):
-        COUNTRY = "country"
-        HAS_ZIP = "haszip"
-        POP = "pop"
-        NAME = "name"
-        STATE = "state"

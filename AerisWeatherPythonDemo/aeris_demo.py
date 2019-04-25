@@ -3,7 +3,7 @@
 from aerisweather.aerisweather import AerisWeather
 from aerisweather.requests.ParameterType import ParameterType
 from aerisweather.requests.RequestLocation import RequestLocation
-from aerisweather.requests.RequestAction import RequestAction
+from aerisweather.requests import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter
 from keys import client_id, client_secret, app_id
 
