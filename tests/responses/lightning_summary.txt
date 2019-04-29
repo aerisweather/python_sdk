@@ -1,0 +1,58 @@
+{
+  "success": true,
+  "error": null,
+  "response": [
+    {
+      "summary": {
+        "range": {
+          "count": 21,
+          "fromTimestamp": 1556545169,
+          "fromDateTimeISO": "2019-04-29T13:39:29+00:00",
+          "toTimestamp": 1556545469,
+          "toDateTimeISO": "2019-04-29T13:44:29+00:00",
+          "maxTimestamp": 1556545400,
+          "maxDateTimeISO": "2019-04-29T13:43:20+00:00",
+          "minTimestamp": 1556545193,
+          "minDateTimeISO": "2019-04-29T13:39:53+00:00"
+        },
+        "pulse": {
+          "count": 21,
+          "cg": 21,
+          "ic": 0,
+          "negative": 18,
+          "positive": 3
+        },
+        "peakAmp": {
+          "count": 21,
+          "all": {
+            "min": 6365,
+            "max": 51510,
+            "avg": 27362
+          },
+          "positive": {
+            "min": 31770,
+            "max": 42504,
+            "avg": 36278
+          },
+          "negative": {
+            "min": 6365,
+            "max": 51510,
+            "avg": 25876
+          }
+        },
+        "icHeight": {
+          "count": 21,
+          "min": 0,
+          "max": 0,
+          "avg": 0
+        },
+        "numSensors": {
+          "count": 21,
+          "min": 5,
+          "max": 20,
+          "avg": 15
+        }
+      }
+    }
+  ]
+}

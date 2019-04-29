@@ -45,6 +45,10 @@ class RequestFilter:
     lght = namedtuple('LIGHTNING', ['CG', 'IC', 'ALL', 'NEGATIVE', 'POSITIVE'])
     LIGHTNING = lght('cg', 'ic', 'all', 'negative', 'positive')
 
+    # LIGHTNING SUMMARY
+    lght_sum = namedtuple('LIGHTNING_SUMMARY', ['CG', 'IC', 'ALL', 'NEGATIVE', 'POSITIVE'])
+    LIGHTNING_SUMMARY = lght_sum('cg', 'ic', 'all', 'negative', 'positive')
+
     # OBSERVATIONS
     obs = namedtuple('OBSERVATIONS', ['ALL_STATIONS', 'ALLOW_NO_SKY', 'HAS_PRECIP', 'METAR', 'MESONET', 'PWS', 'GEO'])
     OBSERVATIONS = obs('allstations', 'allownosky', 'hasprecip', 'metar', 'mesonet', 'pws', 'geo')

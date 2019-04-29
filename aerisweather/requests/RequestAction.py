@@ -33,6 +33,9 @@ class RequestAction:
     lght = namedtuple('LIGHTNING', ['ID', 'CLOSEST', 'ROUTE', 'SEARCH'])
     LIGHTNING = lght('id', 'closest', 'route', 'search')
 
+    lght_sum = namedtuple('LIGHTNING_SUMMARY', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN'])
+    LIGHTNING_SUMMARY = lght_sum('id', 'closest', 'search', 'within')
+
     obs = namedtuple('OBSERVATIONS', ['CLOSEST', 'ID', 'ROUTE', 'SEARCH', 'WITHIN'])
     OBSERVATIONS = obs('closest', 'id', 'route', 'search', 'within')
 

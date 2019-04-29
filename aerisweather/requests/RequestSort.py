@@ -35,6 +35,8 @@ class RequestSort:
     lght = namedtuple('LIGHTNING', ['TYPE', 'PEAKAMP', 'HEIGHT', 'NUMSENSORS'])
     LIGHTNING = lght('type', 'peakamp', 'height', 'numsensors')
 
+    # LIGHTNING SUMMARY - no sort
+
     # OBSERVATIONS
     obs = namedtuple('OBSERVATIONS', ['CLOSEST', 'ID', 'ROUTE', 'SEARCH', 'WITHIN'])
     OBSERVATIONS = obs('closest', 'id', 'route', 'search', 'within')

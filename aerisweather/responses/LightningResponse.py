@@ -1,6 +1,3 @@
-
-from typing import List
-
 from aerisweather.responses.AerisLocation import AerisLocation
 from aerisweather.responses.AerisRelativeTo import AerisRelativeTo
 from aerisweather.responses.LightningObservation import LightningObservation

@@ -21,6 +21,7 @@ class EndpointType(Enum):
     CONVECTIVE_OUTLOOK = "convective/outlook"
     FORECASTS = "forecasts"
     LIGHTNING = "lightning"
+    LIGHTNING_SUMMARY = "lightning/summary"
     OBSERVATIONS = "observations"
     OBSERVATIONS_SUMMARY = "observations/summary"
     PLACES = "places"

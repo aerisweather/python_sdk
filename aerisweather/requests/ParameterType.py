@@ -34,6 +34,10 @@ class ParameterType:
     LIGHTNING = lightn('callback', 'fields', 'filter', 'format', 'from', 'limit', 'p', 'plimit', 'pskip', 'query',
                        'radius', 'skip', 'sort', 'to')
 
+    # LIGHTNING SUMMARY
+    lightn_sum = namedtuple('LIGHTNING_SUMMARY', ['CALLBACK', 'FIELDS', 'FILTER', 'FORMAT', 'FROM', 'P', 'QUERY', 'RADIUS', 'TO'])
+    LIGHTNING_SUMMARY = lightn_sum('callback', 'fields', 'filter', 'format', 'from', 'p', 'query', 'radius', 'to')
+
     # OBSERVATIONS
     observations = namedtuple('OBSERVATIONS', ['CALLBACK', 'FIELDS', 'FILTER', 'FROM', 'LIMIT', 'P', 'RADIUS',
                                                'QUERY', 'SORT', 'SKIP', 'TO'])

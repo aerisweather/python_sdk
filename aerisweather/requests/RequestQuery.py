@@ -24,6 +24,9 @@ class RequestQuery:
     lght = namedtuple('LIGHTNING', ['TYPE', 'PEAKAMP', 'HEIGHT', 'NUMSENSORS'])
     LIGHTNING = lght('type', 'peakamp', 'height', 'numsensors')
 
+    lght_sum = namedtuple('LIGHTNING_SUMMARY', ['DT', 'TYPE', 'PEAKAMP', 'HEIGHT', 'NUMSENSORS'])
+    LIGHTNING_SUMMARY = lght_sum('dt', 'type', 'peakamp', 'height', 'numsensors')
+
     obs = namedtuple('OBSERVATIONS', ['COUNTRY', 'DEWPT', 'ELEV', 'HAS_PRECIP', 'ID', 'GUST', 'NAME', 'PRECIP',
                                       'PRESSURE', 'QC', 'QC_CODE', 'RH', 'STATE', 'TEMP', 'WIND', 'WIND_DIR'])
     OBSERVATIONS = obs('country', 'dewpt', 'elev', 'hasprecip', 'id', 'gust', 'name', 'precip', 'pressure', 'qc',

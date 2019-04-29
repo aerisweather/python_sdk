@@ -11,6 +11,7 @@ from aerisweather.endpoints.AlertsEndpoint import AlertsEndpoint
 from aerisweather.endpoints.CustomEndpoint import CustomEndpoint
 from aerisweather.endpoints.ForecastsEndpoint import ForecastsEndpoint
 from aerisweather.endpoints.LightningEndpoint import LightningEndpoint
+from aerisweather.endpoints.LightningSummaryEndpoint import LightningSummaryEndpoint
 from aerisweather.endpoints.ObservationsEndpoint import ObservationsEndpoint
 from aerisweather.endpoints.ObservationsSummaryEndpoint import ObservationsSummaryEndpoint
 from aerisweather.endpoints.PlacesEndpoint import PlacesEndpoint
@@ -31,19 +32,21 @@ from aerisweather.responses.CustomResponse import CustomResponse
 from aerisweather.responses.ForecastsResponse import ForecastsResponse
 from aerisweather.responses.GeoJsonResponse import GeoJsonResponse
 from aerisweather.responses.LightningResponse import LightningResponse
+from aerisweather.responses.LightningSummaryResponse import LightningSummaryResponse
 from aerisweather.responses.ObservationsResponse import ObservationsResponse
 from aerisweather.responses.ObservationsSummaryResponse import ObservationsSummaryResponse
 from aerisweather.responses.PlacesResponse import PlacesResponse
 
 from aerisweather.utils.AerisError import AerisError
 from aerisweather.utils.AerisNetwork import AerisNetwork
-from aerisweather.utils.AerisResponseType import ResponseType, AerisResponseType
+from aerisweather.responses.AerisResponseType import ResponseType, AerisResponseType
 
 
 class AerisWeather(AirQualityEndpoint,
                    AlertsEndpoint,
                    ForecastsEndpoint,
                    LightningEndpoint,
+                   LightningSummaryEndpoint,
                    ObservationsEndpoint,
                    ObservationsSummaryEndpoint,
                    PlacesEndpoint,
@@ -176,7 +179,7 @@ class AerisWeather(AirQualityEndpoint,
                 url += "&" + param + "=" + value
 
         if sort is not None:
-            url += "&sort=" + sort.value
+            url += "&sort=" + sort
 
         if format_ is not None:
             url += "&format=" + format_
@@ -221,6 +224,8 @@ class AerisWeather(AirQualityEndpoint,
                 return ForecastsResponse(response_json)
             elif endpoint_type == EndpointType.LIGHTNING:
                 return LightningResponse(response_json)
+            elif endpoint_type == EndpointType.LIGHTNING_SUMMARY:
+                return LightningSummaryResponse(response_json)
             elif endpoint_type == EndpointType.OBSERVATIONS:
                 return ObservationsResponse(response_json)
             elif endpoint_type == EndpointType.OBSERVATIONS_SUMMARY:
