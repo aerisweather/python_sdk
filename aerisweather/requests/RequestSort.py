@@ -41,6 +41,10 @@ class RequestSort:
     obs = namedtuple('OBSERVATIONS', ['CLOSEST', 'ID', 'ROUTE', 'SEARCH', 'WITHIN'])
     OBSERVATIONS = obs('closest', 'id', 'route', 'search', 'within')
 
+    # OBSERVATIONS ARCHIVE
+    obs = namedtuple('OBSERVATIONS_ARCHIVE', ['DT'])
+    OBSERVATIONS_ARCHIVE = obs('dt')
+
     # PLACES
     plc = namedtuple('PLACES', ['COUNTRY', 'HAS_ZIP', 'POP', 'NAME', 'STATE'])
     PLACES = plc('country', 'haszip', 'pop', 'name', 'state')

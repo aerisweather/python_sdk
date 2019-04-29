@@ -53,6 +53,12 @@ class RequestFilter:
     obs = namedtuple('OBSERVATIONS', ['ALL_STATIONS', 'ALLOW_NO_SKY', 'HAS_PRECIP', 'METAR', 'MESONET', 'PWS', 'GEO'])
     OBSERVATIONS = obs('allstations', 'allownosky', 'hasprecip', 'metar', 'mesonet', 'pws', 'geo')
 
+    # OBSERVATIONS_ARCHIVE
+    obs_archive = namedtuple('OBSERVATIONS_ARCHIVE', ['ALL_STATIONS', 'CENTROID', 'HAS_PRECIP', 'HAS_SKY', 'MESONET',
+                                                      'OFFICAL', 'PWS', 'GEO'])
+    OBSERVATIONS_ARCHIVE = obs_archive('allstations', 'centroid', 'hasprecip', 'hassky', 'mesonet', 'official', 'pws',
+                                       'geo')
+
     # OBSERVATIONS_SUMMARY
     obs_summary = namedtuple('OBSERVATIONS_SUMMARY', ['ALL_STATIONS', 'HAS_PRECIP', 'MESONET', 'METAR', 'OFFICAL',
                                                       'PWS', 'GEO'])

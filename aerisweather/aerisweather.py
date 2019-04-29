@@ -33,6 +33,7 @@ from aerisweather.responses.ForecastsResponse import ForecastsResponse
 from aerisweather.responses.GeoJsonResponse import GeoJsonResponse
 from aerisweather.responses.LightningResponse import LightningResponse
 from aerisweather.responses.LightningSummaryResponse import LightningSummaryResponse
+from aerisweather.responses.ObservationsArchiveResponse import ObservationsArchiveResponse
 from aerisweather.responses.ObservationsResponse import ObservationsResponse
 from aerisweather.responses.ObservationsSummaryResponse import ObservationsSummaryResponse
 from aerisweather.responses.PlacesResponse import PlacesResponse
@@ -230,6 +231,8 @@ class AerisWeather(AirQualityEndpoint,
                 return ObservationsResponse(response_json)
             elif endpoint_type == EndpointType.OBSERVATIONS_SUMMARY:
                 return ObservationsSummaryResponse(response_json)
+            elif endpoint_type == EndpointType.OBSERVATIONS_ARCHIVE:
+                return ObservationsArchiveResponse(response_json)
             elif endpoint_type == EndpointType.PLACES:
                 return PlacesResponse(response_json)
             else:

@@ -39,6 +39,9 @@ class RequestAction:
     obs = namedtuple('OBSERVATIONS', ['CLOSEST', 'ID', 'ROUTE', 'SEARCH', 'WITHIN'])
     OBSERVATIONS = obs('closest', 'id', 'route', 'search', 'within')
 
+    obs_archive = namedtuple('OBSERVATIONS_ARCHIVE', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN'])
+    OBSERVATIONS_ARCHIVE = obs_archive('id', 'closest', 'search', 'within')
+
     obs_summary = namedtuple('OBSERVATIONS_SUMMARY', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN'])
     OBSERVATIONS_SUMMARY = obs_summary('id', 'closest', 'search', 'within')
 

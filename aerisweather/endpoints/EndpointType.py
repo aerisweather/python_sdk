@@ -23,6 +23,7 @@ class EndpointType(Enum):
     LIGHTNING = "lightning"
     LIGHTNING_SUMMARY = "lightning/summary"
     OBSERVATIONS = "observations"
+    OBSERVATIONS_ARCHIVE = "observations/archive"
     OBSERVATIONS_SUMMARY = "observations/summary"
     PLACES = "places"
     CUSTOM = "custom"

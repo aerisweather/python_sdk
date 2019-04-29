@@ -44,6 +44,13 @@ class ParameterType:
     OBSERVATIONS = observations('callback', 'fields', 'filter', 'from', 'limit', 'p', 'radius', 'query', 'sort',
                                 'skip', 'to')
 
+    # OBSERVATIONS_ARCHIVE
+    obs_archive = namedtuple('OBSERVATIONS_ARCHIVE', ['CALLBACK', 'FIELDS', 'FILTER', 'FROM', 'LIMIT', 'P',
+                                                      'PLIMIT', 'PSKIP', 'PSORT', 'QUERY', 'RADIUS', 'SORT',
+                                                      'SKIP', 'TO'])
+    OBSERVATIONS_ARCHIVE = obs_archive('callback', 'fields', 'filter', 'from', 'limit', 'p', 'plimit', 'pskip',
+                                       'psort', 'query', 'radius', 'sort', 'skip', 'to')
+
     # OBSERVATIONS_SUMMARY
     obs_summary = namedtuple('OBSERVATIONS_SUMMARY', ['CALLBACK', 'FIELDS', 'FILTER', 'FROM', 'LIMIT', 'P',
                                                       'PLIMIT', 'PSKIP', 'PSORT', 'QUERY', 'RADIUS', 'SORT',

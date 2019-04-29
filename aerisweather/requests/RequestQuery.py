@@ -32,6 +32,11 @@ class RequestQuery:
     OBSERVATIONS = obs('country', 'dewpt', 'elev', 'hasprecip', 'id', 'gust', 'name', 'precip', 'pressure', 'qc',
                        'qccode', 'rh', 'state', 'temp', 'wind', 'winddir')
 
+    obs_archive = namedtuple('OBSERVATIONS_ARCHIVE', ['TEMP', 'DEWPT', 'RH', 'PRESSURE', 'WIND', 'WIND_DIR',
+                                                      'GUST', 'ID', 'DT', 'NAME', 'STATE', 'COUNTRY', 'HAS_PRECIP'])
+    OBSERVATIONS_ARCHIVE = obs_archive('temp', 'dewpt', 'rh', 'pressure', 'wind', 'winddir', 'gust', 'id', 'dt',
+                                       'name', 'state', 'country', 'hasprecip')
+
     obs_sum = namedtuple('OBSERVATIONS_SUMMARY', ['AVG_DEWPT', 'AVG_PRES', 'AVG_RH', 'AVG_VIS', 'AVGT', 'COUNT',
                                                   'COUNTRY', 'DATE', 'ELEV', 'GUST', 'HAS_PRECIP', 'ID',
                                                   'MAX_DEWPT', 'MAX_PRES', 'MAX_RH', 'MAX_VIS', 'MAXT', 'MIN_DEWPT',
