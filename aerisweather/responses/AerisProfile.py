@@ -275,6 +275,16 @@ class AerisProfilePlacesPostalCodes(AerisProfilePlaces):
         return self.data["active"]
 
 
+class AerisProfilePrecipSummary(AerisProfile):
+    """Defines an object for the Aeris API profile data returned in an Aeris API PrecipSummary responses."""
+
+    def __init__(self, json_data):
+        """ Constructor """
+
+        self.data = json_data
+        super().__init__(self.data)
+
+
 class AerisProfileRecords(AerisProfile):
     """Defines an object for the Aeris API profile data returned in an Aeris API Records responses."""
 

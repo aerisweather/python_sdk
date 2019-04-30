@@ -72,3 +72,6 @@ class RequestFilter:
     PLACES = pl("airport", "amusement", "bridge", "camp", "church", "county", "divisions", "feature", "fort", "golf",
                 "lake", "neighborhood", "parish", "park", "poi", "port", "ppl", "reserve", "school", "stadium",
                 "temple", "trail", "tunnel", "university", "worship", "geo")
+
+    precipsum = namedtuple('PRECIP_SUMMARY', ['MDNT2MDNT', 'HR', 'FULL_RANGE'])
+    PRECIP_SUMMARY = precipsum('mdnt2mdnt', 'hr', 'fullrange')

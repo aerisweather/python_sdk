@@ -62,3 +62,7 @@ class ParameterType:
     places = namedtuple('PLACES', ['CALLBACK', 'FIELDS', 'FILTER', 'FORMAT', 'LIMIT', 'P', 'QUERY', 'RADIUS',
                                    'SORT', 'SKIP'])
     PLACES = places('callback', 'fields', 'filter', 'format', 'limit', 'p', 'query', 'radius', 'sort', 'skip')
+
+    # PRECIP SUMMARY
+    precipsum = namedtuple('PRECIP_SUMMARY', ['P', 'FROM', 'TO', 'FILTER', 'PLIMIT', 'PSKIP', 'PSORT'])
+    PRECIP_SUMMARY = precipsum('p', 'from', 'to', 'filter', 'plimit', 'pskip', 'psort')

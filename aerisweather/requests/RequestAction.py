@@ -47,3 +47,6 @@ class RequestAction:
 
     pl = namedtuple('PLACES', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN'])
     PLACES = pl('id', 'closest', 'search', 'within')
+
+    precipsum = namedtuple('PRECIP_SUMMARY', ['ID'])
+    PRECIP_SUMMARY = precipsum('id')

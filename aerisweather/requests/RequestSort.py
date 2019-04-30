@@ -49,4 +49,6 @@ class RequestSort:
     plc = namedtuple('PLACES', ['COUNTRY', 'HAS_ZIP', 'POP', 'NAME', 'STATE'])
     PLACES = plc('country', 'haszip', 'pop', 'name', 'state')
 
-
+    # PRECIP SUMMARY
+    precipsum = namedtuple('PRECIP_SUMMARY', ['DT', 'PRECIP'])
+    PRECIP_SUMMARY = precipsum('dt', 'precip')

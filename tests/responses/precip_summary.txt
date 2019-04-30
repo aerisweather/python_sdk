@@ -1,0 +1,40 @@
+{
+  "success": true,
+  "error": null,
+  "response": [
+    {
+      "loc": {
+        "lat": 43.80136,
+        "long": -91.23958
+      },
+      "place": {
+        "name": "la crosse",
+        "state": "wi",
+        "country": "us"
+      },
+      "periods": [
+        {
+          "summary": {
+            "timestamp": 1556600400,
+            "dateTimeISO": "2019-04-30T00:00:00-05:00",
+            "range": {
+              "fromTimestamp": 1556600400,
+              "fromDateTimeISO": "2019-04-30T00:00:00-05:00",
+              "toTimestamp": 1556686799,
+              "toDateTimeISO": "2019-04-30T23:59:59-05:00",
+              "count": 2
+            },
+            "precip": {
+              "totalMM": 0.31,
+              "totalIN": 0.01,
+              "count": 2
+            }
+          }
+        }
+      ],
+      "profile": {
+        "tz": "America/Chicago"
+      }
+    }
+  ]
+}

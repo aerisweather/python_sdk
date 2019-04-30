@@ -17,6 +17,7 @@ from aerisweather.endpoints.ObservationsSummaryEndpoint import ObservationsSumma
 from aerisweather.endpoints.PlacesEndpoint import PlacesEndpoint
 from aerisweather.endpoints.Endpoint import Endpoint
 from aerisweather.endpoints.EndpointType import EndpointType
+from aerisweather.endpoints.PrecipSummaryEndpoint import PrecipSummaryEndpoint
 
 from aerisweather.requests.ParameterType import ParameterType
 from aerisweather.requests.RequestAction import RequestAction
@@ -37,6 +38,7 @@ from aerisweather.responses.ObservationsArchiveResponse import ObservationsArchi
 from aerisweather.responses.ObservationsResponse import ObservationsResponse
 from aerisweather.responses.ObservationsSummaryResponse import ObservationsSummaryResponse
 from aerisweather.responses.PlacesResponse import PlacesResponse
+from aerisweather.responses.PrecipSummaryResponse import PrecipSummaryResponse
 
 from aerisweather.utils.AerisError import AerisError
 from aerisweather.utils.AerisNetwork import AerisNetwork
@@ -51,6 +53,7 @@ class AerisWeather(AirQualityEndpoint,
                    ObservationsEndpoint,
                    ObservationsSummaryEndpoint,
                    PlacesEndpoint,
+                   PrecipSummaryEndpoint,
                    CustomEndpoint):
 
     """ Defines the main object for the aerisweather python library. """
@@ -235,6 +238,8 @@ class AerisWeather(AirQualityEndpoint,
                 return ObservationsArchiveResponse(response_json)
             elif endpoint_type == EndpointType.PLACES:
                 return PlacesResponse(response_json)
+            elif endpoint_type == EndpointType.PRECIP_SUMMARY:
+                return PrecipSummaryResponse(response_json)
             else:
                 return CustomResponse(response_json)
 
