@@ -75,3 +75,10 @@ class RequestFilter:
 
     precipsum = namedtuple('PRECIP_SUMMARY', ['MDNT2MDNT', 'HR', 'FULL_RANGE'])
     PRECIP_SUMMARY = precipsum('mdnt2mdnt', 'hr', 'fullrange')
+
+    tropcyc = namedtuple('TROPICAL_CYCLONE', ['ATLANTIC', 'AL', 'EAST_PACIFIC', 'EP', 'CENTRAL_PACIFIC', 'CP',
+                                              'WEST_PACIFIC', 'WP', 'PACIFIC', 'INDIAN', 'IO', 'SOUTHERN', 'SH',
+                                              'POSITION', 'TRACK', 'FORECAST', 'GEO', 'TEST', 'INVESTS'])
+    TROPICAL_CYCLONE = tropcyc('atlantic', 'al', 'east_pacific', 'ep', 'central_pacific', 'cp', 'west_pacific',
+                               'wp', 'pacific', 'indian', 'io', 'southern', 'sh', 'position', 'track', 'forecast',
+                               'geo', 'test', 'invests')

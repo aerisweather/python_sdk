@@ -49,3 +49,16 @@ class RequestQuery:
     pl = namedtuple('PLACES', ['ALT_NAME', 'COUNTRY', 'NAME', 'POP', 'STATE'])
     PLACES = pl('altname', 'country', 'name', 'pop', 'state')
 
+    tropcyc = namedtuple('TROPICAL_CYCLONE', ['ID', 'BASIN', 'ORIGIN', 'CURRENT_BASIN', 'YEAR', 'EVENT', 'NAME',
+                                              'START_DATE', 'END_DATE', 'MAX_TYPE', 'MAX_CAT', 'MAX_WIND_SPEEDS',
+                                              'MIN_PRESSURE', 'TEST', 'STORM_TYPE', 'STORM_CAT', 'WINDSPEED',
+                                              'PRESSURE', 'STORM_DIR', 'STORM_SPEED', 'TRACK_STORM_TYPE',
+                                              'TRACK_STORM_CAT', 'TRACK_WIND_SPEED', 'TRACK_PRESSURE', 'TRACK_STORM_DIR',
+                                              'TRACK_STORM_SPEED', 'FC_STORM_TYPE', 'FC_STORM_CAT', 'FC_WIND_SPEED'])
+    TROPICAL_CYCLONE = tropcyc('id', 'basic', 'origin', 'current_basin', 'year', 'event', 'name', 'start_date',
+                               'end_date', 'max_type', 'max_cat', 'max_wind_speeds', 'min_pressure', 'test',
+                               'storm_type', 'storm_cat', 'windspeed', 'pressure', 'storm_dir', 'storm_speed',
+                               'track_storm_type', 'track_storm_cat', 'track_wind_speed', 'track_pressure',
+                               'track_storm_dir', 'track_storm_speed', 'fc_storm_type', 'fc_storm_cat', 'fc_wind_speed')
+
+
