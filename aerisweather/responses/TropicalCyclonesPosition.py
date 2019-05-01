@@ -1,14 +1,14 @@
 from typing import List
 
 from aerisweather.responses.AerisLocation import AerisLocation
-from aerisweather.responses.TropicalCyclonesPositionDetails import TropicalCyclonesPositionDetails
-from aerisweather.responses.TropicalCyclonesPositionLocation import TropicalCyclonesPositionLocation
+from aerisweather.responses.TropicalCyclonesDetails import TropicalCyclonesDetails
+from aerisweather.responses.TropicalCyclonesLocation import TropicalCyclonesLocation
 from aerisweather.responses.TropicalCyclonesProfileLifespan import TropicalCyclonesProfileLifespan
 from aerisweather.responses.TropicalCyclonesProfilePressure import TropicalCyclonesProfilePressure
 from aerisweather.responses.TropicalCyclonesProfileWindSpeed import TropicalCyclonesProfileWindSpeed
 
 
-class TropicalCyclonesProfile:
+class TropicalCyclonesPosition:
     """ Defines an object for the data returned in an Aeris API response."""
 
     data = {}
@@ -16,16 +16,15 @@ class TropicalCyclonesProfile:
     def __init__(self, json_data=None):
         """Constructor - Takes a single response json object from an Aeris API data response. """
 
-        super().__init__(json_data=json_data)
         self.data = json_data
 
     @property
-    def location(self) -> TropicalCyclonesPositionLocation:
-        return TropicalCyclonesPositionLocation(self.data["location"])
+    def location(self) -> TropicalCyclonesLocation:
+        return TropicalCyclonesLocation(self.data["location"])
 
     @property
-    def details(self) -> TropicalCyclonesPositionDetails:
-        return TropicalCyclonesPositionDetails(self.data["details"])
+    def details(self) -> TropicalCyclonesDetails:
+        return TropicalCyclonesDetails(self.data["details"])
 
     @property
     def timestamp(self) -> int:

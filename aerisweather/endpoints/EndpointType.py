@@ -26,8 +26,8 @@ class EndpointType(Enum):
     OBSERVATIONS_ARCHIVE = "observations/archive"
     OBSERVATIONS_SUMMARY = "observations/summary"
     PLACES = "places"
-    PRECIP_SUMMARY = "precip/summary",
-    TROPICAL_CYCLONES = "tropicalcyclones",
+    PRECIP_SUMMARY = "precip/summary"
+    TROPICAL_CYCLONES = "tropicalcyclones"
     CUSTOM = "custom"
 
     __custom_endpoint_type_name = ""

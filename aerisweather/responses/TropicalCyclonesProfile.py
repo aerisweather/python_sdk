@@ -13,7 +13,6 @@ class TropicalCyclonesProfile:
     def __init__(self, json_data=None):
         """Constructor - Takes a single response json object from an Aeris API data response. """
 
-        super().__init__(json_data=json_data)
         self.data = json_data
 
     @property
