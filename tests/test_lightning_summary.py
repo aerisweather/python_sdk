@@ -105,13 +105,16 @@ class TestLightningSummary:
                                client_id=client_id,
                                client_secret=client_secret)
 
-            lght_sum_list = awx.lightning_summary(location=None,
-                                                  action=RequestAction.LIGHTNING_SUMMARY.CLOSEST,
-                                                  filter_=None,
-                                                  sort=None,
-                                                  params={ParameterType.LIGHTNING_SUMMARY.P: "55124",
-                                                          ParameterType.LIGHTNING_SUMMARY.RADIUS: "2000miles"},
-                                                  query=None)
+            endpoint = Endpoint(endpoint_type=EndpointType.LIGHTNING_SUMMARY,
+                                location=None,
+                                action=RequestAction.LIGHTNING_SUMMARY.CLOSEST,
+                                filter_=None,
+                                sort=None,
+                                params={ParameterType.LIGHTNING_SUMMARY.P: "55124",
+                                        ParameterType.LIGHTNING_SUMMARY.RADIUS: "2000miles"},
+                                query=None)
+
+            lght_sum_list = awx.request(endpoint=endpoint)
 
             for lght_sum in lght_sum_list:  # type: LightningSummaryResponse
 

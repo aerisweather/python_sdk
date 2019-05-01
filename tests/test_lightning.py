@@ -112,13 +112,16 @@ class TestLightning:
                                client_id=client_id,
                                client_secret=client_secret)
 
-            lght_list = awx.lightning(location=RequestLocation(postal_code="55124"),
-                                        action=None,
-                                        filter_=None,
-                                        sort=None,
-                                        params={ParameterType.LIGHTNING.RADIUS: "2000miles",
-                                                ParameterType.LIGHTNING.LIMIT: "1"},
-                                        query=None)
+            endpoint = Endpoint(endpoint_type=EndpointType.LIGHTNING,
+                                location=RequestLocation(postal_code="55124"),
+                                action=None,
+                                filter_=None,
+                                sort=None,
+                                params={ParameterType.LIGHTNING.RADIUS: "2000miles",
+                                        ParameterType.LIGHTNING.LIMIT: "1"},
+                                query=None)
+
+            lght_list = awx.request(endpoint=endpoint)
 
             for lght in lght_list:  # type: LightningResponse
 

@@ -12,6 +12,7 @@ from aerisweather.endpoints.CustomEndpoint import CustomEndpoint
 from aerisweather.endpoints.ForecastsEndpoint import ForecastsEndpoint
 from aerisweather.endpoints.LightningEndpoint import LightningEndpoint
 from aerisweather.endpoints.LightningSummaryEndpoint import LightningSummaryEndpoint
+from aerisweather.endpoints.ObservationsArchiveEndpoint import ObservationsArchiveEndpoint
 from aerisweather.endpoints.ObservationsEndpoint import ObservationsEndpoint
 from aerisweather.endpoints.ObservationsSummaryEndpoint import ObservationsSummaryEndpoint
 from aerisweather.endpoints.PlacesEndpoint import PlacesEndpoint
@@ -53,6 +54,7 @@ class AerisWeather(AirQualityEndpoint,
                    LightningEndpoint,
                    LightningSummaryEndpoint,
                    ObservationsEndpoint,
+                   ObservationsArchiveEndpoint,
                    ObservationsSummaryEndpoint,
                    PlacesEndpoint,
                    PrecipSummaryEndpoint,

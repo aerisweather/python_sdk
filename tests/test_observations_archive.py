@@ -174,12 +174,12 @@ class TestObservationsArchive:
                                client_id=client_id,
                                client_secret=client_secret)
 
-            obs_list = awx.observations(location=None,
-                                        action=RequestAction.OBSERVATIONS.CLOSEST,
-                                        filter_=None,
-                                        sort=None,
-                                        params={ParameterType.OBSERVATIONS.P: "54601"},
-                                        query={RequestQuery.OBSERVATIONS.ID: "KLSE"})
+            obs_list = awx.observations_archive(location=None,
+                                                action=RequestAction.OBSERVATIONS_ARCHIVE.CLOSEST,
+                                                filter_=None,
+                                                sort=None,
+                                                params={ParameterType.OBSERVATIONS_ARCHIVE.P: "54601"},
+                                                query={RequestQuery.OBSERVATIONS_ARCHIVE.ID: "KLSE"})
 
             for obs in obs_list:  # type: ObservationsArchiveResponse
                 assert obs.id is not None

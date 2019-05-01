@@ -234,6 +234,95 @@ class TestTropicalCyclones:
                                client_id=client_id,
                                client_secret=client_secret)
 
+            endpoint = Endpoint(endpoint_type=EndpointType.TROPICAL_CYCLONES,
+                                location=RequestLocation(postal_code="54660"),
+                                action=None,
+                                filter_={RequestFilter.TROPICAL_CYCLONE.TEST},
+                                sort=None,
+                                params={ParameterType.TROPICAL_CYCLONE.RADIUS: "2000miles"},
+                                query=None)
+
+            trop_list = awx.request(endpoint=endpoint)
+
+            for trop in trop_list:  # type: TropicalCyclonesResponse
+                assert type(trop) is TropicalCyclonesResponse
+
+                profile = trop.profile
+                assert type(profile) is TropicalCyclonesProfile
+
+                lifespan = profile.lifespan
+                assert type(lifespan) is TropicalCyclonesProfileLifespan
+
+                windSpeed = profile.windSpeed
+                assert type(windSpeed) is TropicalCyclonesProfileWindSpeed
+
+                pressure = profile.pressure
+                assert type(pressure) is TropicalCyclonesProfilePressure
+
+                position = trop.position
+                assert type(position) is TropicalCyclonesPosition
+
+                locn = position.location
+                assert type(locn) is TropicalCyclonesLocation
+
+                details = position.details
+                assert type(details) is TropicalCyclonesDetails
+
+                movement = details.movement
+                assert type(movement) is TropicalCyclonesDetailsMovement
+
+                loc = position.loc
+                assert type(loc) is AerisLocation
+
+                track = trop.track
+                assert type(track) is list
+
+                details = position.details
+                assert type(details) is TropicalCyclonesDetails
+
+                movement = details.movement
+                assert type(movement) is TropicalCyclonesDetailsMovement
+
+                loc = position.loc
+                assert type(loc) is AerisLocation
+
+                forecast = trop.forecast
+                assert type(forecast) is list
+                location = forecast[0].location
+                assert type(location) is TropicalCyclonesLocation
+
+                details = position.details
+                assert type(details) is TropicalCyclonesDetails
+
+                movement = details.movement
+                assert type(movement) is TropicalCyclonesDetailsMovement
+
+                breakpoints = trop.breakPointAlerts
+                assert type(breakpoints) is list
+
+                coords = breakpoints[0].coords
+                assert coords.type == "LineString"
+
+        except URLError as url_err:
+            print("URL Error: " + url_err.reason)
+            raise url_err
+
+        except AerisError as aeris_err:
+            print("AerisError: " + str(aeris_err))
+            raise aeris_err
+
+        except Exception as ex:
+            print(ex.args)
+            raise ex
+
+    def test_tropicalcyclones_function(self):
+        """ Test the code against a live response from the API """
+
+        try:
+            awx = AerisWeather(app_id=app_id,
+                               client_id=client_id,
+                               client_secret=client_secret)
+
             trop_list = awx.tropical_cyclones(location=RequestLocation(postal_code="54660"),
                                               action=None,
                                               filter_={RequestFilter.TROPICAL_CYCLONE.TEST},
