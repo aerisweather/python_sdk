@@ -67,6 +67,11 @@ class ParameterType:
     precipsum = namedtuple('PRECIP_SUMMARY', ['P', 'FROM', 'TO', 'FILTER', 'PLIMIT', 'PSKIP', 'PSORT'])
     PRECIP_SUMMARY = precipsum('p', 'from', 'to', 'filter', 'plimit', 'pskip', 'psort')
 
+    # THREATS
+    threats = namedtuple('THREATS', ['P', 'CALLBACK', 'RADIUS', 'FIELDS'])
+    THREATS = threats('p', 'callback', 'radius', 'fields')
+
+    # TROPICAL CYCLONES
     tropcyc = namedtuple('TROPICAL_CYCLONE', ['P', 'FIELDS', 'FILTER', 'FORMAT', 'LIMIT', 'QUERY', 'RADIUS', 'SKIP',
                                               'SORT', 'CALLBACK'])
     TROPICAL_CYCLONE = tropcyc('p', 'fields', 'filter', 'format', 'limit', 'query', 'radius', 'skip', 'sort', 'callback')

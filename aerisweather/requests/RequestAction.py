@@ -51,5 +51,8 @@ class RequestAction:
     precipsum = namedtuple('PRECIP_SUMMARY', ['ID'])
     PRECIP_SUMMARY = precipsum('id')
 
+    threat = namedtuple('THREATS', ['ID'])
+    THREATS = threat('id')
+
     tropcyc = namedtuple('TROPICAL_CYCLONE', ['ALL', 'CLOSEST', 'SEARCH', 'WITHIN', 'AFFECTS'])
     TROPICAL_CYCLONE = tropcyc('all', 'closest', 'search', 'within', 'affects')

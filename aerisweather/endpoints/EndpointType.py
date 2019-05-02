@@ -27,6 +27,7 @@ class EndpointType(Enum):
     OBSERVATIONS_SUMMARY = "observations/summary"
     PLACES = "places"
     PRECIP_SUMMARY = "precip/summary"
+    THREATS = "threats"
     TROPICAL_CYCLONES = "tropicalcyclones"
     CUSTOM = "custom"
 
