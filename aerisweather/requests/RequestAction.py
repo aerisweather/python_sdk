@@ -16,7 +16,8 @@ class RequestAction:
                                                    'LIGHTNING',
                                                    'OBSERVATIONS',
                                                    'OBSERVATIONS_SUMMARY',
-                                                   'PLACES'])
+                                                   'PLACES',
+                                                   'CUSTOM'])
 
     aqi = namedtuple('AIR_QUALITY', ['ID', 'CLOSEST', 'SEARCH', 'WITHIN', 'ROUTE'])
     AIR_QUALITY = aqi('id', 'closest', 'search', 'within', 'route')
@@ -56,3 +57,19 @@ class RequestAction:
 
     tropcyc = namedtuple('TROPICAL_CYCLONE', ['ALL', 'CLOSEST', 'SEARCH', 'WITHIN', 'AFFECTS'])
     TROPICAL_CYCLONE = tropcyc('all', 'closest', 'search', 'within', 'affects')
+
+    __custom_action_type_name = ""
+    cust = namedtuple('CUSTOM', ['VALUE'])
+    CUSTOM = cust(__custom_action_type_name)
+
+    @property
+    def custom(self):
+        """ Returns the string name of the custom/generic Action used when CUSTOM is the Action type """
+        return self.__custom_action_type_name
+
+    @custom.setter
+    def custom(self, action_type: str):
+        """ Sets the string name of the custom/generic Action used when CUSTOM is the Action type """
+        cust = namedtuple('CUSTOM', ['VALUE'])
+        self.CUSTOM = cust(action_type)
+        # self.__custom_action_type_name = action_type

@@ -179,7 +179,10 @@ class AerisWeather(AirQualityEndpoint,
             url += endpoint_type.value + "/"
 
         if action is not None:
-            url += action + "/"
+            if type(action) is RequestAction:
+                url += action.CUSTOM.VALUE + "/"
+            else:
+                url += action + "/"
         else:
             url += location.location_str()
 
