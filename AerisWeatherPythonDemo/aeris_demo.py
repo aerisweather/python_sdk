@@ -3,7 +3,7 @@
 from aerisweather.aerisweather import AerisWeather
 from aerisweather.requests.ParameterType import ParameterType
 from aerisweather.requests.RequestLocation import RequestLocation
-from aerisweather.requests import RequestAction
+from aerisweather.requests.RequestAction import RequestAction
 from aerisweather.requests.RequestFilter import RequestFilter
 from keys import client_id, client_secret, app_id
 
@@ -97,3 +97,17 @@ for os in obs_sum_list:
     print("Location: " + os.place.name + ", " + os.place.state)
     print("YMD: " + str(os.periods[0].ymd))
     print("Average Temp: " + str(os.periods[0].temp.avgF) + "°")
+
+
+""" Precip Summary Request Example 1 """
+precip_sum_list = aeris.precip_summary(location=RequestLocation(postal_code="54660"),
+                                       filter_=[RequestFilter.PRECIP_SUMMARY.FULL_RANGE],
+                                       params=None)
+
+for precipsum in precip_sum_list:
+    print()
+    print("Precip Summary Example:")
+    print("Location: " + precipsum.place.name + ", " + precipsum.place.state)
+    print("Total Inches Precip: " + str(precipsum.periods[0].summary.precip.totalIN))
+    print("From: " + str(precipsum.periods[0].summary.range.fromDateTimeISO) + " to " +
+          str(precipsum.periods[0].summary.range.toDateTimeISO))
