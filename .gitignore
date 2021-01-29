@@ -7,3 +7,4 @@
 /AerisWeatherPythonDemo/.idea
 /AerisWeatherPythonDemo/venv
 /AerisWeatherPythonDemo/keys.py
+__pycache__
