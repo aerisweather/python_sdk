@@ -65,6 +65,9 @@ class TestForecasts(unittest.TestCase):
             assert p0.minHumidity == 75
             assert p0.humidity == 74
             assert p0.uvi == 5
+            assert p0.solradWM2 == 3424
+            assert p0.solradMinWM2 == 221
+            assert p0.solradMaxWM2 == 320
             assert p0.pressureMB == 1001
             assert p0.pressureIN == 29.56
             assert p0.sky == 78
