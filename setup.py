@@ -9,7 +9,7 @@ setup(
     version=__version__,
     packages=find_packages(exclude=['tests']),
 
-    install_requires=['aenum>=2.1.0'],
+    install_requires=['aenum>=3.0.0'],
 
     url='https://aerisweather.com',
     license='MIT',
