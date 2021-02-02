@@ -8,3 +8,4 @@
 /AerisWeatherPythonDemo/keys.py
 __pycache__
 .tox
+build/
