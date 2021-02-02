@@ -20,6 +20,12 @@ class RequestAction(Enum):
         WITHIN = "within"
 
     @skip
+    class CONDITIONS(Enum):
+        ID = "id"
+        CLOSEST = "closest"
+        ROUTE = "route"
+
+    @skip
     class CONVECTIVE_OUTLOOK(Enum):
         AFFECTS = "affects"
         CONTAINS = "contains"

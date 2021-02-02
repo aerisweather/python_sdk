@@ -67,6 +67,16 @@ class AerisProfileCountries(AerisProfile):
             return neighbors
 
 
+class AerisProfileConditions(AerisProfile):
+    """Defines an object for the Aeris API profile data returned in an Aeris API Conditions responses"""
+
+    def __init__(self, json_data):
+        """ Constructor """
+
+        self.data = json_data
+        super().__init__(self.data)
+
+
 class AerisProfileFires(AerisProfile):
     """Defines an object for the Aeris API profile data returned in an Aeris API Fires responses"""
 

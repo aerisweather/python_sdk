@@ -26,6 +26,7 @@ class EndpointType(Enum):
     """
 
     ALERTS = "advisories"
+    CONDITIONS = "conditions"
     CONVECTIVE_OUTLOOK = "convective/outlook"
     FORECASTS = "forecasts"
     OBSERVATIONS = "observations"

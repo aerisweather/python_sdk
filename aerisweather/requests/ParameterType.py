@@ -26,6 +26,16 @@ class ParameterType(Enum):
         SORT = "sort"
 
     @skip
+    class CONDITIONS(Enum):
+        P = "p"
+        FOR = "for"
+        FROM = "from"
+        TO = "to"
+        PLIMIT = "plimit"
+        PSKIP = "pskip"
+        PSORT = "psort"
+
+    @skip
     class FORECASTS(Enum):
         CALLBACK = "callback"
         FIELDS = "fields"
