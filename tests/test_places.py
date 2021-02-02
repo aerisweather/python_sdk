@@ -1,5 +1,6 @@
 
 import json
+import os
 import unittest
 from urllib.error import URLError
 
@@ -16,13 +17,16 @@ from aerisweather.utils.AerisError import AerisError
 from tests.keys import client_id, client_secret, app_id
 
 
+script_dir = os.path.dirname(__file__)
+
+
 class TestPlaces(unittest.TestCase):
     """ Defines tests modules for the Aeris API Places class """
 
     def test_static_data(self):
         """ Test the Places code against a known source of data """
 
-        file = open("./responses/places.txt", "r")
+        file = open(os.path.join(script_dir, "responses/places.txt"), "r")
 
         try:
             json_obj = json.loads(file.read())

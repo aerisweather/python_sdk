@@ -1,5 +1,6 @@
 
 import json
+import os
 import unittest
 from urllib.error import URLError
 
@@ -16,6 +17,8 @@ from aerisweather.responses.AlertTimestamps import AlertTimestamps
 from aerisweather.utils.AerisError import AerisError
 from tests.keys import client_id, client_secret, app_id
 
+script_dir = os.path.dirname(__file__)
+
 
 class TestAlerts(unittest.TestCase):
     """ Defines tests modules for the Aeris API Alerts/Advisories class """
@@ -23,7 +26,7 @@ class TestAlerts(unittest.TestCase):
     def test_static_data(self):
         """ Test the code against a known source of data """
 
-        file = open("./responses/alerts.txt", "r")
+        file = open(os.path.join(script_dir, "responses/alerts.txt"), "r")
 
         try:
             json_obj = json.loads(file.read())

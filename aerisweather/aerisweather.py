@@ -8,6 +8,7 @@ from aerisweather.requests.RequestLocation import RequestLocation
 from aerisweather.requests.RequestQuery import RequestQuery
 from aerisweather.requests.RequestSort import RequestSort
 from aerisweather.responses.AlertsResponse import AlertsResponse
+from aerisweather.responses.ConditionsResponse import ConditionsResponse
 from aerisweather.responses.CustomResponse import CustomResponse
 from aerisweather.responses.ForecastsResponse import ForecastsResponse
 from aerisweather.responses.ObservationsResponse import ObservationsResponse
@@ -170,6 +171,8 @@ class AerisWeather:
 
         if endpoint_type == EndpointType.ALERTS:
             return AlertsResponse(response_json)
+        elif endpoint_type == EndpointType.CONDITIONS:
+            return ConditionsResponse(response_json)
         elif endpoint_type == EndpointType.FORECASTS:
             return ForecastsResponse(response_json)
         elif endpoint_type == EndpointType.OBSERVATIONS:
@@ -436,6 +439,38 @@ class AerisWeather:
         """
 
         endpoint = Endpoint(endpoint_type=EndpointType.ALERTS,
+                            location=location,
+                            action=action,
+                            filter_=filter_,
+                            sort=sort,
+                            params=params,
+                            query=query)
+
+        return self.request(endpoint=endpoint)
+
+    def conditions(self,
+               location: RequestLocation = None,
+               action: RequestAction = None,
+               filter_: [RequestFilter] = None,
+               sort: RequestSort = None,
+               params: Dict[ParameterType, str] = None,
+               query: Dict[RequestQuery, str] = None):
+        """ Performs an API request to get conditions data for a specified location.
+
+            Params:
+                - location: Optional - RequestLocation - the location for which the request is processed
+                - action: Optional - RequestAction - the API request action option
+                - filter_: Optional - [RequestFilter] - a list of API request filters
+                - sort: Optional - RequestSort - the API request sort option
+                - params: Optional - Dict[ParameterType, str] - a list of API request parameters
+                - query: Optional - Dict[RequestQuery, str] - a list of API request quesries
+
+            Returns:
+                - a list of ConditionsResponse objects if successful
+                - an empty list if there is no data
+        """
+
+        endpoint = Endpoint(endpoint_type=EndpointType.CONDITIONS,
                             location=location,
                             action=action,
                             filter_=filter_,

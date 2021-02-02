@@ -1,5 +1,6 @@
 
 import json
+import os
 import unittest
 from urllib.error import URLError
 
@@ -15,6 +16,8 @@ from aerisweather.responses.AerisProfile import AerisProfileForecasts
 from aerisweather.utils.AerisError import AerisError
 from tests.keys import client_id, client_secret, app_id
 
+script_dir = os.path.dirname(__file__)
+
 
 class TestForecasts(unittest.TestCase):
     """ Defines tests modules for the Aeris API Forecasts class """
@@ -22,7 +25,7 @@ class TestForecasts(unittest.TestCase):
     def test_static_data(self):
         """ Test the Forecasts code against a known source of data """
 
-        file = open("./responses/forecasts.txt", "r")
+        file = open(os.path.join(script_dir, "responses/forecasts.txt"), "r")
 
         try:
             json_obj = json.loads(file.read())
@@ -62,6 +65,9 @@ class TestForecasts(unittest.TestCase):
             assert p0.minHumidity == 75
             assert p0.humidity == 74
             assert p0.uvi == 5
+            assert p0.solradWM2 == 3424
+            assert p0.solradMinWM2 == 221
+            assert p0.solradMaxWM2 == 320
             assert p0.pressureMB == 1001
             assert p0.pressureIN == 29.56
             assert p0.sky == 78

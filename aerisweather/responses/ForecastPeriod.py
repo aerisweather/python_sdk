@@ -474,6 +474,21 @@ class ForecastPeriod:
             return True
 
     @property
+    def solradWM2(self) -> float:
+        """ Solar radiation over the forecast period, described in watts per square meter. """
+        return self.period["solradWM2"]
+
+    @property
+    def solradMinWM2(self) -> float:
+        """ Minimum expected solar radiation over the forecast period, described in watts per square meter. """
+        return self.period["solradMinWM2"]
+
+    @property
+    def solradMaxWM2(self) -> float:
+        """ Maximum expected solar radiation over the forecast period, described in watts per square meter. """
+        return self.period["solradMaxWM2"]
+
+    @property
     def sunrise(self):
         """ Sunrise time as a UNIX timestamp. Provided when using filter=day (default) or filter=daynight.
         Not currently available for hourly forecasts. NOTE: If no sunrise (Midnight sun / polar night) a

@@ -1,5 +1,6 @@
 
 import json
+import os
 import unittest
 from urllib.error import URLError
 
@@ -29,6 +30,8 @@ from aerisweather.responses.ObservationsSummaryWind import ObservationsSummaryWi
 from aerisweather.utils.AerisError import AerisError
 from tests.keys import client_id, client_secret, app_id
 
+script_dir = os.path.dirname(__file__)
+
 
 class TestObservationsSummary(unittest.TestCase):
     """ Defines tests modules for the Aeris API ObservationsSummary class """
@@ -36,7 +39,7 @@ class TestObservationsSummary(unittest.TestCase):
     def test_static_data(self):
         """ Test the ObservationsSummary code against a known source of data """
 
-        file = open("./responses/observations_summary.txt", "r")
+        file = open(os.path.join(script_dir, "responses/observations_summary.txt"), "r")
 
         try:
             json_obj = json.loads(file.read())
