@@ -140,9 +140,7 @@ class AerisWeather:
 
         if filter_ is not None:
             if len(filter_) > 0:
-                url += "&filter="
-                for filt in filter_:
-                    url += filt.value + ","
+                url += "&filter=" + ",".join(filt.value for filt in filter_)
 
         out_query = self.query_str(query)
 
