@@ -3,7 +3,7 @@
         the GNU General Public License
         https://www.gnu.org/licenses/gpl.txt
 
-AerisWeatherPythonSDK
+AerisWeatherPythonSDK (Deprecated)
 ---------------------
 
 The AerisWeather Python SDK allows a developer to quickly and easily add
